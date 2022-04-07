@@ -1,0 +1,18 @@
+button{
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 35px;
+    font-weight: 500;
+    background: #7B2CBF;
+    border-radius: 50px;
+    display: flex;
+    
+ 
+}
+   
+.logo{
+    
+    width: 250px;
+}

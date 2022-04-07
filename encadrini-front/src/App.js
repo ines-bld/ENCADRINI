@@ -5,6 +5,7 @@ import Dashboard from './pages/dashboard';
 import { ResetPassword } from './pages/ResetPassword';
 import { ForgottenPassword } from './pages/ForgottenPassword';
 import { EnterCode } from './pages/EnterCode';
+import Login from './components/login/Login';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/">
           <Route index element={<Home />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="login" element={<Login/>} />
           <Route path="resetPassword" element={<ResetPassword />} />
           <Route path="forgottenPassword" element={<ForgottenPassword />} />
           <Route path="enterCode" element={<EnterCode />} />
