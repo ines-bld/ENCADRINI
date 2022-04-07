@@ -39,9 +39,11 @@ export const NavLink = styled(LinkS)`
     text-transform: uppercase;
     font-weight: 300;
     color: #240046;
+    text-decoration: none;
 
     &:hover{
         font-weight: 700;
+        color: #240046;
     }
 
     &:active{
@@ -67,5 +69,6 @@ export const NavBtn = styled(LinkR)`
 
     &:hover{
         background: #3A0CA3;
+        color: white;
     }
 `
