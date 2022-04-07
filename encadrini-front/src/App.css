@@ -1,6 +1,21 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-  } 
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+label {
+  font-size: .7rem;
+}
+
+input.form-control,
+input.form-control:focus {
+  background: #E0E0E0;
+}
+
+.error {
+  position: absolute;
+  color: red;
+  font-size: .6rem;
+}
