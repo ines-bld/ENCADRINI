@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './pages';
-import Dashboard from './pages/dashboard';
+import Dashboard from './pages/dashboard/dashboard';
 import { ResetPassword } from './pages/ResetPassword';
 import { ForgottenPassword } from './pages/ForgottenPassword';
 import { EnterCode } from './pages/EnterCode';
