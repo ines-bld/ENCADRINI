@@ -35,7 +35,7 @@ export const Col2 = styled.div`
 export const Heading = styled.h1`
     color: #240046;
     margin: 50px 10px;
-    width: 280px;
+    width: 300px;
 `
 
 export const Para = styled.p`
@@ -61,6 +61,7 @@ export const HeroBtn = styled(Link)`
 
     &:hover{
         background: #3A0CA3;
+        color: white;
     }
 `
 
