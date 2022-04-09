@@ -6,6 +6,8 @@ import { ResetPassword } from './pages/ResetPassword';
 import { ForgottenPassword } from './pages/ForgottenPassword';
 import { EnterCode } from './pages/EnterCode';
 
+import  Hello  from './pages/Hello';
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +18,9 @@ function App() {
           <Route path="resetPassword" element={<ResetPassword />} />
           <Route path="forgottenPassword" element={<ForgottenPassword />} />
           <Route path="enterCode" element={<EnterCode />} />
+          
+          <Route path="signin" element={<Hello /> } /> 
+        
         </Route>
       </Routes>
     </BrowserRouter>
