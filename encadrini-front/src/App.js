@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './pages';
 import Dashboard from './pages/dashboard/dashboard';
 import { ResetPassword } from './pages/ResetPassword';
@@ -10,7 +10,7 @@ import  Hello  from './pages/Hello';
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/">
           <Route index element={<Home />} />
@@ -23,7 +23,7 @@ function App() {
         
         </Route>
       </Routes>
-    </BrowserRouter>
+    </Router>
 
   );
 }
