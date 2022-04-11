@@ -5,6 +5,8 @@ import Dashboard from './pages/dashboard';
 import { ResetPassword } from './pages/ResetPassword';
 import { ForgottenPassword } from './pages/ForgottenPassword';
 import { EnterCode } from './pages/EnterCode';
+import { CreationDesComptes } from './pages/CreationDesComptes';
+import { PourEtudiant } from './pages/PourEtudiant';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="resetPassword" element={<ResetPassword />} />
           <Route path="forgottenPassword" element={<ForgottenPassword />} />
           <Route path="enterCode" element={<EnterCode />} />
+          <Route path="creationDesComptes" element={<CreationDesComptes />} />
+          <Route path="pourEtudiant" element={<PourEtudiant />} />
         </Route>
       </Routes>
     </BrowserRouter>

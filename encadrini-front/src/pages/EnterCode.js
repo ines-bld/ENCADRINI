@@ -1,8 +1,8 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
-import { TextField } from './../components/TextField';
+import { TextField } from './../components/fPassword/TextField';
 import * as Yup from 'yup';
-import { StyledFormButton, StyledTitle } from "./../components/Styles";
+import { StyledFormButton, StyledTitle } from "./../components/fPassword/Styles";
 import { Col, Container, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 export const EnterCode = () => {
@@ -33,7 +33,7 @@ export const EnterCode = () => {
                                     <Form>
                                         <TextField name="code" type="text" placeholder="Entrez le code" />
                                         <StyledFormButton type="reset">Annuler </StyledFormButton>
-                                        <StyledFormButton type="submit">continuer</StyledFormButton>
+                                        <StyledFormButton type="submit">continuer</StyledFormButton><br />
                                         <button type="button" class="btn mt-3 btn-link">code non reçu</button>
 
                                     </Form>
