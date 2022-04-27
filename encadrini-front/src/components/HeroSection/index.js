@@ -24,7 +24,7 @@ const HeroSection = () => {
                     <Heading>Commencer votre projet avec ENCADRINI</Heading>
                     <Para>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust since the 1500s, when an unknown printer took a galley of to make a type specimen book.</Para>
                     <HeroBtnContainer>
-                        <HeroBtn to="/">Commencer</HeroBtn>
+                        <HeroBtn to="/signin">Commencer</HeroBtn>
                     </HeroBtnContainer>
                 </Col1>
                 <Col2>
