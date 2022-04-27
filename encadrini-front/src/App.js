@@ -9,7 +9,8 @@ import Form_enseignant from './pages/create users/form_enseignant';
 import { enseignantInputs, entrepriseInputs } from "./components/formInputs";
 import Login from './components/Login/Login.js';
 import  Hello  from './pages/Hello';
-
+import List from './pages/list/List';
+import SingleUser from './pages/SingleUser/SingleUser';
 function App() {
   return (
     <Router>
@@ -29,7 +30,10 @@ function App() {
                 element={<Form_enseignant inputs={entrepriseInputs} title="Add New Product" />}
               />
           </Route>
-          
+          <Route path="gestionDsComptes"> 
+            <Route index element={<List />}/>
+            <Route path=':compteId' element={<SingleUser/>}/>
+          </Route>
           <Route path="signin" element={<Hello /> } /> 
           <Route path="login" element={<Login /> } />
         </Route>
@@ -38,5 +42,4 @@ function App() {
 
   );
 }
-
 export default App;
