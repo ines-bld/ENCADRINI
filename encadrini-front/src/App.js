@@ -7,7 +7,7 @@ import { ForgottenPassword } from './pages/ForgottenPassword';
 import { EnterCode } from './pages/EnterCode';
 import Form_enseignant from './pages/create users/form_enseignant';
 import { enseignantInputs, entrepriseInputs } from "./components/formInputs";
-
+import Login from './components/Login/Login.js';
 import  Hello  from './pages/Hello';
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
           </Route>
           
           <Route path="signin" element={<Hello /> } /> 
-        
+          <Route path="login" element={<Login /> } />
         </Route>
       </Routes>
     </Router>
