@@ -25,7 +25,7 @@ const Login = () => {
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Se rappeler de moi" />
            </Form.Group>
-             <center><button type="submit">
+             <center><button className="loginButton" type="submit">
                Se connecter
               </button>
               </center>
