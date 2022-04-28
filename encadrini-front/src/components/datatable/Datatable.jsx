@@ -7,8 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
-
+import { Link } from 'react-router-dom';
 
 function createData(
   Nom: string,
@@ -59,7 +58,9 @@ const Datatable = () => {
               <TableCell align="left">{row.Role}</TableCell>
               <TableCell align="left" className={`CellWithStatus ${row.Statut}`}>{row.Statut}</TableCell>
               <TableCell align="left" className='CellAction'>
+              <Link to=':compteId'>
                 <button className='ViewButton'>View</button>
+                </Link>
                 <button className='EditButton'>Edit</button>
                 <button className='DeleteButton'>Delete</button>
               </TableCell>
