@@ -25,10 +25,12 @@ const AdminSidebar = () => {
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
+          <Link to="/dashboard" style={{textDecoration: "none"}}>
           <li>
             <DashboardIcon className="icon" />
             <span>Dashboard</span>
           </li>
+          </Link>
           <p className="title">SPRINT1</p>
           <Link to="/creationDesUtilisateurs" style={{ textDecoration: "none" }}>
             <li>

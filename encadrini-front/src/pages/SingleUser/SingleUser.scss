@@ -1,0 +1,101 @@
+.SingleUser{
+    display: flex;
+    width: 100%;
+       .SingleUserContainer{
+           flex: 6;
+           .row{
+            -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+            box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+            padding: 10px;
+            margin: 20px;
+            display: flex;
+               .col-md-3{
+                   .profilepic{
+                      height: 200px;
+                      border-radius: 50%;
+                      padding: 20px;
+                   }
+               }
+               .col-md-6{
+                   .profile-head{
+                       margin-top: 30px;
+                       margin-bottom: 30px;
+                   }
+                   .container{
+                   .bloc-tabs{
+                       margin-bottom: 40px;
+                       display: flex;
+                       .tabs {
+
+                        padding: 15px;
+                        text-align: center;
+                        width: 50%;
+                        background: rgba(128, 128, 128, 0.075);
+                        cursor: pointer;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.274);
+                        box-sizing: content-box;
+                        position: relative;
+                        outline: none;
+                      }
+                      .tabs:not(:last-child){
+                        border-right: 1px solid rgba(0, 0, 0, 0.274);
+                      }
+                       .active-tabs  {
+                        background: white;
+                        border-bottom: 1px solid transparent;
+                      }
+                      
+                      .active-tabs::before {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        top: -5px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: calc(100% + 2px);
+                        height: 5px;
+                        background: #7B2CBF;
+                      }
+                   }
+                   }
+               }
+           }
+           .row-info{
+               
+               padding-left: 265px;
+               .content{
+                width: 100%;
+                height: 100%;
+                display: none;
+               }
+               .content-tabs {
+                flex-grow : 1;
+              }
+               .active-content {
+                display: block;
+              }
+               .detailItem{
+                   margin-bottom: 30px;
+                   font-size: 18px;
+                   color: rgb(59, 59, 59);
+                   .ItemKey
+                   {
+                       font-weight: bolder;
+                   }
+                   .ItemValue{
+                       font-weight: 300;
+                       align-items:center;
+                   }
+                   .vertical-align{
+                    display:inline-block;
+                    justify-content: left;
+                    margin-left:20px;
+                   }
+               }
+           }
+       }
+}
+button {
+    border: none;
+    
+  }
