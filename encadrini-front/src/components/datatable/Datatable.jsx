@@ -28,10 +28,16 @@ const rows = [
   createData('Gingerbread', 356, 's;oukrif@€si-sba.dz',49, 'active'),
 ];
 
+
+
 const Datatable = () => {
   const [data, setData] = useState();
   return (
     <div className="Datatable">
+        <div className='manageUsers-head'>
+        <span className='text-style'>Gestion des utilisateurs</span>
+        <button className='button-modify'>Ajouter un utilisateur</button>
+        </div>
          <TableContainer component={Paper}>
       <Table aria-label="simple table">
         <TableHead>
