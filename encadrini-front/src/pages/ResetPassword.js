@@ -1,10 +1,10 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
-import { TextField } from './../components/TextField';
+import { TextField } from './../components/fPassword/TextField';
 import * as Yup from 'yup';
 import rocketImg from './../images/setpsw.png';
 import { Col, Container, Row } from "react-bootstrap";
-import { StyledFormButton, StyledTitle } from "./../components/Styles";
+import { StyledFormButton, StyledTitle } from "./../components/fPassword/Styles";
 import "bootstrap/dist/css/bootstrap.css";
 
 

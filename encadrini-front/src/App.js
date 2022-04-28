@@ -8,9 +8,12 @@ import { EnterCode } from './pages/EnterCode';
 import Form_enseignant from './pages/create users/form_enseignant';
 import { enseignantInputs, entrepriseInputs } from "./components/formInputs";
 import Login from './components/Login/Login.js';
-import  Hello  from './pages/Hello';
+import Hello from './pages/Hello';
 import List from './pages/list/List';
 import SingleUser from './pages/SingleUser/SingleUser';
+import { CreationDesComptes } from './pages/CreationDesComptes';
+import { PourEtudiant } from './pages/PourEtudiant';
+
 function App() {
   return (
     <Router>
@@ -22,20 +25,22 @@ function App() {
           <Route path="forgottenPassword" element={<ForgottenPassword />} />
           <Route path="enterCode" element={<EnterCode />} />
           <Route path="creationDesUtilisateurs">
-          <Route path="enseignant"
-                element={<Form_enseignant inputs={enseignantInputs} title="Ajouter un nouveau Etudiant" />}
-              />
-           <Route
-                path="entreprise"
-                element={<Form_enseignant inputs={entrepriseInputs} title="Add New Product" />}
-              />
+            <Route path="enseignant"
+              element={<Form_enseignant inputs={enseignantInputs} title="Ajouter un nouveau Etudiant" />}
+            />
+            <Route
+              path="entreprise"
+              element={<Form_enseignant inputs={entrepriseInputs} title="Add New Product" />}
+            />
           </Route>
-          <Route path="gestionDsComptes"> 
-            <Route index element={<List />}/>
-            <Route path=':compteId' element={<SingleUser/>}/>
+          <Route path="gestionDsComptes">
+            <Route index element={<List />} />
+            <Route path=':compteId' element={<SingleUser />} />
           </Route>
-          <Route path="signin" element={<Hello /> } /> 
-          <Route path="login" element={<Login /> } />
+          <Route path="signin" element={<Hello />} />
+          <Route path="login" element={<Login />} />
+          <Route path="creationDesComptes" element={<CreationDesComptes />} />
+          <Route path="pourEtudiant" element={<PourEtudiant />} />
         </Route>
       </Routes>
     </Router>
