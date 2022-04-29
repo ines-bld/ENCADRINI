@@ -37,9 +37,13 @@ const Datatable = () => {
     <div className="Datatable">
         <div className='manageUsers-head'>
         <span className='text-style'>Gestion des utilisateurs</span>
+<<<<<<< HEAD
         <Link to="/creationDesComptes">
         <button className='button-modify'>Ajouter un utilisateur</button>
         </Link>
+=======
+        <button className='button-modify'>Ajouter un utilisateur</button>
+>>>>>>> 362577b31452ef1aaf2684dc8927142f44f41d99
         </div>
          <TableContainer component={Paper}>
       <Table aria-label="simple table">
