@@ -51,7 +51,7 @@ const Datatable = () => {
             <TableCell align="left">Email</TableCell>
             <TableCell align="left">Role</TableCell>
             <TableCell align="left">Statut</TableCell>
-            <TableCell align="left" >
+            <TableCell align="left">
               action
             </TableCell>
           </TableRow>
