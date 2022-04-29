@@ -10,22 +10,23 @@ import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
 
 function createData(
+  id: Number,
   Nom: string,
   Prénom: number,
   Email: string,
   Role: number,
   Statut: string,
 ) {
-  return { Nom, Prénom, Email, Role, Statut };
+  return {id,Nom, Prénom, Email, Role, Statut };
 }
 
 const rows = [
-  createData('Frozen yoghurt', 159, 'm.baha@esi-sba.dz',24, 'active'),
-  createData('Ice cream sandwich', 237, 'i.belouad@esi-sba.dz',37 , 'inactive'),
-  createData('Gingerbread', 356, 'mr.selimani@€si-sba.dz', 49, 'active'),
-  createData('Eclair', 262, 'i.hattabi@esi-sba.dz', 24, 'active'),
-  createData('Cupcake', 305, 'a.lalaa@esi-sba.dz', 67, 'inactive'),
-  createData('Gingerbread', 356, 's;oukrif@€si-sba.dz',49, 'active'),
+  createData(1,'Frozen yoghurt', 159, 'm.baha@esi-sba.dz',24, 'active'),
+  createData(2,'Ice cream sandwich', 237, 'i.belouad@esi-sba.dz',37 , 'inactive'),
+  createData(3,'Gingerbread', 356, 'mr.selimani@€si-sba.dz', 49, 'active'),
+  createData(4,'Eclair', 262, 'i.hattabi@esi-sba.dz', 24, 'active'),
+  createData(5,'Cupcake', 305, 'a.lalaa@esi-sba.dz', 67, 'inactive'),
+  createData(6,'Gingerbread', 356, 's;oukrif@€si-sba.dz',49, 'active'),
 ];
 
 
@@ -36,7 +37,9 @@ const Datatable = () => {
     <div className="Datatable">
         <div className='manageUsers-head'>
         <span className='text-style'>Gestion des utilisateurs</span>
+        <Link to="/creationDesComptes">
         <button className='button-modify'>Ajouter un utilisateur</button>
+        </Link>
         </div>
          <TableContainer component={Paper}>
       <Table aria-label="simple table">
