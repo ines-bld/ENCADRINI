@@ -2,8 +2,7 @@ import {useContext, useState, useEffect} from 'react';
 import {EmployeeContext} from './contexts/EmployeeContext';
 import { Modal, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import EditForm from './EditForm';
-import AddForm from './AddForm';
-import Pagination from './Pagination';
+import './Employeelist.css';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -12,6 +11,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
+
 
 const Employee = ({employee}) => {
 
@@ -28,20 +28,20 @@ const Employee = ({employee}) => {
 
     return (
         <>
-            <TableCell align="left">{employee.name}</TableCell>
-            <TableCell align="left">{employee.email}</TableCell >
-            <TableCell align="left">{employee.address}</TableCell>
-            <TableCell align="left">{employee.phone}</TableCell>
-            <TableCell align="left">
+            <td>{employee.Nom}</td>
+            <td>{employee.Prénom}</td>
+            <td>{employee.email}</td>
+            <td>{employee.address}</td>
+            <td>{employee.phone}</td>
+            <td>
             <OverlayTrigger
                     overlay={
                         <Tooltip id={`tooltip-top`}>
                             Consulter
                         </Tooltip>
                     }>
-                    <a href={`/gestionDsComptes/${employee.id}`}>
-                    <button className="view-button">Consulter</button>
-                    </a>
+                   <Link to={`/gestionDsComptes/${employee.id}`}>
+                    <button  className="btn view-button" data-toggle="modal">Consult</button></Link>
                 </OverlayTrigger>
                 <OverlayTrigger
                     overlay={
@@ -49,7 +49,7 @@ const Employee = ({employee}) => {
                             Modifier
                         </Tooltip>
                     }>
-                    <button onClick={handleShow}  className="btn text-warning btn-act" data-toggle="modal">Modifier</button>
+                    <button onClick={handleShow}  className="btn text-warning btn-act" data-toggle="modal">Modif</button>
                 </OverlayTrigger>
                 <OverlayTrigger
                     overlay={
@@ -57,16 +57,14 @@ const Employee = ({employee}) => {
                             Supprimer
                         </Tooltip>
                     }>
-                    <button onClick={() => deleteEmployee(employee.id)}  className="btn text-danger btn-act" data-toggle="modal">Supprimer</button>
+                    <button onClick={() => deleteEmployee(employee.id)}  className="btn text-danger btn-act" data-toggle="modal">Supp</button>
                 </OverlayTrigger>
-                
-                
-            </TableCell>
+            </td>
 
             <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
             <Modal.Title>
-                Modifier l'utilisateur 
+                Edit Employee
             </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -74,7 +72,7 @@ const Employee = ({employee}) => {
         </Modal.Body>
         <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
-                    Fermer
+                    Close Button
                 </Button>
         </Modal.Footer>
     </Modal>

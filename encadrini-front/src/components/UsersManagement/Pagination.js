@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import './Employeelist.css';
 
 const Pagination = ({pages, setCurrentPage, currentEmployees, sortedEmployees}) => {
 
@@ -17,11 +18,11 @@ const Pagination = ({pages, setCurrentPage, currentEmployees, sortedEmployees}) 
 
     return (
         <div className="clearfix">
-        <div className="hint-text">Showing <b>{currentEmployees.length}</b> out of <b>{sortedEmployees.length}</b> entries</div>
+        
         <ul className="pagination">
             <li className={`${currentButton === 1 ? 'page-item disabled' : 'page-item' }`}><a href="#!"
                 onClick = { () => setCurrentButton((prev) => prev === 1 ? prev : prev - 1)}
-            >Previous</a></li>
+            >Précédant</a></li>
 {
             numOfPages.map((page, index) => {
                 return (
@@ -35,7 +36,7 @@ const Pagination = ({pages, setCurrentPage, currentEmployees, sortedEmployees}) 
 
 <li className={`${currentButton === numOfPages.length ? 'page-item disabled' : 'page-item' }`}><a href="#!"
                 onClick = { () => setCurrentButton((next) => next === numOfPages.length ? next : next + 1)}
-            >Next</a></li>
+            >Suivant</a></li>
         </ul>
     </div>
     )

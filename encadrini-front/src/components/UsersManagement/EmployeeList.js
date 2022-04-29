@@ -2,7 +2,6 @@ import { Modal, Button, Alert} from 'react-bootstrap';
 import {useContext, useEffect, useState } from 'react';
 import {EmployeeContext} from './contexts/EmployeeContext';
 import Employee from './Employee';
-import AddForm from './AddForm';
 import Pagination from './Pagination';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -27,7 +26,7 @@ const EmployeeList = () => {
     //const handleShowAlert = () =>setShowAlert(true);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [employeesPerPage] = useState(2)
+    const [employeesPerPage] = useState(5)
 
     const handleShowAlert = () => {
         setShowAlert(true);
@@ -58,7 +57,7 @@ const EmployeeList = () => {
                 <h2 className='text-style'>Gestion des utilisateurs</h2>
             </div>
             <div className="col-sm-6">
-                <Link to="CreationDesUtilisateurs">
+                <Link to="/creationDesUtilisateurs">
                 <Button onClick={handleShow} className="button-modify" data-toggle="modal"><span >Ajouter un utilisateur</span></Button>					
                 </Link>
             </div>
@@ -69,10 +68,11 @@ const EmployeeList = () => {
         Liste mise à jour avec succées
     </Alert>
 
-    <Table className="table table-striped table-hover">
+    <Table className="table table-hover">
         <TableHead>
             <TableRow>
-                <TableCell>Name</TableCell>
+                <TableCell>Nom</TableCell>
+                <TableCell>Prénom</TableCell>
                 <TableCell>Email</TableCell>
                 <TableCell>Address</TableCell>
                 <TableCell>Phone</TableCell>

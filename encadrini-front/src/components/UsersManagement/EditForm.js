@@ -1,13 +1,15 @@
 import { Form, Button } from "react-bootstrap"
-
 import {EmployeeContext} from './contexts/EmployeeContext';
 import {useContext, useState} from 'react';
+import './Employeelist.css';
+
 
 const EditForm = ({theEmployee}) =>{
 
     const id = theEmployee.id;
 
-    const [name, setName] = useState(theEmployee.name);
+    const [Nom, setNom] = useState(theEmployee.Nom);
+    const [Prénom, setPrénom] = useState(theEmployee.Prénom);
     const [email, setEmail] = useState(theEmployee.email);
     const [address, setAddress] = useState(theEmployee.address);
     const [phone, setPhone] = useState(theEmployee.phone);
@@ -15,7 +17,7 @@ const EditForm = ({theEmployee}) =>{
 
     const {updateEmployee} = useContext(EmployeeContext);
 
-    const updatedEmployee = {id, name, email, address, phone}
+    const updatedEmployee = {id, Nom,Prénom, email, address, phone}
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,18 +27,31 @@ const EditForm = ({theEmployee}) =>{
      return (
 
         <Form onSubmit={handleSubmit}>
-            <b>Informations personelles</b>
-            <Form.Group>
+            <b className="textHeaderForm">Informations personelles</b>
+            <Form.Group className="form-field">
+            <div className="textFormGroup">Nom</div>
                 <Form.Control
                     type="text"
-                    placeholder="Name *"
-                    name="name"
-                    value={name}
-                    onChange={(e)=> setName(e.target.value)}
+                    placeholder="Nom *"
+                    name="Nom"
+                    value={Nom}
+                    onChange={(e)=> setNom(e.target.value)}
                     required
                 />
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="form-field">
+            <div className="textFormGroup">Prénom</div>
+                <Form.Control
+                    type="text"
+                    placeholder="Nom *"
+                    name="Prénom"
+                    value={Prénom}
+                    onChange={(e)=> setPrénom(e.target.value)}
+                    required
+                />
+            </Form.Group>
+            <Form.Group className="form-field">
+            <div className="textFormGroup">Email</div>
                 <Form.Control
                     type="email"
                     placeholder="Email *"
@@ -46,7 +61,8 @@ const EditForm = ({theEmployee}) =>{
                     required
                 />
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="form-field">
+            <div className="textFormGroup">Adresse</div>
                 <Form.Control
                     as="textarea"
                     placeholder="Address"
@@ -56,7 +72,8 @@ const EditForm = ({theEmployee}) =>{
                     onChange={(e)=> setAddress(e.target.value)}
                 />
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="form-field">
+            <div className="textFormGroup">Numéro de téléphone</div>
                 <Form.Control
                     type="text"
                     placeholder="Phone"
@@ -65,18 +82,20 @@ const EditForm = ({theEmployee}) =>{
                     onChange={(e)=> setPhone(e.target.value)}
                 />
             </Form.Group>
-            <b>Informations projet</b>
-            <Form.Group>
+            <b className="textHeaderForm">Informations projet</b>
+            <Form.Group className="form-field">
+            <div className="textFormGroup">Promotion</div>
                 <Form.Control
                     type="text"
                     placeholder="Name *"
-                    name="name"
-                    value={name}
-                    onChange={(e)=> setName(e.target.value)}
+                    name="Nom"
+                    value={Nom}
+                    onChange={(e)=> setNom(e.target.value)}
                     required
                 />
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="form-field">
+            <div className="textFormGroup">Encadreur</div>
                 <Form.Control
                     type="email"
                     placeholder="Email *"
@@ -86,7 +105,7 @@ const EditForm = ({theEmployee}) =>{
                     required
                 />
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="form-field">
                 <Form.Control
                     as="textarea"
                     placeholder="Address"
@@ -96,7 +115,7 @@ const EditForm = ({theEmployee}) =>{
                     onChange={(e)=> setAddress(e.target.value)}
                 />
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="form-field">
                 <Form.Control
                     type="text"
                     placeholder="Phone"
@@ -106,7 +125,7 @@ const EditForm = ({theEmployee}) =>{
                 />
             </Form.Group>
             <Button variant="success" type="submit" block>
-                Edit Employee
+                Modifier
             </Button>
         </Form>
 
