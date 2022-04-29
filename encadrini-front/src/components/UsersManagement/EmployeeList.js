@@ -69,29 +69,26 @@ const EmployeeList = () => {
         Liste mise à jour avec succées
     </Alert>
 
-    <table className="table table-striped table-hover">
-        <thead>
-            <tr>
+    <Table className="table table-striped table-hover">
+        <TableHead>
+            <TableRow>
                 <TableCell>Name</TableCell>
                 <TableCell>Email</TableCell>
                 <TableCell>Address</TableCell>
                 <TableCell>Phone</TableCell>
                 <TableCell>Actions</TableCell>
-            </tr>
-        </thead>
-        <tbody>
-
+            </TableRow>
+        </TableHead>
+        <TableBody>
                 {
                   currentEmployees.map(employee => (
-                      <tr key={employee.id}>
+                      <TableRow key={employee.id}>
                         <Employee employee={employee} />
-                    </tr>
+                    </TableRow>
                   ))  
                 }
-                
-
-        </tbody>
-    </table>
+        </TableBody>
+    </Table>
 
     <Pagination pages = {totalPagesNum}
                 setCurrentPage={setCurrentPage}

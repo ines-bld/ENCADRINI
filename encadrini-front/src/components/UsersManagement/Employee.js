@@ -33,6 +33,16 @@ const Employee = ({employee}) => {
             <TableCell align="left">{employee.address}</TableCell>
             <TableCell align="left">{employee.phone}</TableCell>
             <TableCell align="left">
+            <OverlayTrigger
+                    overlay={
+                        <Tooltip id={`tooltip-top`}>
+                            Consulter
+                        </Tooltip>
+                    }>
+                    <a href={`/gestionDsComptes/${employee.id}`}>
+                    <button className="view-button">Consulter</button>
+                    </a>
+                </OverlayTrigger>
                 <OverlayTrigger
                     overlay={
                         <Tooltip id={`tooltip-top`}>
@@ -56,7 +66,7 @@ const Employee = ({employee}) => {
             <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
             <Modal.Title>
-                Edit Employee
+                Modifier l'utilisateur 
             </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -64,7 +74,7 @@ const Employee = ({employee}) => {
         </Modal.Body>
         <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
-                    Close Button
+                    Fermer
                 </Button>
         </Modal.Footer>
     </Modal>
