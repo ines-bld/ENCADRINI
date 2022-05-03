@@ -6,27 +6,27 @@ export const EmployeeContext = createContext()
 const EmployeeContextProvider  = (props) => {
     console.log(EmployeeContext)
     const [employees, setEmployees] = useState([
-        {id:uuidv4(), Nom: 'Thomas',Prénom: 'Hardy10', email: 'thomashardy@mail.com', address: '89 Chiaroscuro Rd, Portland, USA', phone: '(171) 555-2222'},
-        {id:uuidv4(), Nom: 'Dominique',Prénom:'Perrier', email: 'dominiqueperrier@mail.com', address: 'Obere Str. 57, Berlin, Germany', phone: '(313) 555-5735'},
-        {id:uuidv4(), Nom: 'Maria Anders' ,Prénom:'Perrier', email: 'mariaanders@mail.com', address: '25, rue Lauriston, Paris, France', phone: '(503) 555-9931'},
-        {id:uuidv4(), Nom: 'Fran Wilson',Prénom:'Perrier', email: 'franwilson@mail.com', address: 'C/ Araquil, 67, Madrid, Spain', phone: '(204) 619-5731'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
-        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'}
+        {id:uuidv4(), Nom: 'Thomas',Prénom: 'Hardy10', email: 'thomashardy@mail.com', address: '89 Chiaroscuro Rd, Portland, USA', phone: '(171) 555-2222',statut:'active'},
+        {id:uuidv4(), Nom: 'Dominique',Prénom:'Perrier', email: 'dominiqueperrier@mail.com', address: 'Obere Str. 57, Berlin, Germany', phone: '(313) 555-5735',statut:'active'},
+        {id:uuidv4(), Nom: 'Maria Anders' ,Prénom:'Perrier', email: 'mariaanders@mail.com', address: '25, rue Lauriston, Paris, France', phone: '(503) 555-9931',statut:'inactive'},
+        {id:uuidv4(), Nom: 'Fran Wilson',Prénom:'Perrier', email: 'franwilson@mail.com', address: 'C/ Araquil, 67, Madrid, Spain', phone: '(204) 619-5731',statut:'inactive'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut:'active'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut:'active'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut:'inactive'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut:'active'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut: 'inactive'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut: 'inactive'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut: 'active'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut: 'active'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut: 'active'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut: 'active'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut: 'active'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut: 'inactive'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut: 'active'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut: 'active'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut: 'inactive'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut: 'active'},
+        {id:uuidv4(), Nom: 'Martin Blank',Prénom:'Perrier', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097',statut: 'inactive'}
 ])
 
 
@@ -45,8 +45,8 @@ const sortedEmployees = employees.sort((a,b)=>(a.Nom < b.Nom ? -1 : 1));
 
 
 
-const addEmployee = (Nom, Prénom, email, address, phone) => {
-    setEmployees([...employees , {id:uuidv4(), Nom, Prénom, email, address, phone}])
+const addEmployee = (Nom, Prénom, email, address, phone, statut) => {
+    setEmployees([...employees , {id:uuidv4(), Nom, Prénom, email, address, phone, statut}])
 }
 
 const deleteEmployee = (id) => {
