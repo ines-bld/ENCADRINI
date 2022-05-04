@@ -40,7 +40,7 @@ function sendEmail(email, token) {
     to: email,
     subject: "ENCADRINI Reset Password Link ",
     html:
-      '<p>You requested for reset password, kindly use this <a href="http://localhost:5000/reset-password?token=' +
+      '<p>You requested for reset password, kindly use this <a href="http://localhost:3000/resetPassword?token=' +
       token +
       '">link</a> to reset your password</p>',
   };
@@ -64,7 +64,7 @@ function sendEmail(email, token) {
 
 /* send reset password link in email */
 exports.resetsend = (req, res, next) => {
-  console.log("inside");
+  //console.log("inside");
 
   var email = req.body.email;
 
@@ -82,7 +82,7 @@ exports.resetsend = (req, res, next) => {
       } else if (!result.length) {
         return res.status(400).send("The Email is not registered with us");
       } else if (!result[0].email) {
-        return res.status(400).send("Something goes to wrong. Please try again");
+        return res.status(400).send("Something goes wrong. Please try again");
       }
       
       console.log(result[0]);
@@ -110,26 +110,34 @@ exports.resetsend = (req, res, next) => {
 };
 
 /* reset page */
-exports.resetview = (req, res, next) => {
-  res.render("ResetPassword.js", {
-    title: "Reset Password Page",
-    token: req.query.token,
-  });
+exports.resetview = (req, res, next) => { 
+  console.log("hello",JSON.stringify(req.query.token));
+
+
+  
+  res.end(JSON.stringify(req.query.token));
+  // res.render("ResetPassword.js", {
+  //   title: "Reset Password Page",
+  //   token: req.query.token,
+  // });
 };
 
 /* update password to database */
 exports.resetupdate = (req, res, next) => {
   var token = req.body.token;
   var password = req.body.passwrd;
+
+  console.log("hello 1",token , password);
+
   connection.query(
     'SELECT * FROM compte WHERE token ="' + token + '"',
     function (err, result) {
       if (err) {
         throw err;
       } else if (!result.length) {
+        console.log("hello 2");
         return res.status(400).send("Invalid link; please try again ");
       }
-
       if (result.length > 0) {
         var saltRounds = 10;
         bcrypt.genSalt(saltRounds, function (err, salt) {
