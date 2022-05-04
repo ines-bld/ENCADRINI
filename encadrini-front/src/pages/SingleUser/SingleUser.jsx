@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState,  useEffect  } from 'react'
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 import AdminSidebar from "../../components/Sidebar/AdminSidebar";
 import AdminNavbar from "../../components/Navbar/AdminNavbar";
 import PERSON from '../../images/PERSON.jpg';
@@ -10,6 +12,22 @@ function SingleUser() {
   const toggleTab = (index) => {
     setToggleState(index);
     console.log("meriem")
+  };
+  const [user, setUser] = useState({
+    Nom: "",
+    Prénom: "",
+    email: "",
+    address: "",
+    phone: "",
+  });
+  const { id } = useParams();
+  useEffect(() => {
+    loadUser();
+  }, []);
+  const loadUser = async () => {
+    const res = await axios.get(`http://localhost:3000/gestionDsComptes/${id}`);
+    console.log(res);
+    setUser(res.data);
   };
   return (
     <div className='SingleUser'>

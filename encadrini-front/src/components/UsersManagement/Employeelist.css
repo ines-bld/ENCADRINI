@@ -1,0 +1,78 @@
+.button-modify{
+    margin-left:  260px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    background-color: #3A0CA3;
+    color: white;
+    align-items: right;
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+}
+.text-style{
+    margin-left: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #3A0CA3;
+    font-size: 30px;
+}
+.list-container{
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    padding: 10px;
+    margin: 20px;
+
+}
+.view-button
+{
+    color: #3A0CA3;
+}
+Table{
+    background-color: white;
+    font-size: 12px;
+}
+.form-field{
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.textFormGroup{
+    font-weight: lighter;
+}
+.pagination {
+	float: right;
+	margin: 0 0 5px;
+}
+.pagination li a {
+	border: none;
+	font-size: 13px;
+	min-width: 30px;
+	min-height: 30px;
+	color: #999;
+	margin: 0 2px;
+	line-height: 30px;
+	border-radius: 2px !important;
+	text-align: center;
+	padding: 0 6px;
+}
+.pagination li a:hover {
+	color: #666;
+}	
+.pagination li.active a, .pagination li.active a.page-link {
+	background: #03A9F4;
+}
+.pagination li.active a:hover {        
+	background: #0397d6;
+}
+.pagination li.disabled i {
+	color: #ccc;
+}
+.pagination li i {
+	font-size: 16px;
+	padding-top: 6px
+}
+.textHeaderForm{
+    margin-top: 15px;
+    font-weight: bolder;
+    color: #3A0CA3;
+    font-size: 25px;
+}

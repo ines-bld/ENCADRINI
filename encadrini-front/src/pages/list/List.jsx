@@ -2,7 +2,10 @@ import React from 'react'
 import AdminSidebar from "../../components/Sidebar/AdminSidebar";
 import AdminNavbar from "../../components/Navbar/AdminNavbar";
 import Datatable from '../../components/datatable/Datatable';
+import EmployeeList from '../../components/UsersManagement/EmployeeList';
+import EmployeeContextProvider from '../../components/UsersManagement/contexts/EmployeeContext';
 import './List.scss';
+
 
 const List = () => {
   return (
@@ -10,7 +13,10 @@ const List = () => {
         <AdminSidebar/>
         <div className="listContainer">
         <AdminNavbar/>
-        <Datatable/>
+        <EmployeeContextProvider>
+        <EmployeeList/>
+        </EmployeeContextProvider>
+      
         </div>
     </div>
   )
