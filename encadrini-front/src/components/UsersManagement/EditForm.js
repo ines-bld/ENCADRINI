@@ -1,7 +1,7 @@
 import { Form, Button } from "react-bootstrap"
 import {EmployeeContext} from './contexts/EmployeeContext';
 import {useContext, useState} from 'react';
-import './Employeelist.css';
+import './Employeelist.scss';
 
 
 const EditForm = ({theEmployee}) =>{
@@ -13,11 +13,12 @@ const EditForm = ({theEmployee}) =>{
     const [email, setEmail] = useState(theEmployee.email);
     const [address, setAddress] = useState(theEmployee.address);
     const [phone, setPhone] = useState(theEmployee.phone);
+    const [statut, setStatut] = useState(theEmployee.statut);
 
 
     const {updateEmployee} = useContext(EmployeeContext);
 
-    const updatedEmployee = {id, Nom,Prénom, email, address, phone}
+    const updatedEmployee = {id, Nom,Prénom, email, address, phone,statut}
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -70,6 +71,17 @@ const EditForm = ({theEmployee}) =>{
                     name="address"
                     value={address}
                     onChange={(e)=> setAddress(e.target.value)}
+                />
+            </Form.Group>
+            <Form.Group className="form-field">
+            <div className="textFormGroup">statut</div>
+                <Form.Control
+                    type=""
+                    placeholder="Email *"
+                    name="email"
+                    value={email}
+                    onChange={(e)=> setEmail(e.target.value)}
+                    required
                 />
             </Form.Group>
             <Form.Group className="form-field">

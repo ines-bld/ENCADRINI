@@ -11,7 +11,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
-import './Employeelist.css';
+import './Employeelist.scss';
 
 const EmployeeList = () => {
 
@@ -75,7 +75,7 @@ const EmployeeList = () => {
                 <TableCell>Prénom</TableCell>
                 <TableCell>Email</TableCell>
                 <TableCell>Address</TableCell>
-                <TableCell>Phone</TableCell>
+                <TableCell>Statut</TableCell>
                 <TableCell>Actions</TableCell>
             </TableRow>
         </TableHead>

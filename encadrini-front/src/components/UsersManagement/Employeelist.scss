@@ -76,3 +76,14 @@ Table{
     color: #3A0CA3;
     font-size: 25px;
 }
+.CellWithStatus
+{
+    padding: 5px;
+    border-radius: 5px;
+    &.active{
+        color: #29F43E;
+    }
+    &.inactive{
+        color: red;
+    }
+}

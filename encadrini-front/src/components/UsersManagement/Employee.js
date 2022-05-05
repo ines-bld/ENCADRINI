@@ -2,7 +2,7 @@ import {useContext, useState, useEffect} from 'react';
 import {EmployeeContext} from './contexts/EmployeeContext';
 import { Modal, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import EditForm from './EditForm';
-import './Employeelist.css';
+import './Employeelist.scss';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -25,14 +25,14 @@ const Employee = ({employee}) => {
     useEffect(() => {
         handleClose()
     }, [employee])
-
+    console.log(employee.statut)
     return (
         <>
             <td>{employee.Nom}</td>
             <td>{employee.Prénom}</td>
             <td>{employee.email}</td>
             <td>{employee.address}</td>
-            <td>{employee.phone}</td>
+            <td  className={`CellWithStatus ${employee.statut}`}>{employee.statut}</td>
             <td>
             <OverlayTrigger
                     overlay={
