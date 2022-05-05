@@ -11,6 +11,8 @@ import Login from './components/Login/Login.js';
 import  Hello  from './pages/Hello';
 import List from './pages/list/List';
 import SingleUser from './pages/SingleUser/SingleUser';
+import ErrorPage from './pages/ErrorPage';
+
 function App() {
   return (
     <Router>
@@ -36,6 +38,8 @@ function App() {
           </Route>
           <Route path="signin" element={<Hello /> } /> 
           <Route path="login" element={<Login /> } />
+
+          <Route path="*" element={<ErrorPage />}/>
         </Route>
       </Routes>
     </Router>

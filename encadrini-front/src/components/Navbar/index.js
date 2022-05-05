@@ -23,11 +23,11 @@ const HomeNavbar = () => {
               <NavItems>
                 <NavLink to="about">A propos</NavLink>                
                 <NavLink to="discover">Decouvrir</NavLink>
-                <NavLink to="signup">s'inscrire</NavLink>
+                <NavLink to="login">s'inscrire</NavLink>
               </NavItems>
             </NavMenu>
             <NavBtnContainer>
-              <NavBtn to="/signin">Commencer</NavBtn>
+              <NavBtn to="/login">Commencer</NavBtn>
             </NavBtnContainer>
         </NavbarContainer>
     </Nav>
