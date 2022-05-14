@@ -1,6 +1,8 @@
 import "./form_enseignant.scss";
 import Sidebar from "../../components/Sidebar/AdminSidebar";
 import Navbar from "../../components/Navbar/AdminNavbar";
+import React from 'react';
+
 
 const Form_enseignant = ({ inputs, title }) => {
 
