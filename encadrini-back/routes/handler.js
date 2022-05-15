@@ -3,9 +3,12 @@ const router = express.Router();
 
 const handlerController = require('../controllers/handlerController')
 const fogetPasswordController = require('../controllers/forgetPasswordController')
+const userController=require('../controllers/RegistrationController')
 
 // router.get('/forgottenPassword', fogetPasswordController.viewforget)
 router.post('/forgottenPassword', fogetPasswordController.resetsend)
+router.get('/login', userController.login)
+
 
 // router.get('/enterCode', fogetPasswordController.viewwait)
 

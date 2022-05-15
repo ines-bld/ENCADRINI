@@ -5,6 +5,8 @@ import AdminSidebar from "../../components/Sidebar/AdminSidebar";
 import AdminNavbar from "../../components/Navbar/AdminNavbar";
 import PERSON from '../../images/PERSON.jpg';
 import "./SingleUser.scss";
+import React from 'react';
+
 
 function SingleUser() {
   const [toggleState, setToggleState] = useState(1);
