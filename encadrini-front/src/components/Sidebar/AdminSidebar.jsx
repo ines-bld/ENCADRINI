@@ -54,7 +54,7 @@ const AdminSidebar = () => {
           <p className="title">UTILISATEUR</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
-            <span>Profil</span>
+            <Link to='/Profile'><span>Profil</span></Link>
           </li>
           <li>
             <ExitToAppIcon className="icon" />
