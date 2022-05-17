@@ -76,7 +76,7 @@ return (
         </Link>
                     </center>
            <div className="text-center mt-3">
-            <a href="#" className="reset">Mot de passe oublié?</a>
+            <a href="#" className="reset">Mot de F?J?EKD?KOEN?DKOENDONEODNEpasse oublié?</a>
             </div>
              </Form>
              </Col>
