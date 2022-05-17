@@ -11,8 +11,13 @@ import Login from './components/Login/Login.js';
 import  Hello  from './pages/Hello';
 import List from './pages/list/List';
 import SingleUser from './pages/SingleUser/SingleUser';
+<<<<<<< HEAD
 import Profile from './components/profiles/Profile';
 import MesThemesPage from './pages/Mesthemes/MesThemesPage';
+=======
+import ErrorPage from './pages/ErrorPage';
+import React from 'react';
+>>>>>>> c6f42839a8192a2cd5f5071e1acaa03e4cf2489f
 
 function App() {
   return (

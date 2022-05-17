@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import './Employeelist.scss';
+import React from 'react';
+
 
 const Pagination = ({pages, setCurrentPage, currentEmployees, sortedEmployees}) => {
 

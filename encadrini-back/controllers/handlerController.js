@@ -6,4 +6,5 @@ exports.view=(req, res)=>{
      "message": "you are doing so good mate !"
    }]
    res.end(JSON.stringify(str));
+  //  res.redirect("/");
 }
