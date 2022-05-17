@@ -14,10 +14,14 @@ import SingleUser from './pages/SingleUser/SingleUser';
 import ErrorPage from './pages/ErrorPage';
 import Profile from './components/profiles/Profile';
 import MesThemesPage from './pages/Mesthemes/MesThemesPage';
+import ViewMyThemePage from './pages/ViewMyThemePage/ViewMyThemePage';
+import {ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <Router>
+      <ToastContainer />
       <Routes>
         <Route path="/">
           <Route index element={<Home />} />
@@ -41,7 +45,10 @@ function App() {
           <Route path="Profile" element={<Profile /> }/>  
           <Route path="signin" element={<Hello /> } /> 
           <Route path="login" element={<Login /> } />
-          <Route path="MesThemes" element={<MesThemesPage /> } />
+          <Route path="mesthemes"> 
+            <Route index element={<MesThemesPage />}/>
+            <Route path=':themeId' element={<ViewMyThemePage/>}/>
+          </Route>
 
           <Route path="*" element={<ErrorPage />}/>
         </Route>

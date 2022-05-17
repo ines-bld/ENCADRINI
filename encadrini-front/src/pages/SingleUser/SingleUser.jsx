@@ -9,6 +9,7 @@ import React from 'react';
 
 
 function SingleUser() {
+  const {compteId} = useParams();
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -43,6 +44,7 @@ function SingleUser() {
               </div>
               <div className="col-md-6">
                 <div className="profile-head">
+                  <h5>Id : {compteId}</h5>
                   <h5>Meriem Baha</h5>
                   <h6>m.baha@esi-sba.dz</h6>
                   <h6>Etudiant</h6>

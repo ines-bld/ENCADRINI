@@ -16,3 +16,7 @@
     
     width: 250px;
 }
+.styleError{
+    color: red;
+    font-size: 12px;
+}
