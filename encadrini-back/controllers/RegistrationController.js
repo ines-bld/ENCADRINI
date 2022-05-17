@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 
 const userMiddleware = require('../controllers/user');
 
+
 var db = mysql.createConnection({
   connectionLimit: 100,
   host: "localhost",
@@ -22,9 +23,12 @@ db.connect(function (error) {
     console.log("Connected!:)");
   }
 });
+/**************************************** */
 
 
- /*
+
+
+ 
 router.post('/acc', userMiddleware.validateRegister, (req, res, next) => {
   db.query(
     `SELECT * FROM compte  WHERE LOWER(email) = LOWER(${db.escape(
@@ -68,7 +72,7 @@ router.post('/acc', userMiddleware.validateRegister, (req, res, next) => {
 });
 
   
-router.post('/usr',  (req, res, next) => {
+router.post('/usr', userMiddleware.isLoggedIn, (req, res, next) => {
   bcrypt.hash(req.body.passwrd, 10, (err, hash) => {
     if (err) {
       return res.status(500).send({
@@ -93,72 +97,65 @@ ${db.escape(hash)})`,
   }
 );
 });
-*/
 
 
+},)
 
 
-//LOGINNN
-
-module.exports={
-login :(req, res, next) => {
-//exports.get('/auth', (req, res, next) => {
-  console.log(req.body.email);
-        db.query(
-            `SELECT * FROM compte WHERE email =${db.escape(req.body.email)};`,
-          
-          (err, result) => {
-            // user does not exists
-            if (err) {
-              throw err;
-              return res.status(400).send({
-                msg: err
-              });
-            }
-            if (!result.length) {
-              return res.status(401).send({
-                msg: 'email or password is incorrect!'
-              });
-            }
-            // check password
-            bcrypt.compare(
-              req.body.passwrd,
-              result[0]['passwrd'],
-              (bErr, bResult) => {
-                // wrong password
-                if (bErr) {
-                  throw bErr;
-                  return res.status(401).send({
-                    msg: 'password is incorrect!!!!!!!!!!!'
-                  });
-                }
-                if (bResult) {
-                  const token = jwt.sign({
-                      nom: result[0].nom,
-                      userId: result[0].id
-                    },
-                    'SECRETKEY', {
-                      expiresIn: '7d'
-                    }
-                  );
-                
-                  return res.status(200).send({
-                    msg: 'Logged in!',
-                    token,
-                    user: result[0]
-                  });
-                }
-                return res.status(401).send({
-                  msg: 'email or password is incorrect!'
-                });
+router.post('/login',(req, res, next) => {
+  db.query(
+      `SELECT * FROM compte WHERE email =${db.escape(req.body.email)};`,
+    
+    (err, result) => {
+      // user does not exists
+      if (err) {
+        throw err;
+        return res.status(400).send({
+          msg: err
+        });
+      };
+      if (!result.length) {
+        return res.status(401).send({
+          msg: 'email or password is incorrect!'
+        });
+      }
+    bcrypt.compare(
+        req.body.passwrd,
+        result[0]['passwrd'],
+        (bErr, bResult) => {
+          // wrong password
+          if (bErr) {
+            throw bErr;
+            return res.status(401).send({
+              msg: 'password is incorrect!!!!!!!!!!!'
+            });
+          }
+          if (bResult) {
+            const token = jwt.sign({
+                nom: result[0].nom,
+                userId: result[0].id
+              },
+              'SECRETKEY', {
+                expiresIn: '7d'
               }
             );
-
+          
+            return res.status(200).send({
+              msg: 'Logged in!',
+              token,
+              user: result[0]
+            });
+          }
+          return res.status(401).send({
+            msg: 'email or password is incorrect!'
+          });
         }
-  
-        );
- //});
-},
-};
+      );
+  }
+  );
+});
 
-//}); 
+
+
+module.exports = router;
+ 

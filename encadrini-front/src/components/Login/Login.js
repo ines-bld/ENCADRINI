@@ -15,14 +15,26 @@ const Login = () => {
 
 Axios.defaults.withCredentials = true;
 const [email, setEmail] = useState("");
+
 const [passwrd, setPasswrd] = useState("");
+const [reg, setReg] = useState(false);
+
+
 const auth = () => {
-    Axios.post("http://localhost:5000/login", {
+  console.log(email,passwrd);
+    Axios.post("http://localhost:5000/login",
+     {
+       
       email: email,
       passwrd: passwrd,
+      
     }).then((response) => {
-      console.log(response);
-    });
+      console.log(response);  console.log(email,passwrd);
+
+
+    }).catch(error => {
+      console.log(error.response)
+    })
    
  
 };
@@ -31,7 +43,7 @@ return (
       <Container className="mt-5">
           <Row>
               <Col lg={4} md={6} sm={12}>
-         <Form action="/login" method="post">
+         <Form action="/login"  methode="get">
            <img className=" aligh-left logo" src={encadrini_logo} />
            <Heading><b>Se connecter</b></Heading>
           <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
@@ -53,16 +65,16 @@ return (
           <Form.Check type="checkbox" label="Se rappeler de moi" />
            </Form.Group>
              <center>
-              
-          <button className="loginButton" onClick={auth}  type="submit">
-          <Link to="/dashboard" ></Link>
-
+        
+             <Link to="/dashboard" >
+          <button className="loginButton" onClick={auth} type="button" >
+         
              Se connecter
+         
              </button>
-          
-
-          
- </center>
+        
+        </Link>
+                    </center>
            <div className="text-center mt-3">
             <a href="#" className="reset">Mot de passe oublié?</a>
             </div>

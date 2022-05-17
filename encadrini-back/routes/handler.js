@@ -7,7 +7,9 @@ const userController=require('../controllers/RegistrationController')
 
 // router.get('/forgottenPassword', fogetPasswordController.viewforget)
 router.post('/forgottenPassword', fogetPasswordController.resetsend)
-router.get('/login', userController.login)
+router.post('/login',userController)
+router.post('/acc',userController)
+
 
 
 // router.get('/enterCode', fogetPasswordController.viewwait)
