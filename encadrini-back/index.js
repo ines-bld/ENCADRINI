@@ -7,14 +7,7 @@ const session = require('express-session');
 
 // const resetroutes = require('./routes/forgotPassword.js'); //idk
 const routes = require('./routes/handler.js');
-<<<<<<< HEAD
 const routesGestionDesComptes = require('./routes/handlerGestionDesComptes.js');
-=======
-const cors = require("cors");
-const routesGestionDesComptes = require('./routes/handlerGestionDesComptes.js');
-
-
->>>>>>> hadi integration temchi
 
 
 const PORT= process.env.PORT || 5000;;  //backend routing port
