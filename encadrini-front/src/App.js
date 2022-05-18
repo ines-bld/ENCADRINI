@@ -12,7 +12,8 @@ import  Hello  from './pages/Hello';
 import List from './pages/list/List';
 import SingleUser from './pages/SingleUser/SingleUser';
 import ErrorPage from './pages/ErrorPage';
-import React from 'react';
+import Profile from './components/profiles/Profile';
+import MesThemesPage from './pages/Mesthemes/MesThemesPage';
 
 function App() {
   return (
@@ -37,8 +38,10 @@ function App() {
             <Route index element={<List />}/>
             <Route path=':compteId' element={<SingleUser/>}/>
           </Route>
+          <Route path="Profile" element={<Profile /> }/>  
           <Route path="signin" element={<Hello /> } /> 
           <Route path="login" element={<Login /> } />
+          <Route path="MesThemes" element={<MesThemesPage /> } />
 
           <Route path="*" element={<ErrorPage />}/>
         </Route>
