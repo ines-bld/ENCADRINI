@@ -11,6 +11,7 @@ const routes = require('./routes/handler.js');
 const routesGestionDesComptes = require('./routes/handlerGestionDesComptes.js');
 =======
 const cors = require("cors");
+const routesGestionDesComptes = require('./routes/handlerGestionDesComptes.js');
 
 
 >>>>>>> hadi integration temchi
@@ -45,7 +46,6 @@ app.use(session({
 
 app.use('/', routes);
 app.use('/gestionDsComptes', routesGestionDesComptes );
-
 //app.use('/', resetroutes); //idk
 
 
