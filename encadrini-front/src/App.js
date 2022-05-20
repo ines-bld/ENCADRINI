@@ -13,7 +13,6 @@ import List from './pages/list/List';
 import SingleUser from './pages/SingleUser/SingleUser';
 import ErrorPage from './pages/ErrorPage';
 
-import  Hello  from './pages/Hello';
 
 function App() {
   return (
