@@ -1,6 +1,7 @@
 import "./form_enseignant.scss";
 import Sidebar from "../../components/Sidebar/AdminSidebar";
 import Navbar from "../../components/Navbar/AdminNavbar";
+import UploadExcel from "../../components/uploadExcel/uploadExcel";
 
 const Form_enseignant = ({ inputs, title }) => {
 
@@ -10,7 +11,7 @@ const Form_enseignant = ({ inputs, title }) => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>{title}</h1>
+          <UploadExcel />
         </div>
         <div className="bottom">
           <div className="right">
@@ -24,7 +25,7 @@ const Form_enseignant = ({ inputs, title }) => {
             </form>
           </div>
         </div>
-        <button>Confirm</button>
+        <button type='submit'>Confirm</button>
       </div>
     </div>
   );
