@@ -43,7 +43,7 @@ exports.view=(req, res)=>{
       console.log('the data from utilisateur \n ', rows);
     });
 });
-    
+  
    // res.end(JSON.stringify(str));
    
  }
