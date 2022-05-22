@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import './Employeelist.scss';
-import React from 'react';
-
+import './MesThemes'
 
 const Pagination = ({pages, setCurrentPage, currentEmployees, sortedEmployees}) => {
 

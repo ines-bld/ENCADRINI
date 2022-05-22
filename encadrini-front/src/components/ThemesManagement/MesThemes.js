@@ -1,8 +1,5 @@
 import { Modal, Button, Alert} from 'react-bootstrap';
 import {useContext, useEffect, useState } from 'react';
-import {EmployeeContext} from './contexts/EmployeeContext';
-import Employee from './Employee';
-import Pagination from './Pagination';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,13 +8,18 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
-import './Employeelist.scss';
-import React from 'react';
+import AdminNavbar from '../Navbar/AdminNavbar';
+import AdminSidebar from '../Sidebar/AdminSidebar';
+import Pagination from './Pagination';
+import { ThemeContext } from './ThemesContext';
+import Theme from './Theme.js';
+import EditTheme from './EditTheme';
+import './MesThemes.scss';
 
-const EmployeeList = () => {
 
-    const {sortedEmployees} = useContext(EmployeeContext);
-
+import './MesThemes.scss';
+const MesThemes = () => {
+    const {sortedThemes} = useContext(ThemeContext);
     const [showAlert, setShowAlert] = useState(false);
 
     const [show, setShow] = useState(false);
@@ -27,7 +29,7 @@ const EmployeeList = () => {
     //const handleShowAlert = () =>setShowAlert(true);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [employeesPerPage] = useState(5)
+    const [ThemesPerPage] = useState(5)
 
     const handleShowAlert = () => {
         setShowAlert(true);
@@ -42,59 +44,55 @@ const EmployeeList = () => {
         return () => {
             handleShowAlert();
         }
-    }, [sortedEmployees])
+    }, [sortedThemes])
 
-    const indexOfLastEmployee = currentPage * employeesPerPage;
-    const indexOfFirstEmployee = indexOfLastEmployee - employeesPerPage;
-    const currentEmployees = sortedEmployees.slice(indexOfFirstEmployee, indexOfLastEmployee);
-    const totalPagesNum = Math.ceil(sortedEmployees.length / employeesPerPage);
-
-
-    return (
+    const indexOfLastTheme = currentPage * ThemesPerPage;
+    const indexOfFirstTheme = indexOfLastTheme - ThemesPerPage;
+    const currentThemes = sortedThemes.slice(indexOfFirstTheme, indexOfLastTheme);
+    const totalPagesNum = Math.ceil(sortedThemes.length / ThemesPerPage);
+  return (
+      <>
     <div className='list-container'>
-    <div className="table-title">
+    <div  className="table-title">
         <div className="row">
             <div className="col-sm-6">
-                <h2 className='text-style'>Gestion des utilisateurs</h2>
+                <h2 className='text-style'>Mes thèmes</h2>
             </div>
             <div className="col-sm-6">
-                <Link to="/creationDesUtilisateurs">
-                <Button onClick={handleShow} className="button-modify" data-toggle="modal"><span >Ajouter un utilisateur</span></Button>					
+                <Link to="/dashboard">
+                <Button onClick={handleShow} className="button-modify" data-toggle="modal"><span >Déposer un thème</span></Button>					
                 </Link>
             </div>
-        </div>
-    </div>
-
+        </div>  
+ </div>  
+    
     <Alert show={showAlert} variant="success">
         Liste mise à jour avec succées
     </Alert>
-
     <Table className="table table-hover">
         <TableHead>
             <TableRow>
-                <TableCell>Nom</TableCell>
-                <TableCell>Prénom</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Address</TableCell>
+                <TableCell>Titre</TableCell>
+                <TableCell>Promotion</TableCell>
                 <TableCell>Statut</TableCell>
                 <TableCell>Actions</TableCell>
             </TableRow>
         </TableHead>
         <TableBody>
                 {
-                  currentEmployees.map(employee => (
-                      <TableRow key={employee.id}>
-                        <Employee employee={employee} />
+                  currentThemes.map(theme => (
+                    <TableRow key={theme.id}>
+                    <Theme theme={theme} />
                     </TableRow>
-                  ))  
+                ))  
                 }
         </TableBody>
     </Table>
 
     <Pagination pages = {totalPagesNum}
                 setCurrentPage={setCurrentPage}
-                currentEmployees ={currentEmployees}
-                sortedEmployees = {sortedEmployees} />
+                currentThemes ={currentThemes}
+                sortedThemes = {sortedThemes} />
 
     <Modal show={show} onHide={handleClose}>
         <Modal.Footer>
@@ -104,8 +102,8 @@ const EmployeeList = () => {
         </Modal.Footer>
     </Modal>
     </div>
-    
-    )
+    </>
+  )
 }
 
-export default EmployeeList;
+export default MesThemes
