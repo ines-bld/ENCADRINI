@@ -30,10 +30,10 @@ const Employee = ({employee}) => {
     console.log(employee.statut)
     return (
         <>
-            <td>{employee.Nom}</td>
-            <td>{employee.Prénom}</td>
+            <td>{employee.nom}</td>
+            <td>{employee.prenom}</td>
             <td>{employee.email}</td>
-            <td>{employee.address}</td>
+            <td>{employee.adresse}</td>
             <td  className={`CellWithStatus ${employee.statut}`}>{employee.statut}</td>
             <td>
             <OverlayTrigger

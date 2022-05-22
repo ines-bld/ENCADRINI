@@ -42,7 +42,7 @@ function App() {
           <Route path="Profile" element={<Profile /> }/>  
           <Route path="signin" element={<Hello /> } /> 
           <Route path="login" element={<Login /> } />
-          <Route path="MesThemes" element={<MesThemesPage/> } />
+          <Route path="MesThemes" element={<MesThemesPage /> } />
 
           <Route path="*" element={<ErrorPage />}/>
 
