@@ -24,6 +24,8 @@ const ThemeInfo = () => {
               eiusmod tempor incididunt ut labore et doloremagna aliqua. Ut enim
               ad minim veniam, quis nostrudexercitation ullamco laboris nisi ut.
             </p>
+            <button>valider</button>
+            <button>refuser</button>
           </div>
         </div>
       </div>
