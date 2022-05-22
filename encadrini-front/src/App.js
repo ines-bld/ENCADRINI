@@ -11,10 +11,13 @@ import Login from './components/Login/Login.js';
 import  Hello  from './pages/Hello';
 import List from './pages/list/List';
 import SingleUser from './pages/SingleUser/SingleUser';
-import ErrorPage from './pages/Error page/ErrorPage';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 import React from 'react';
 import ThemeDepose from './pages/AdminThemes/ThemeDepose';
 import ThemeInfo from './pages/AdminThemes/ThemeInfo';
+import Profile from './components/profiles/Profile';
+import MesThemesPage from './pages/Mesthemes/MesThemesPage';
+
 
 function App() {
   return (
@@ -39,12 +42,14 @@ function App() {
             <Route index element={<List />}/>
             <Route path=':compteId' element={<SingleUser/>}/>
           </Route>
+          <Route path="Profile" element={<Profile /> }/>  
           <Route path="signin" element={<Hello /> } /> 
           <Route path="login" element={<Login /> } />
           <Route path="themedeposes">
             <Route index element={<ThemeDepose />}/>
             <Route path=":themeId" element={<ThemeInfo />}/>
           </Route>
+          <Route path="MesThemes" element={<MesThemesPage /> } />
 
           <Route path="*" element={<ErrorPage />}/>
         </Route>

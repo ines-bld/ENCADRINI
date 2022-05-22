@@ -11,6 +11,7 @@ var connection = mysql.createConnection({
   password: "0xHunter#123",
   database: "enc",
   port: 3306,
+  multipleStatements: true
 });
 
 connection.connect(function (error) {
