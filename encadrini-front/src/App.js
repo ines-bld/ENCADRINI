@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './pages';
+import Home from './pages/Home page';
 import Dashboard from './pages/dashboard/dashboard';
 import { ResetPassword } from './pages/ResetPassword';
 import { ForgottenPassword } from './pages/ForgottenPassword';
@@ -11,8 +11,10 @@ import Login from './components/Login/Login.js';
 import  Hello  from './pages/Hello';
 import List from './pages/list/List';
 import SingleUser from './pages/SingleUser/SingleUser';
-import ErrorPage from './pages/ErrorPage';
+import ErrorPage from './pages/Error page/ErrorPage';
 import React from 'react';
+import ThemeDepose from './pages/AdminThemes/ThemeDepose';
+import ThemeInfo from './pages/AdminThemes/ThemeInfo';
 
 function App() {
   return (
@@ -39,6 +41,10 @@ function App() {
           </Route>
           <Route path="signin" element={<Hello /> } /> 
           <Route path="login" element={<Login /> } />
+          <Route path="themedeposes">
+            <Route index element={<ThemeDepose />}/>
+            <Route path=":themeId" element={<ThemeInfo />}/>
+          </Route>
 
           <Route path="*" element={<ErrorPage />}/>
         </Route>

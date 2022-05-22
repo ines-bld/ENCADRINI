@@ -5,6 +5,7 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import ArticleIcon from '@mui/icons-material/Article';
 import logo from "../../images/Logo.svg"
 import { Link } from "react-router-dom";
 import React from 'react';
@@ -33,7 +34,7 @@ const AdminSidebar = () => {
             <span>Dashboard</span>
           </li>
           </Link>
-          <p className="title">SPRINT1</p>
+          <p className="title">GESTION DES THEMES</p>
           <Link to="/creationDesUtilisateurs" style={{ textDecoration: "none" }}>
             <li>
               <PersonAddIcon className="icon" />
@@ -44,6 +45,13 @@ const AdminSidebar = () => {
             <li>
               <ManageAccountsIcon className="icon" />
               <span>Gestion des comptes</span>
+            </li>
+          </Link>
+          <p className="title">GESTION DES DEPOTS</p>
+          <Link to="/themeDeposes" style={{ textDecoration: "none" }}>
+            <li>
+              <ArticleIcon className="icon" />
+              <span>Voir les themes deposes</span>
             </li>
           </Link>
           <p className="title">SERVICE</p>        
