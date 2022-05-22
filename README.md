@@ -11,6 +11,6 @@ create database if not exists ENCADRINI;
 use ENCADRINI;
 
 open prompt command as administrator and :
-cd  cd C:\Program Files\MySQL\"MySQL Server 8.0" \bin
+ cd C:\Program Files\MySQL\"MySQL Server 8.0" \bin
 mysql -u root -p ENCADRINI < [path]\ENCADRINI\encadrini-back\ENCADRINIDB.sql
 enter your password 
