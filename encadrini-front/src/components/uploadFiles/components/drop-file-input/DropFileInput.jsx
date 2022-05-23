@@ -65,7 +65,7 @@ const DropFileInput = props => {
                                 </div>
                             ))
                         }
-                        <button type='submit'>Ajouter</button>
+
                     </div>
                 ) : null
             }

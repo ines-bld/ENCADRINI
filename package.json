@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
+    "node-sass": "^7.0.1",
     "react-hook-form": "^7.30.0",
     "styled-components": "^5.3.5",
     "yup": "^0.32.11"

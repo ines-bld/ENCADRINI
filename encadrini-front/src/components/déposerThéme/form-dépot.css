@@ -1,0 +1,29 @@
+.Depot {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    padding-left: 290px;
+    padding-right: 290px;
+}
+
+button {
+    display: inline-block;
+    padding: 5px 15px;
+    margin-left: 110px;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    color: #fff;
+    background-color: #3A0CA3;
+    border: none;
+    border-radius: 50px;
+    left: 47%;
+}
+
+button:hover {
+
+    opacity: 0.6;
+
+}

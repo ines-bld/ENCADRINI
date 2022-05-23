@@ -10,11 +10,12 @@ import { enseignantInputs, entrepriseInputs } from "./components/formInputs";
 import Login from './components/Login/Login.js';
 import Hello from './pages/Hello';
 import List from './pages/list/List';
+import Depot from './pages/déposerThéme/déposerthéme';
 import SingleUser from './pages/SingleUser/SingleUser';
 import { CreationDesComptes } from './pages/create users/CreationDesComptes';
 import UploadFiles from './components/uploadFiles/uploadFiles';
 import UploadExcel from './components/uploadExcel/uploadExcel';
-
+import FormDepot from './components/déposerThéme/form-dépot.jsx';
 function App() {
   return (
     <Router>
@@ -38,11 +39,14 @@ function App() {
             <Route index element={<List />} />
             <Route path=':compteId' element={<SingleUser />} />
           </Route>
+          <Route path="formDepot" element={<FormDepot />} />
           <Route path="signin" element={<Hello />} />
           <Route path="login" element={<Login />} />
           <Route path="uploadExcel" element={<UploadExcel />} />
           <Route path="uploadFiles" element={<UploadFiles />} />
           <Route path="creationDesComptes" element={<CreationDesComptes />} />
+          <Route path="depot" element={<Depot />} />
+
         </Route>
       </Routes>
     </Router>

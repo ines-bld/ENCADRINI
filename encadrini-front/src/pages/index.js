@@ -5,8 +5,8 @@ import HomeNavbar from '../components/Navbar'
 const Home = () => {
   return (
     <>
-    <HomeNavbar/>
-    <HeroSection/>
+      <HomeNavbar />
+      <HeroSection />
     </>
   )
 }
