@@ -2,6 +2,8 @@ import "./form_enseignant.scss";
 import Sidebar from "../../components/Sidebar/AdminSidebar";
 import Navbar from "../../components/Navbar/AdminNavbar";
 import UploadExcel from "../../components/uploadExcel/uploadExcel";
+import React from 'react';
+
 
 const Form_enseignant = ({ inputs, title }) => {
 

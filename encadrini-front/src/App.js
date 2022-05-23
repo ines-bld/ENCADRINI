@@ -16,6 +16,10 @@ import { CreationDesComptes } from './pages/create users/CreationDesComptes';
 import UploadFiles from './components/uploadFiles/uploadFiles';
 import UploadExcel from './components/uploadExcel/uploadExcel';
 import FormDepot from './components/déposerThéme/form-dépot.jsx';
+import ErrorPage from './pages/ErrorPage';
+import Profile from './components/profiles/Profile';
+import MesThemesPage from './pages/Mesthemes/MesThemesPage';
+
 function App() {
   return (
     <Router>
@@ -46,7 +50,10 @@ function App() {
           <Route path="uploadFiles" element={<UploadFiles />} />
           <Route path="creationDesComptes" element={<CreationDesComptes />} />
           <Route path="depot" element={<Depot />} />
+          <Route path="Profile" element={<Profile />} />
+          <Route path="MesThemes" element={<MesThemesPage />} />
 
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </Router>

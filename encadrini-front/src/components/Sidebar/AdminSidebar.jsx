@@ -7,6 +7,8 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import logo from "../../images/Logo.svg"
 import { Link } from "react-router-dom";
+import React from 'react';
+
 
 
 const AdminSidebar = () => {
@@ -25,10 +27,12 @@ const AdminSidebar = () => {
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
+          <Link to="/dashboard" style={{textDecoration: "none"}}>
           <li>
             <DashboardIcon className="icon" />
             <span>Dashboard</span>
           </li>
+          </Link>
           <p className="title">SPRINT1</p>
           <Link to="/creationDesUtilisateurs" style={{ textDecoration: "none" }}>
             <li>
@@ -50,7 +54,7 @@ const AdminSidebar = () => {
           <p className="title">UTILISATEUR</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
-            <span>Profil</span>
+            <Link to='/Profile' style={{ textDecoration: "none" }}><span>Profil</span></Link>
           </li>
           <li>
             <ExitToAppIcon className="icon" />

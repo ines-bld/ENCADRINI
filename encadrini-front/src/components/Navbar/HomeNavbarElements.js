@@ -33,7 +33,7 @@ export const NavItems = styled.li`
     height: 40px;
 `
 
-export const NavLink = styled(LinkS)`
+export const NavLink = styled(LinkR)`
     cursor: pointer;
     padding: 0 3rem;
     text-transform: uppercase;
