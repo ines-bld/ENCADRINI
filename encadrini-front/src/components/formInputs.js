@@ -1,6 +1,6 @@
 
 
-export const enseignantInputs = [
+export const utilisateurInputs = [
   {
     id: 1,
     name: "Nom",

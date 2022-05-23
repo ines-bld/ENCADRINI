@@ -1,12 +1,10 @@
-import "./form_enseignant.scss";
+import "./form_utilisateur.scss";
 import Sidebar from "../../components/Sidebar/AdminSidebar";
 import Navbar from "../../components/Navbar/AdminNavbar";
 import UploadExcel from "../../components/uploadExcel/uploadExcel";
-import React from 'react';
+import React from "react";
 
-
-const Form_enseignant = ({ inputs, title }) => {
-
+const Form_utilisateur = ({ inputs, title }) => {
   return (
     <div className="new">
       <Sidebar />
@@ -21,16 +19,20 @@ const Form_enseignant = ({ inputs, title }) => {
               {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
-                  <input required type={input.type} placeholder={input.placeholder} />
+                  <input
+                    required
+                    type={input.type}
+                    placeholder={input.placeholder}
+                  />
                 </div>
               ))}
             </form>
           </div>
         </div>
-        <button type='submit'>Confirm</button>
+        <button type="submit">Confirm</button>
       </div>
     </div>
   );
 };
 
-export default Form_enseignant;
+export default Form_utilisateur;

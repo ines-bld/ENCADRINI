@@ -5,8 +5,8 @@ import Dashboard from './pages/dashboard/dashboard';
 import { ResetPassword } from './pages/ResetPassword/ResetPassword';
 import { ForgottenPassword } from './pages/ResetPassword/ForgottenPassword';
 import { EnterCode } from './pages/ResetPassword/EnterCode';
-import Form_enseignant from './pages/create users/form_enseignant';
-import { enseignantInputs, entrepriseInputs } from "./components/formInputs";
+import Form_utilisateur from './pages/create users/form_utilisateur';
+import { utilisateurInputs, entrepriseInputs } from "./components/formInputs";
 import Login from './components/Login/Login.js';
 import Hello from './pages/Hello';
 import List from './pages/list/List';
@@ -31,12 +31,17 @@ function App() {
           <Route path="forgottenPassword" element={<ForgottenPassword />} />
           <Route path="enterCode" element={<EnterCode />} />
           <Route path="creationDesUtilisateurs" >
+            <Route index element={<CreationDesComptes />} />
             <Route path="enseignant"
-              element={<Form_enseignant inputs={enseignantInputs} />}
+              element={<Form_utilisateur inputs={utilisateurInputs} />}
+            />
+            <Route
+              path="etudiant"
+              element={<Form_utilisateur inputs={utilisateurInputs} />}
             />
             <Route
               path="entreprise"
-              element={<Form_enseignant inputs={entrepriseInputs} />}
+              element={<Form_utilisateur inputs={entrepriseInputs} />}
             />
           </Route>
           <Route path="gestionDsComptes">
@@ -47,8 +52,7 @@ function App() {
           <Route path="signin" element={<Hello />} />
           <Route path="login" element={<Login />} />
           <Route path="uploadExcel" element={<UploadExcel />} />
-          <Route path="uploadFiles" element={<UploadFiles />} />
-          <Route path="creationDesComptes" element={<CreationDesComptes />} />
+          <Route path="uploadFiles" element={<UploadFiles />} />          
           <Route path="depot" element={<Depot />} />
           <Route path="Profile" element={<Profile />} />
           <Route path="MesThemes" element={<MesThemesPage />} />
