@@ -1,5 +1,5 @@
 import React from "react";
-import "./ThemeInfo.scss";
+import "./ThemeInfo.css";
 import AdminNavbar from "../../components/Navbar/AdminNavbar";
 import AdminSidebar from "../../components/Sidebar/AdminSidebar";
 import { useParams } from "react-router-dom";

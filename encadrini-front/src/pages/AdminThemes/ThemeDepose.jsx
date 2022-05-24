@@ -1,5 +1,5 @@
 import React from "react";
-import "./ThemeDepose.scss";
+import "./ThemeDepose.css";
 import AdminNavbar from "../../components/Navbar/AdminNavbar";
 import AdminSidebar from "../../components/Sidebar/AdminSidebar";
 import Table from "../../components/ThemeAdmin/TableAdmin";

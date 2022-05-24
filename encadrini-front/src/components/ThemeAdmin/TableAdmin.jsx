@@ -1,4 +1,4 @@
-import "./TableAdmin.scss";
+import "./TableAdmin.css";
 import React from "react";
 import Card from "./card";
 
