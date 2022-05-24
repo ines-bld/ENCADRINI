@@ -10,14 +10,14 @@ import './List.scss';
 const List = () => {
   return (
     <div className="list">
-        <AdminSidebar/>
-        <div className="listContainer">
-        <AdminNavbar/>
+      <AdminSidebar />
+      <div className="listContainer">
+        <AdminNavbar />
         <EmployeeContextProvider>
-        <EmployeeList/>
+          <EmployeeList />
         </EmployeeContextProvider>
-      
-        </div>
+
+      </div>
     </div>
   )
 }

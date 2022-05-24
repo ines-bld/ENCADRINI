@@ -1,8 +1,9 @@
-import "./form_utilisateur.scss";
+import "./form_utilisateur.css";
 import Sidebar from "../../components/Sidebar/AdminSidebar";
 import Navbar from "../../components/Navbar/AdminNavbar";
 import UploadExcel from "../../components/uploadExcel/uploadExcel";
 import React from "react";
+
 
 const Form_utilisateur = ({ inputs, title }) => {
   return (
@@ -26,10 +27,11 @@ const Form_utilisateur = ({ inputs, title }) => {
                   />
                 </div>
               ))}
+              <button className="formUser" type="submit" >Confirm</button>
             </form>
           </div>
         </div>
-        <button type="submit">Confirm</button>
+
       </div>
     </div>
   );
