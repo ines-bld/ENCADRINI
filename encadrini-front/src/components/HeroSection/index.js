@@ -1,6 +1,5 @@
 import React from 'react'
 import scrum from '../../images/scrum.svg'
-import { useNavigate } from 'react-router-dom'
 
 import {
     HeroContainer,
