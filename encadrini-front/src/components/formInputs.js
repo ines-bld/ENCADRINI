@@ -1,4 +1,4 @@
-export const enseignantInputs = [
+export const utilisateurInputs = [
     {
       id: 1,
       label: "Nom",
@@ -20,7 +20,7 @@ export const enseignantInputs = [
     {
       id: 4,
       label: "Date de naissance",
-      type: "text",
+      type: "date",
       placeholder: "24-12-2001",
     },
     {

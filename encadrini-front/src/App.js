@@ -5,8 +5,8 @@ import Dashboard from './pages/dashboard/dashboard';
 import { ResetPassword } from './pages/ResetPassword';
 import { ForgottenPassword } from './pages/ForgottenPassword';
 import { EnterCode } from './pages/EnterCode';
-import Form_enseignant from './pages/create users/form_enseignant';
-import { enseignantInputs, entrepriseInputs } from "./components/formInputs";
+import Form_utilisateur from './pages/create users/form_utilisateur';
+import { utilisateurInputs, entrepriseInputs } from "./components/formInputs";
 import Login from './components/Login/Login.js';
 import  Hello  from './pages/Hello';
 import List from './pages/list/List';
@@ -17,6 +17,7 @@ import ThemeDepose from './pages/AdminThemes/ThemeDepose';
 import ThemeInfo from './pages/AdminThemes/ThemeInfo';
 import Profile from './components/profiles/Profile';
 import MesThemesPage from './pages/Mesthemes/MesThemesPage';
+import CreationDesComptes from './pages/create users/creation_des_comptes';
 
 
 function App() {
@@ -30,12 +31,16 @@ function App() {
           <Route path="forgottenPassword" element={<ForgottenPassword />} />
           <Route path="enterCode" element={<EnterCode />} />
           <Route path="creationDesUtilisateurs">
+          <Route index element={<CreationDesComptes />}/>
+          <Route path="etudiant"
+                element={<Form_utilisateur inputs={utilisateurInputs} />}
+              />
           <Route path="enseignant"
-                element={<Form_enseignant inputs={enseignantInputs} title="Ajouter un nouveau Etudiant" />}
+                element={<Form_utilisateur inputs={utilisateurInputs} />}
               />
            <Route
                 path="entreprise"
-                element={<Form_enseignant inputs={entrepriseInputs} title="Add New Product" />}
+                element={<Form_utilisateur inputs={entrepriseInputs} />}
               />
           </Route>
           <Route path="gestionDsComptes"> 
