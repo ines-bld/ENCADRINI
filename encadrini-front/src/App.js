@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './pages';
+import Home from './pages/Home page';
 import Dashboard from './pages/dashboard/dashboard';
 import { ResetPassword } from './pages/ResetPassword/ResetPassword';
 import { ForgottenPassword } from './pages/ResetPassword/ForgottenPassword';
@@ -16,9 +16,13 @@ import { CreationDesComptes } from './pages/create users/CreationDesComptes';
 import UploadFiles from './components/uploadFiles/uploadFiles';
 import UploadExcel from './components/uploadExcel/uploadExcel';
 import FormDepot from './components/déposerThéme/form-dépot.jsx';
-import ErrorPage from './pages/ErrorPage';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
+import React from 'react';
+import ThemeDepose from './pages/AdminThemes/ThemeDepose';
+import ThemeInfo from './pages/AdminThemes/ThemeInfo';
 import Profile from './components/profiles/Profile';
 import MesThemesPage from './pages/Mesthemes/MesThemesPage';
+
 
 function App() {
   return (
@@ -52,11 +56,14 @@ function App() {
           <Route path="signin" element={<Hello />} />
           <Route path="login" element={<Login />} />
           <Route path="uploadExcel" element={<UploadExcel />} />
-          <Route path="uploadFiles" element={<UploadFiles />} />          
+          <Route path="uploadFiles" element={<UploadFiles />} />
           <Route path="depot" element={<Depot />} />
           <Route path="Profile" element={<Profile />} />
           <Route path="MesThemes" element={<MesThemesPage />} />
-
+          <Route path="themedeposes">
+            <Route index element={<ThemeDepose />} />
+            <Route path=":themeId" element={<ThemeInfo />} />
+          </Route>
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

@@ -8,9 +8,10 @@ var connection = mysql.createConnection({
   connectionLimit: 100,
   host: "localhost",
   user: "root",
-  password: "0xHunter#123",
-  database: "enc",
+  password: "ines14",
+  database: "ENCADRINI",
   port: 3306,
+  multipleStatements: true
 });
 
 connection.connect(function (error) {
