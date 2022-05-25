@@ -73,12 +73,10 @@ exports.resetsend = (req, res, next) => {
 
 
   connection.query(
-    'SELECT * FROM compte WHERE email ="' + email + '"',
+    'SELECT * FROM utilisateur WHERE email ="' + email + '"',
     function (err, result) {
       if (err) {
         console.log("inside");
-
-
         throw err;
       } else if (!result.length) {
         return res.status(400).send("The Email is not registered with us");
@@ -91,12 +89,13 @@ exports.resetsend = (req, res, next) => {
       if (result[0].email.length > 0) {
         var token = randtoken.generate(20);
         var sent = sendEmail(email, token);
+        console.log("hello");
         if (sent != "0") {
           var data = {
             token: token,
           };
           connection.query(
-            'UPDATE compte SET ? WHERE email ="' + email + '"',
+            'UPDATE utilisateur SET ? WHERE email ="' + email + '"',
             data,
             function (err, result) {
               if (err) throw err;
@@ -105,7 +104,7 @@ exports.resetsend = (req, res, next) => {
         }
       } 
       // res.send(JSON.stringify({"status": 200, "error": null, "response": result}));
-      //res.redirect("/");
+     res.end();
     }  
   );
 };
@@ -113,25 +112,18 @@ exports.resetsend = (req, res, next) => {
 /* reset page */
 exports.resetview = (req, res, next) => { 
   console.log("hello",JSON.stringify(req.query.token));
-
-
-  
   res.end(JSON.stringify(req.query.token));
-  // res.render("ResetPassword.js", {
-  //   title: "Reset Password Page",
-  //   token: req.query.token,
-  // });
 };
 
 /* update password to database */
 exports.resetupdate = (req, res, next) => {
   var token = req.body.token;
-  var password = req.body.passwrd;
+  var password = req.body.password;
 
   console.log("hello 1",token , password);
 
   connection.query(
-    'SELECT * FROM compte WHERE token ="' + token + '"',
+    'SELECT * FROM utilisateur WHERE token ="' + token + '"',
     function (err, result) {
       if (err) {
         throw err;
@@ -144,10 +136,10 @@ exports.resetupdate = (req, res, next) => {
         bcrypt.genSalt(saltRounds, function (err, salt) {
           bcrypt.hash(password, salt, function (err, hash) {
             var data = {
-              passwrd: hash,
+              password: hash,
             };
             connection.query(
-              'UPDATE compte SET ? WHERE email ="' + result[0].email + '"',
+              'UPDATE utilisateur SET ? WHERE email ="' + result[0].email + '"',
               data,
               function (err, result) {
                 if (err) throw err;
@@ -156,7 +148,7 @@ exports.resetupdate = (req, res, next) => {
           });
         });
       }
-      res.redirect("/");
+     // res.redirect("/");
     }
   );
 };

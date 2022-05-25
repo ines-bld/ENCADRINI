@@ -34,8 +34,6 @@ app.use(session({
 app.use('/', routes);
 app.use('/gestionDsComptes', routesGestionDesComptes );
 
-//app.use('/', resetroutes); //idk
-
 
 app.listen(PORT, ()=>{
 console.log(`Server is running on port ${PORT}`);

@@ -40,7 +40,7 @@ const Employee = ({employee}) => {
                             Consulter
                         </Tooltip>
                     }>
-                   <Link to={`/gestionDsComptes/${employee.id}`}>
+                   <Link to={`/gestionDsComptes/viewuser/${employee.id}`}>
                     <button  className="btn view-button" data-toggle="modal">Consult</button></Link>
                 </OverlayTrigger>
                 <OverlayTrigger
