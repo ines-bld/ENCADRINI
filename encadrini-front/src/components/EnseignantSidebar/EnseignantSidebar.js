@@ -1,4 +1,4 @@
-import "./AdminSidebar.scss";
+import "EnseignantSidebar.css";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
@@ -11,7 +11,7 @@ import React from 'react';
 
 
 
-const AdminSidebar = () => {
+const EnseignantSidebar = () => {
   return (
     <div className="sidebar">
       <div className="top">
@@ -26,14 +26,11 @@ const AdminSidebar = () => {
       <hr />
       <div className="center">
         <ul>
-          <p className="title">MAIN</p>
           <Link to="/dashboard" style={{textDecoration: "none"}}>
           <li>
             <DashboardIcon className="icon" />
-            <span>Dashboard</span>
           </li>
-          </Link>
-          <p className="title">SPRINT1</p>
+          </Link>          
           <Link to="/creationDesUtilisateurs" style={{ textDecoration: "none" }}>
             <li>
               <PersonAddIcon className="icon" />
@@ -66,4 +63,4 @@ const AdminSidebar = () => {
   );
 };
 
-export default AdminSidebar;
+export default EnseignantSidebar;

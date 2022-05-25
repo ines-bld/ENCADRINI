@@ -4,11 +4,9 @@ import axios from "axios";
 import AdminSidebar from "../../components/Sidebar/AdminSidebar";
 import AdminNavbar from "../../components/Navbar/AdminNavbar";
 import PERSON from '../../images/PERSON.jpg';
-import "./SingleUser.scss";
-import React from 'react';
+import './StyleProfile.scss'
 
-
-function SingleUser() {
+function Profile() {
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -45,15 +43,12 @@ function SingleUser() {
                 <div className="profile-head">
                   <h5>Meriem Baha</h5>
                   <h6>m.baha@esi-sba.dz</h6>
-                  <h6>Etudiant</h6>
+                  <h6>Administrateur de l'application</h6>
                   </div>
                   <div className="container">
                     <div className="bloc-tabs">
                     <button className={toggleState === 1 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(1)}>
                        Informations personelles
-                   </button>
-                   <button className={toggleState === 2 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(2)}>
-                       Informations projet
                    </button>
                     </div>
                     </div>
@@ -90,23 +85,12 @@ function SingleUser() {
                   <span className="ItemValue vertical-align">Female</span>
                 </div>
             </div>
-            
-
-            <div className={toggleState === 2 ? "content  active-content" : "content"}>
-                <div className="detailItem">
-                  <span className="ItemKey">Promotion</span>
-                  <span className="ItemValue vertical-align">1cs</span>
-                </div>
-                <div className="detailItem">
-                  <span className="ItemKey">encadreur</span>
-                  <span className="ItemValue vertical-align">bensaber</span>
-                </div>
-                <div className="detailItem">
-                  <span className="ItemKey">Numéro de l'équipe</span>
-                  <span className="ItemValue vertical-align">2</span>
-                </div>
             </div>
-            </div>
+            <Link className="linktoResetPw" to="/ResetPassword"> 
+            <button className='EditpwBtn'>
+              Modifier le mot de passe
+            </button>
+            </Link>
             </div>
          </div>
        </div>
@@ -114,4 +98,4 @@ function SingleUser() {
   )
 }
 
-export default SingleUser
+export default Profile

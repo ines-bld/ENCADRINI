@@ -1,8 +1,7 @@
 import {useContext, useState, useEffect} from 'react';
-import {EmployeeContext} from './contexts/EmployeeContext';
 import { Modal, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import EditForm from './EditForm';
-import './Employeelist.scss';
+import './MesThemes.scss';
+import EditTheme from './EditTheme';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,14 +10,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
-import React from 'react';
+import {ThemeContext}  from './ThemesContext';
+import './MesThemes.scss';
+const Theme = ({theme}) => {
 
-
-
-const Employee = ({employee}) => {
-
-    const {deleteEmployee} = useContext(EmployeeContext)
-
+    const {deleteTheme} = useContext(ThemeContext);
     const [show, setShow] = useState(false);
     
     const handleShow = () => setShow(true);
@@ -26,15 +22,13 @@ const Employee = ({employee}) => {
 
     useEffect(() => {
         handleClose()
-    }, [employee])
-    console.log(employee.statut)
+    }, [theme])
+    console.log(theme.statut)
     return (
         <>
-            <td>{employee.nom}</td>
-            <td>{employee.prenom}</td>
-            <td>{employee.email}</td>
-            <td>{employee.adresse}</td>
-            <td  className={`CellWithStatus ${employee.statut}`}>{employee.statut}</td>
+            <td>{theme.Titre}</td>
+            <td>{theme.Promotion}</td>
+            <td  className={`CellWithStatus ${theme.statut}`}>{theme.statut}</td>
             <td>
             <OverlayTrigger
                     overlay={
@@ -42,7 +36,7 @@ const Employee = ({employee}) => {
                             Consulter
                         </Tooltip>
                     }>
-                   <Link to={`/gestionDsComptes/viewuser/${employee.id}`}>
+                   <Link to={`/dashboard`}>
                     <button  className="btn view-button" data-toggle="modal">Consult</button></Link>
                 </OverlayTrigger>
                 <OverlayTrigger
@@ -59,22 +53,22 @@ const Employee = ({employee}) => {
                             Supprimer
                         </Tooltip>
                     }>
-                    <button onClick={() => deleteEmployee(employee.id)}  className="btn text-danger btn-act" data-toggle="modal">Supp</button>
+                    <button onClick={() => deleteTheme(theme.id)}  className="btn text-danger btn-act" data-toggle="modal">Supp</button>
                 </OverlayTrigger>
             </td>
 
             <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
             <Modal.Title>
-                Edit Employee
+                Modifier Theme
             </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <EditForm theEmployee={employee} />
+            <EditTheme theme={theme} />
         </Modal.Body>
         <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
-                    Fermer 
+                    Fermer
                 </Button>
         </Modal.Footer>
     </Modal>
@@ -82,4 +76,4 @@ const Employee = ({employee}) => {
     )
 }
 
-export default Employee;
+export default Theme;

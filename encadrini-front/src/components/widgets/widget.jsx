@@ -1,5 +1,7 @@
 import "./widget.scss";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import React from 'react';
+
 
 const Widget = ({ type }) => {
   let data;
