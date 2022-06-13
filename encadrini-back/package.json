@@ -30,7 +30,9 @@
     "method-override": "^3.0.0",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "nodemailer": "^6.7.3",
-    "rand-token": "^1.0.1"
+    "rand-token": "^1.0.1",
+    "webpack-dev-middleware": "^5.3.3"
   }
 }

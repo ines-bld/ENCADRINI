@@ -39,10 +39,10 @@ export const ResetPassword = () => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ passwrd: password , token : Items}),
+      body: JSON.stringify({ password: password , token : Items}),
     };
     if (send === true) {
-      fetch("http://localhost:3000/resetPassword", requestOptions)
+      fetch("http://localhost:5000/resetPassword", requestOptions)
         .then((response) => response.json())
         .catch((err) => console.log(err));
     }
@@ -64,10 +64,10 @@ export const ResetPassword = () => {
         <Row>
           <Col lg={4} md={6} sm={12} className="text-center mt-1 p-1">
             <Formik
-              initialValues={{
-                password: "",
-                confirmPassword: "",
-              }}
+              // initialValues={{
+              //   password: "",
+              //   confirmPassword: "",
+              // }}
               validationSchema={validate}
               onSubmit={(values) => {
                 console.log(values);

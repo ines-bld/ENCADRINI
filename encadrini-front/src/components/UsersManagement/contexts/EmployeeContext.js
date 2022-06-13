@@ -10,8 +10,6 @@ const EmployeeContextProvider = (props) => {
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
-    console.log("inside use effect");
-
     axios
       .get("http://localhost:5000/gestionDsComptes")
       .then(({ data }) => {
