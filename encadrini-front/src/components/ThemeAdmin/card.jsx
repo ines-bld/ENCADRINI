@@ -18,7 +18,7 @@ const Card = () => {
               <h4>{theme.titre}</h4>
               <p>{theme.responsable}</p>
             </div>
-            <Link to={`/themedeposes/${theme.id}`}>
+            <Link to={`/themedeposes/promo/${theme.id}`}>
               <button>consulter</button>
             </Link>
           </li>
