@@ -1,15 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const cors = require("cors");
 
+
+
 // const resetroutes = require('./routes/forgotPassword.js'); //idk
 const routes = require('./routes/handler.js');
 const routesGestionDesComptes = require('./routes/handlerGestionDesComptes.js');
-
+const adminRoutes = require('./routes/admin');
 
 const PORT= process.env.PORT || 5000;;  //backend routing port
 const app = express();
@@ -30,7 +33,7 @@ app.use(session({
 }))
 
 
-
+app.use('/admin', adminRoutes);
 app.use('/', routes);
 app.use('/gestionDsComptes', routesGestionDesComptes );
 
