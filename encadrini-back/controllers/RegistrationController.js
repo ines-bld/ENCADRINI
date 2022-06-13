@@ -3,16 +3,18 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const userMiddleware = require('../controllers/user');
 
 var db = mysql.createConnection({
-  connectionLimit: 100,
-  host: "localhost",
-  user: "root",
-  password: "0xHunter#123",
-  database: "enc",
-  port: 3306,
+  connectionLimit : 100,
+  port            : process.env.DB_port,
+  host            : process.env.DB_HOST,
+  user            : process.env.DB_USER,
+  password        : process.env.DB_PASS,
+  database        : process.env.DB_NAME,
+  multipleStatements: true
 });
 
 db.connect(function (error) {

@@ -9,6 +9,7 @@ const cors = require("cors");
 // const resetroutes = require('./routes/forgotPassword.js'); //idk
 const routes = require('./routes/handler.js');
 const routesGestionDesComptes = require('./routes/handlerGestionDesComptes.js');
+const routesGestionDesThemes = require('./routes/handlerGestionDesThemes.js');
 
 
 const PORT= process.env.PORT || 5000;;  //backend routing port
@@ -33,6 +34,7 @@ app.use(session({
 
 app.use('/', routes);
 app.use('/gestionDsComptes', routesGestionDesComptes );
+app.use('/gestionDsThemes', routesGestionDesThemes );
 
 
 app.listen(PORT, ()=>{

@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "concurrently": "^7.1.0",
     "cookie-parser": "^1.4.6",
@@ -25,10 +26,13 @@
     "express": "^4.17.3",
     "express-flash": "^0.0.2",
     "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "nodemailer": "^6.7.3",
-    "rand-token": "^1.0.1"
+    "rand-token": "^1.0.1",
+    "webpack-dev-middleware": "^5.3.3"
   }
 }

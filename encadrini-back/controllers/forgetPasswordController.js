@@ -2,15 +2,15 @@ var express = require("express");
 var nodemailer = require("nodemailer");
 var bcrypt = require("bcrypt");
 var randtoken = require("rand-token");
-var mysql = require("mysql");
+var mysql = require("mysql2");
 
 var connection = mysql.createConnection({
-  connectionLimit: 100,
-  host: "localhost",
-  user: "root",
-  password: "0xHunter#123",
-  database: "enc",
-  port: 3306,
+  connectionLimit : 100,
+  port            : process.env.DB_port,
+  host            : process.env.DB_HOST,
+  user            : process.env.DB_USER,
+  password        : process.env.DB_PASS,
+  database        : process.env.DB_NAME,
   multipleStatements: true
 });
 
@@ -72,11 +72,10 @@ exports.resetsend = (req, res, next) => {
   console.log("inside", email,"hhhhhh");
 
 
-  connection.query(
-    'SELECT * FROM utilisateur WHERE email ="' + email + '"',
+  connection.query("SELECT * FROM utilisateur WHERE email = 'i.hattabi@esi-sba.dz' " ,
     function (err, result) {
       if (err) {
-        console.log("inside");
+        console.log("erreur");
         throw err;
       } else if (!result.length) {
         return res.status(400).send("The Email is not registered with us");
@@ -89,7 +88,6 @@ exports.resetsend = (req, res, next) => {
       if (result[0].email.length > 0) {
         var token = randtoken.generate(20);
         var sent = sendEmail(email, token);
-        console.log("hello");
         if (sent != "0") {
           var data = {
             token: token,
@@ -104,7 +102,7 @@ exports.resetsend = (req, res, next) => {
         }
       } 
       // res.send(JSON.stringify({"status": 200, "error": null, "response": result}));
-     res.end();
+      res.redirect("/forgottenPassword" );
     }  
   );
 };
