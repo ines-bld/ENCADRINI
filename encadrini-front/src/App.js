@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './pages';
+import Home from './pages/Home page';
 import Dashboard from './pages/dashboard/dashboard';
 import { ResetPassword } from './pages/ResetPassword';
 import { ForgottenPassword } from './pages/ForgottenPassword';
@@ -11,7 +11,10 @@ import Login from './components/Login/Login.js';
 import  Hello  from './pages/Hello';
 import List from './pages/list/List';
 import SingleUser from './pages/SingleUser/SingleUser';
-import ErrorPage from './pages/ErrorPage';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
+import React from 'react';
+import ThemeDepose from './pages/AdminThemes/ThemeDepose';
+import ThemeInfo from './pages/AdminThemes/ThemeInfo';
 import Profile from './components/profiles/Profile';
 import MesThemesPage from './pages/Mesthemes/MesThemesPage';
 
@@ -42,6 +45,10 @@ function App() {
           <Route path="Profile" element={<Profile /> }/>  
           <Route path="signin" element={<Hello /> } /> 
           <Route path="login" element={<Login /> } />
+          <Route path="themedeposes">
+            <Route index element={<ThemeDepose />}/>
+            <Route path=":themeId" element={<ThemeInfo />}/>
+          </Route>
           <Route path="MesThemes" element={<MesThemesPage /> } />
 
           <Route path="*" element={<ErrorPage />}/>

@@ -8,6 +8,7 @@ require('dotenv').config();
 const userMiddleware = require('../controllers/user');
 
 var db = mysql.createConnection({
+
   connectionLimit : 100,
   port            : process.env.DB_port,
   host            : process.env.DB_HOST,
