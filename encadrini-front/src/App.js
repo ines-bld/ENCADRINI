@@ -15,6 +15,7 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import React from 'react';
 import ThemeDepose from './pages/AdminThemes/ThemeDepose';
 import ThemeInfo from './pages/AdminThemes/ThemeInfo';
+import PromoTheme from './pages/AdminThemes/PromoTheme'
 import Profile from './components/profiles/Profile';
 import MesThemesPage from './pages/Mesthemes/MesThemesPage';
 import CreationDesComptes from './pages/create users/creation_des_comptes';
@@ -51,8 +52,11 @@ function App() {
           <Route path="signin" element={<Hello /> } /> 
           <Route path="login" element={<Login /> } />
           <Route path="themedeposes">
+          <Route index element={<PromoTheme /> }/>
+          <Route path="promo">
             <Route index element={<ThemeDepose />}/>
             <Route path=":themeId" element={<ThemeInfo />}/>
+          </Route>
           </Route>
           <Route path="MesThemes" element={<MesThemesPage /> } />
 

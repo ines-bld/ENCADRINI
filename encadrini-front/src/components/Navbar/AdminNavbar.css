@@ -21,10 +21,11 @@
   padding: 3px;
 }
 
-input {
+.search input {
   border: none;
   outline: none;
   background: transparent;
+  margin-bottom: -2px;
 }
       
 input::placeholder {

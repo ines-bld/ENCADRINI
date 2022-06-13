@@ -1,0 +1,44 @@
+.ipromo{
+    display: flex;
+  }   
+  
+.ipromoContainer{
+  flex: 6;    
+}
+
+.ipromoHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ipromoCard{
+    display: flex;
+    align-items: center;
+    width: 880px;
+    height: 103px;
+    box-shadow: 9px 10px 20px rgba(0, 0, 0, 0.17);
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.ipromoCard p{
+    color: #240046;
+    font-weight: 500;
+    font-size: 26px;
+    padding-left: 30px;
+}
+
+.ipromoCircle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(90deg, #4CC9F0 0%, #7B2CBF 100%);
+    margin: 10px;
+}
+
+.ipromoCircle h3{
+    color: white;
+}
