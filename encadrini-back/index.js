@@ -12,7 +12,7 @@ const cors = require("cors");
 // const resetroutes = require('./routes/forgotPassword.js'); //idk
 const routes = require('./routes/handler.js');
 const routesGestionDesComptes = require('./routes/handlerGestionDesComptes.js');
-const adminRoutes = require('./routes/admin');
+const adminRoutes = require('./routes/prof');
 
 const PORT= process.env.PORT || 5000;;  //backend routing port
 const app = express();
@@ -33,9 +33,11 @@ app.use(session({
 }))
 
 
-app.use('/admin', adminRoutes);
+
 app.use('/', routes);
 app.use('/gestionDsComptes', routesGestionDesComptes );
+app.use('/prof', profRoutes);
+app.use(themesRoutes);
 
 //app.use('/', resetroutes); //idk
 
