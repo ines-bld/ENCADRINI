@@ -4,10 +4,10 @@ import encadrini_logo from '../../images/Logo.svg';
 import "bootstrap/dist/css/bootstrap.css"; 
 import {Heading} from '../HeroSection/HeroElements'; 
 import "./login.css";
-import{Link} from "react-router-dom";
+import{Link, useNavigate} from "react-router-dom";
 
 import Axios from "axios";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 
@@ -15,17 +15,40 @@ const Login = () => {
 
 Axios.defaults.withCredentials = true;
 const [email, setEmail] = useState("");
-const [passwrd, setPasswrd] = useState("");
+const [password, setPassword] = useState("");
+const [poste,setPoste] = useState("");
+let navigate = useNavigate();
 const auth = () => {
     Axios.post("http://localhost:5000/login", {
       email: email,
-      passwrd: passwrd,
+      passwrd: password,
+      poste:poste,
     }).then((response) => {
-      console.log(response);
+      localStorage.setItem('user',JSON.stringify(response.data.user)) ;
+      setPoste(response.data.poste);
     });
-   
- 
-};
+
+
+
+}
+
+
+          
+useEffect(() => {
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  
+  console.log(user);
+  if(user){
+  if (user.poste==="Prof"){
+    navigate('/Profile')
+  }else if(user.poste==="Etudiant"){
+    navigate('/MesThemes')
+  }
+  }else{
+  navigate('/login');
+  }
+  },[poste]);
 return ( 
       <>
       <Container className="mt-5">
@@ -46,7 +69,7 @@ return (
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Mot de passe"
              onChange={(e) => {
-              setPasswrd(e.target.value);}}
+              setPassword(e.target.value);}}
           />
            </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -55,7 +78,7 @@ return (
              <center>
               
           <button className="loginButton" onClick={auth}  type="submit">
-          <Link to="/dashboard" ></Link>
+          {/*<Link to="/dashboard" ></Link>*/}
 
              Se connecter
              </button>

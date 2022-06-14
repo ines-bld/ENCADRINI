@@ -108,7 +108,7 @@ login :(req, res, next) => {
 //exports.get('/auth', (req, res, next) => {
   console.log(req.body.email);
         db.query(
-            `SELECT * FROM compte WHERE email =${db.escape(req.body.email)};`,
+            `SELECT * FROM utilisateur WHERE email =${db.escape(req.body.email)};`,
           
           (err, result) => {
             // user does not exists
@@ -125,8 +125,8 @@ login :(req, res, next) => {
             }
             // check password
             bcrypt.compare(
-              req.body.passwrd,
-              result[0]['passwrd'],
+              req.body.password,
+              result[0]['password'],
               (bErr, bResult) => {
                 // wrong password
                 if (bErr) {
