@@ -5,6 +5,7 @@ import AdminSidebar from "../../components/Sidebar/AdminSidebar";
 import AdminNavbar from "../../components/Navbar/AdminNavbar";
 import PERSON from '../../images/PERSON.jpg';
 import './StyleProfile.scss'
+import PicChange from '../PicChanger/PicChange';
 
 function Profile() {
   const [toggleState, setToggleState] = useState(1);
@@ -37,7 +38,7 @@ function Profile() {
          <div>
             <div className="row">
               <div className="col-md-3">
-                <img className="profilepic" src={PERSON} alt="person" />
+                <PicChange/>
               </div>
               <div className="col-md-6">
                 <div className="profile-head">
