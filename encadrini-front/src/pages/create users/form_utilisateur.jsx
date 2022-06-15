@@ -4,7 +4,11 @@ import Navbar from "../../components/Navbar/AdminNavbar";
 import React from "react";
 import UploadExcel from "../../components/uploadExcel/uploadExcel";
 
+
 const Form_enseignant = ({ inputs }) => {
+
+
+
   return (
     <div className="new">
       <Sidebar />
