@@ -3,8 +3,12 @@ import PropTypes from "prop-types";
 import "./drop-file-input.css";
 import { ImageConfig } from "../imageConfig";
 import uploadImg from "../assets/cloud-upload-regular-240.gif";
+import axios from "axios";
 
 const DropFileInput = (props) => {
+
+ 
+
   const wrapperRef = useRef(null);
 
   const [fileList, setFileList] = useState([]);
@@ -31,6 +35,29 @@ const DropFileInput = (props) => {
     props.onFileChange(updatedList);
   };
 
+  //function uploadEx() {
+   const uploadEx= event => {
+    axios.defaults.withCredentials=true;
+    console.log('inside');
+    const data = new FormData();
+    data.append("file" , fileList)
+    console.log(data);
+
+    console.log('inside');
+    axios
+      .post(`http://localhost:5000/creationDesUtilisateurs/uploadfile`, data , {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }})
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <>
       <div
@@ -45,11 +72,13 @@ const DropFileInput = (props) => {
         </div>
         <input
           type="file"
+          name="file"
           accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
           value=""
           onChange={onFileDrop}
         />
-      </div>
+      </div
+      >
       {fileList.length > 0 ? (
         <div className="drop-file-preview">
           {fileList.map((item, index) => (
@@ -67,7 +96,7 @@ const DropFileInput = (props) => {
               </span>
             </div>
           ))}
-          <button type="submit">Créer</button>
+          <button type="submit" onClick={uploadEx} >Créer</button>
         </div>
       ) : null}
     </>
