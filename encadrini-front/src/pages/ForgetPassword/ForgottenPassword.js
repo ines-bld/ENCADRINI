@@ -1,9 +1,9 @@
 import React, { useEffect ,useState} from "react";
 import { Formik, Form } from "formik";
-import { TextField } from "./../components/TextField";
+import { TextField } from "./../../components/TextField";
 import * as Yup from "yup";
-import { StyledFormButton, StyledTitle } from "./../components/Styles";
-import rocketImg from "./../images/reintialisation.png";
+import { StyledFormButton, StyledTitle } from "./../../components/Styles";
+import rocketImg from "./../../images/reintialisation.png";
 import { Col, Container, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 

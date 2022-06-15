@@ -1,5 +1,5 @@
 import { Button,Form, Container,Row,Col} from "react-bootstrap";
-import loginIllustration from '../../images/6343823_Artboard 1.svg'; 
+import loginIllustration from '../../images/login.svg'; 
 import encadrini_logo from '../../images/Logo.svg';
 import "bootstrap/dist/css/bootstrap.css"; 
 import {Heading} from '../HeroSection/HeroElements'; 
@@ -22,17 +22,12 @@ const auth = () => {
     Axios.post("http://localhost:5000/login", {
       email: email,
       passwrd: password,
-      poste:poste,
+      poste: poste,
     }).then((response) => {
       localStorage.setItem('user',JSON.stringify(response.data.user)) ;
       setPoste(response.data.poste);
     });
-
-
-
 }
-
-
           
 useEffect(() => {
 
@@ -51,48 +46,39 @@ useEffect(() => {
   },[poste]);
 return ( 
       <>
-      <Container className="mt-5">
+      <Container fluid className="mt-2 px-3">
           <Row>
               <Col lg={4} md={6} sm={12}>
-         <Form action="/login" method="post">
-           <img className=" aligh-left logo" src={encadrini_logo} />
-           <Heading><b>Se connecter</b></Heading>
-          <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
+         <Form action="/login" method="post" className="loginForm">
+           <img src={encadrini_logo} />
+           <h2>Se connecter</h2>
+          <Form.Group controlId="formBasicEmail">
            <Form.Label>Adresse email</Form.Label>
            <Form.Control type="email" placeholder="Enter email" 
               onChange={(e) => {
                 setEmail(e.target.value);}}
            />
           </Form.Group>
-
-         <Form.Group className="mb-3" controlId="formBasicPassword">
+          
+         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Mot de passe"
              onChange={(e) => {
               setPassword(e.target.value);}}
           />
            </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Group controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Se rappeler de moi" />
            </Form.Group>
-             <center>
               
           <button className="loginButton" onClick={auth}  type="submit">
-          {/*<Link to="/dashboard" ></Link>*/}
-
-             Se connecter
-             </button>
-          
-
-          
- </center>
-           <div className="text-center mt-3">
+             Se connecter 
+             </button>                  
             <a href="#" className="reset">Mot de passe oublié?</a>
-            </div>
              </Form>
              </Col>
         <Col lg={8} md={6} sm={12}>
-            <img className="w-100" src={loginIllustration} />
+            <img height={'500px'} width={'800px'} src={loginIllustration} />
          </Col>
         </Row>
         </Container>   
@@ -101,4 +87,4 @@ return (
     );
 }
  
-export default Login;
+export default Login

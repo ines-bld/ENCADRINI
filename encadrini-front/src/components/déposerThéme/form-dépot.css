@@ -1,0 +1,35 @@
+.Depot {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    /*background-color: aqua;
+    margin-top: 5px;
+    padding-left: 220px;
+    padding-right: 220px;*/
+}
+
+
+.btndepot {
+    padding: 5px 15px;
+    font-size: 18px;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #3A0CA3;
+    border-radius: 20px;
+}
+
+.btndepot:hover {
+    opacity: 0.6;
+}
+
+.multiselect {
+    min-width: 50ch;
+    max-width: 50ch;
+    align-items: center;
+    margin-top: 20px;
+
+}

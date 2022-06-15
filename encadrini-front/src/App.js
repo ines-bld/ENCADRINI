@@ -2,11 +2,11 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home page';
 import Dashboard from './pages/dashboard/dashboard';
-import { ResetPassword } from './pages/ResetPassword';
-import { ForgottenPassword } from './pages/ForgottenPassword';
-import { EnterCode } from './pages/EnterCode';
+import { ResetPassword } from './pages/ForgetPassword/ResetPassword';
+import { ForgottenPassword } from './pages/ForgetPassword/ForgottenPassword';
+import { EnterCode } from './pages/ForgetPassword/EnterCode';
 import Form_utilisateur from './pages/create users/form_utilisateur';
-import { utilisateurInputs, entrepriseInputs } from "./components/formInputs";
+import Form_entreprise from './pages/create users/form_entreprise';
 import Login from './components/Login/Login.js';
 import  Hello  from './pages/Hello';
 import List from './pages/list/List';
@@ -19,6 +19,7 @@ import PromoTheme from './pages/AdminThemes/PromoTheme'
 import Profile from './components/profiles/Profile';
 import MesThemesPage from './pages/Mesthemes/MesThemesPage';
 import CreationDesComptes from './pages/create users/creation_des_comptes';
+import Depot from './pages/DepotUtilisateur/depotTheme';
 
 
 function App() {
@@ -34,14 +35,14 @@ function App() {
           <Route path="creationDesUtilisateurs">
           <Route index element={<CreationDesComptes />}/>
           <Route path="etudiant"
-                element={<Form_utilisateur inputs={utilisateurInputs} />}
+                element={<Form_utilisateur />}
               />
           <Route path="enseignant"
-                element={<Form_utilisateur inputs={utilisateurInputs} />}
+                element={<Form_utilisateur />}
               />
            <Route
                 path="entreprise"
-                element={<Form_utilisateur inputs={entrepriseInputs} />}
+                element={<Form_entreprise />}
               />
           </Route>
           <Route path="gestionDsComptes"> 
@@ -53,12 +54,13 @@ function App() {
           <Route path="login" element={<Login /> } />
           <Route path="themedeposes">
           <Route index element={<PromoTheme /> }/>
-          <Route path="promo">
+          <Route path=":promoId">
             <Route index element={<ThemeDepose />}/>
             <Route path=":themeId" element={<ThemeInfo />}/>
           </Route>
           </Route>
           <Route path="MesThemes" element={<MesThemesPage /> } />
+          <Route path="depot" element={<Depot />} />
 
           <Route path="*" element={<ErrorPage />}/>
         </Route>
