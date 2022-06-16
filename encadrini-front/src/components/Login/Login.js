@@ -6,6 +6,7 @@ import {Heading} from '../HeroSection/HeroElements';
 import "./login.css";
 import{Link} from "react-router-dom";
 import Axios from "axios";
+import UseForm from "./UseForm.js";
 import React, { useState } from 'react';
 
 
@@ -37,9 +38,11 @@ const checkEmail = (e) => {
     return true;
   }
 }
-const checkPassword = (e) => {
-  setPasswrd(e.target.value);
-}
+//const checkPassword = (e) => {
+  //setPasswrd(e.target.value);
+//}
+
+
 const auth = () => {
     Axios.post("http://localhost:5000/login", {
       email: email,
@@ -47,12 +50,12 @@ const auth = () => {
     }).then((response) => {
       console.log(response);
     });
-   
- 
-};
+  };
+  
 const handlesubmit=(e)=>{
   console.log(email,passwrd);
 }
+
 return ( 
       <>
       <Container className="mt-5">
@@ -64,7 +67,6 @@ return (
           <Form.Group isRequired className="mb-3 mt-4" controlId="formBasicEmail">
            <Form.Label>Adresse email</Form.Label>
            <Form.Control   type="email" placeholder="Enter email" 
-              onChange={checkEmail}
            />
            <p className="text-danger p-2">{error}</p>
           </Form.Group>
@@ -72,7 +74,7 @@ return (
          <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Mot de passe"
-             onChange={checkPassword}
+             
           />
            </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -85,7 +87,7 @@ return (
              </button>
              </center>
            <div className="text-center mt-3">
-            <a href="#" className="reset">Mot de F?J?EKD?KOEN?DKOENDONEODNEpasse oublié?</a>
+            <a href="#" className="reset">Mot de passe oublié?</a>
             </div>
              </Form>
              </Col>
