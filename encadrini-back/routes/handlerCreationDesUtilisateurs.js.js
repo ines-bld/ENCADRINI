@@ -16,10 +16,7 @@ function setRole(newrole){
     role = newrole;
  }
 
-// const creationDesUtilisateursController = require('../controllers/creationDesUtilisateursController');
 
-// router.get('/:role', creationDesUtilisateursController.view)
-// router.post()
 
 const pool = mysql.createPool({
     connectionLimit: 100,
@@ -63,7 +60,7 @@ const upload = multer({ storage: storage });
   router.post('/uploadfile', upload.single("uploadfile"), (req, res) => {
     
     const filePath = (process.cwd() + "/uploads/" + req.file.filename );  //__dirname + "/uploads/" + req.file.filename
-console.log( filePath)
+    console.log( filePath)
    readXlsxFile(filePath).then((rows) => {
        // `rows` is an array of rows
        // each row being an array of cells.     
