@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 
 const ThemeInfo = () => {
   const { themeId } = useParams();
+  
   return (
     <>
       <div className="info">

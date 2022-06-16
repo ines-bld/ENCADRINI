@@ -46,7 +46,7 @@ function App() {
           </Route>
           <Route path="gestionDsComptes"> 
             <Route index element={<List />}/>
-            <Route path=':compteId' element={<SingleUser/>}/>
+            <Route path='viewuser/:compteId' element={<SingleUser/>}/>
           </Route>
           <Route path="Profile" element={<Profile /> }/>  
           <Route path="signin" element={<Hello /> } /> 
