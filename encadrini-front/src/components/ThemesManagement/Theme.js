@@ -36,7 +36,7 @@ const Theme = ({theme}) => {
                             Consulter
                         </Tooltip>
                     }>
-                   <Link to={`/mesthemes/${theme.id}`}>
+                   <Link to={`/dashboard`}>
                     <button  className="btn view-button" data-toggle="modal">Consult</button></Link>
                 </OverlayTrigger>
                 <OverlayTrigger

@@ -7,16 +7,15 @@ import React from 'react';
 
 
 const EditForm = ({theEmployee}) =>{
-   
+
     const id = theEmployee.id;
+
     const [nom, setNom] = useState(theEmployee.nom);
     const [prenom, setPrénom] = useState(theEmployee.prenom);
     const [email, setEmail] = useState(theEmployee.email);
     const [adresse, setAddress] = useState(theEmployee.adresse);
     const [phone, setPhone] = useState(theEmployee.phone);
     const [statut, setStatut] = useState(theEmployee.statut);
-
-    
 
 
     const {updateEmployee} = useContext(EmployeeContext);

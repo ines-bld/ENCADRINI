@@ -12,13 +12,12 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
 import React from 'react';
-import axios from 'axios';
-import { toast } from 'react-toastify';
+
 
 
 const Employee = ({employee}) => {
 
-    
+    const {deleteEmployee} = useContext(EmployeeContext)
 
     const [show, setShow] = useState(false);
     
@@ -29,18 +28,6 @@ const Employee = ({employee}) => {
         handleClose()
     }, [employee])
     console.log(employee.statut)
-    const deleteEmployee = async(id) => {
-        if(window.confirm("voulez vous vraiment supprimer cet utilisateur"))
-        {
-            const response = await axios.get(`http://localhost:5000/${id}`);
-            if(response.status === 200)
-            {
-                toast.success(response.data)
-                //we add here the function used to bring the users from the backend
-            }
-        }
-        
-    } 
     return (
         <>
             <td>{employee.nom}</td>
