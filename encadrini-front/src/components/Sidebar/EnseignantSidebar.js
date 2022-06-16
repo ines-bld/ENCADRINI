@@ -1,4 +1,4 @@
-import "./userSidebar.scss";
+import "./EnseignantSidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
@@ -25,32 +25,33 @@ import { useState } from 'react';
 
 
 
-const UserSidebar = ({children}) => {
-  //isopen est une variablepour savoir si sidebar est uverte ou pas initialisée à false (fermée)
+const EnseignantSidebar = ({children}) => {
+  //isopen est une variablepour savoir si sidebar est ouverte ou pas initialisée à false (fermée)
   const[isOpen ,setIsOpen] = useState(false);
     const toggle = () => setIsOpen (!isOpen);
     //menuItem pour définir les différentes parties du sidebar 
     const menuItem=[
         {
-            path:"/dashboard",
+            path:"/enseignant",
             name:"Dashboard",
             icon:<DashboardIcon/>
         },
         {
-            path:"/mesthemes",
+          path:"/depot",
+          name:"Déposer un thème",
+          icon:<AddIcon/>
+      },
+        {
+            path:"/MesThemes",
             name:"Mes thèmes",
             icon:<SubjectIcon/>
         },
         {
-            path:"/themesvalides",
+            path:"/enseignant",
             name:"Thèmes valides",
             icon:<FactCheckIcon/>
         },
-        {
-            path:"/deposeruntheme",
-            name:"Déposer un thème",
-            icon:<AddIcon/>
-        }
+        
     ]
   return (
     <div className="main-container-enseignant">
@@ -62,13 +63,13 @@ const UserSidebar = ({children}) => {
         </div>
       </div>
       {
-                   menuItem.map((item, index)=>(
-                       <NavLink to={item.path} key={index} className="link" activeclassName="active">
-                           <div className="icon">{item.icon}</div>
-                           <div style={{display: isOpen ? "block" : "none"}} className="link_text">{item.name}</div>
-                       </NavLink>
-                   ))
-               }
+        menuItem.map((item, index)=>(
+          <NavLink to={item.path} key={index} className="link" activeclassName="active">
+            <div className="icon">{item.icon}</div>
+            <div style={{display: isOpen ? "block" : "none"}} className="link_text">{item.name}</div>
+          </NavLink>
+        ))
+      }
     </div>
    <main>{children}</main>
     </div>
@@ -76,4 +77,4 @@ const UserSidebar = ({children}) => {
 
   );
 };
-export default UserSidebar;
+export default EnseignantSidebar;

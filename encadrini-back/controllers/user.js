@@ -6,7 +6,7 @@ require('dotenv').config();
 module.exports = {
   validateRegister: (req, res, next) => {
     // nom min length 3
-    if (!req.body.nom || req.body.nom.length < 3) {
+   if (!req.body.nom || req.body.nom.length < 3) {
       return res.status(400).send({
         msg: 'Please enter a nom with min. 3 chars'
       });

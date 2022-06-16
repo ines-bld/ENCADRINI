@@ -5,14 +5,17 @@ import UploadExcel from "../../components/uploadExcel/uploadExcel";
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Form } from "formik";
 
 const Form_enseignant = () => {
-  axios.defaults.withCredentials = true;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nom, setNom] = useState("");
   const [prenom, setPrenom] = useState("");
-  const [date, setDate] = useState("");
+  const [dateNaiss, setDatenaiss] = useState("");
+  const [lieuNaiss, setLieunaiss] = useState("");
+  const [adresse, setAdresse] = useState("");
+
   const [wilaya, setWilaya] = useState("");
   const [poste, setPoste] = useState("");
 
@@ -23,28 +26,30 @@ const Form_enseignant = () => {
 
   const [numTelph, setNumTelph] = useState("");
 
-  let navigate = useNavigate();
+  //  let navigate = useNavigate();
   const create = () => {
     axios.defaults.withCredentials = true;
     axios
-      .post("http://localhost:5000/create", {
-        idUser: idUser,
+      .post("http://localhost:3000/create", {
+        //  idUser: idUser,
         nom: nom,
         prenom: prenom,
-
-        email: email,
-        date: date,
-        password: password,
+        //  adresse: adresse,
+        dateNaiss: dateNaiss,
+        lieuNaiss: lieuNaiss,
         wilaya: wilaya,
-        situation: situation,
         numTelph: numTelph,
+        // situation: situation,
         sexe: sexe,
+        email: email,
+
+        password: password,
 
         poste: poste,
       })
       .then((response) => {
-        //localStorage.setItem("user", JSON.stringify(response.data.user));
-        // setPoste(response.data.poste);`
+        //   localStorage.setItem("user", JSON.stringify(response.data.user));
+        //  setPoste(response.data.poste);`
         console.log(response);
       });
   };
@@ -60,21 +65,14 @@ const Form_enseignant = () => {
           <div className="right">
             <form action="/create" method="POST">
               <div className="formInput">
-                <label>idUser</label>
+                <label>nom</label>
                 <input
                   required
                   type="text"
                   placeholder="belouad"
-                  onChange={setIduser}
-                />
-              </div>
-              <div className="formInput">
-                <label>Nom</label>
-                <input
-                  required
-                  type="text"
-                  placeholder="belouad"
-                  onChange={setNom}
+                  onChange={(e) => {
+                    setNom(e.target.value);
+                  }}
                 />
               </div>
               <div className="formInput">
@@ -83,7 +81,55 @@ const Form_enseignant = () => {
                   required
                   type="text"
                   placeholder="Ines"
-                  onChange={setPrenom}
+                  onChange={(e) => {
+                    setPrenom(e.target.value);
+                  }}
+                />
+              </div>
+
+              <div className="formInput">
+                <label>lieunaiss</label>
+                <input
+                  required
+                  type="text"
+                  placeholder="Ines"
+                  onChange={(e) => {
+                    setLieunaiss(e.target.value);
+                  }}
+                />
+              </div>
+
+              <div className="formInput">
+                <label>wilaya</label>
+                <input
+                  required
+                  type="text"
+                  placeholder="Ines"
+                  onChange={setWilaya}
+                />
+              </div>
+
+              <div className="formInput">
+                <label>num</label>
+                <input
+                  required
+                  type="text"
+                  placeholder="Ines"
+                  onChange={(e) => {
+                    setNumTelph(e.target.value);
+                  }}
+                />
+              </div>
+
+              <div className="formInput">
+                <label>Sexe</label>
+                <input
+                  required
+                  type="text"
+                  placeholder="Femme"
+                  onChange={(e) => {
+                    setSexe(e.target.value);
+                  }}
                 />
               </div>
               <div className="formInput">
@@ -92,56 +138,20 @@ const Form_enseignant = () => {
                   required
                   type="mail"
                   placeholder="i.belouad@esi-sba.com"
-                  onChange={setEmail}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
               </div>
               <div className="formInput">
-                <label>Date de naissance</label>
-                <input
-                  required
-                  type="date"
-                  placeholder="24-12-2001"
-                  onChange={setDate}
-                />
-              </div>
-              <div className="formInput">
-                <label>Password</label>
-                <input required type="password" onChange={setPassword} />
-              </div>
-              <div className="formInput">
-                <label>wilaya</label>
+                <label>password</label>
                 <input
                   required
                   type="text"
-                  placeholder="Tiaret"
-                  onChange={setWilaya}
-                />
-              </div>
-              <div className="formInput">
-                <label>Situation</label>
-                <input
-                  required
-                  type="text"
-                  placeholder="celibataire"
-                  onChange={setSituation}
-                />
-              </div>
-              <div className="formInput">
-                <label>telephone</label>
-                <input
-                  required
-                  type="text"
-                  placeholder="0557945678"
-                  onChange={setNumTelph}
-                />
-              </div>
-              <div className="formInput">
-                <label>Sexe</label>
-                <input
-                  required
-                  type="text"
-                  placeholder="Femme"
-                  onChange={setSexe}
+                  placeholder="etudiante"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                 />
               </div>
               <div className="formInput">
@@ -150,10 +160,12 @@ const Form_enseignant = () => {
                   required
                   type="text"
                   placeholder="etudiante"
-                  onChange={setPoste}
+                  onChange={(e) => {
+                    setPoste(e.target.value);
+                  }}
                 />
               </div>
-              <button type="button" onClick={create}>
+              <button type="submit" onClick={create}>
                 Confirm
               </button>
             </form>

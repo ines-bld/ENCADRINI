@@ -18,7 +18,7 @@
     align-items:center;
     padding:20px 15px;
   }
-  .logo{
+  .main-container-enseignant .logo{
     width: 102px;
     height: 100%;
   }
@@ -27,7 +27,7 @@
     padding-right: 20px;
     font-size: 25px;
   }
-  .link{
+  .main-container-enseignant .link{
     display: flex;
     color: #fff;
     padding: 10px 15px;
@@ -35,13 +35,13 @@
     transition: all 0.5s;
     text-decoration: none;
   }
-  .link:hover{
+  .main-container-enseignant .link:hover{
     transition: all 0.5s;
   }
-  .active{
+  .main-container-enseignant .active{
     background: white;
     color: #3A0CA3;
   }
-  .icon, .link_text{
+  .main-container-enseignant .icon, .link_text{
     font-size: 20px;
   }

@@ -20,6 +20,8 @@ import Profile from './components/profiles/Profile';
 import MesThemesPage from './pages/Mesthemes/MesThemesPage';
 import CreationDesComptes from './pages/create users/creation_des_comptes';
 import Depot from './pages/DepotUtilisateur/depotTheme';
+import EnseignantHome from './pages/Enseignant/EnseignantHome';
+import EtudiantHome from './pages/Etudiant/EtudiantHome';
 
 
 function App() {
@@ -61,6 +63,8 @@ function App() {
           </Route>
           <Route path="MesThemes" element={<MesThemesPage /> } />
           <Route path="depot" element={<Depot />} />
+          <Route path="enseignant" element={<EnseignantHome />} />
+          <Route path="etudiant" element={<EtudiantHome />} />
 
           <Route path="*" element={<ErrorPage />}/>
         </Route>

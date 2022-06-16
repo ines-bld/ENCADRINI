@@ -72,19 +72,34 @@ router.post('/acc', userMiddleware.validateRegister, (req, res, next) => {
 });
 
   */
-router.post('/create', userMiddleware.validateRegister, (req, res, next) => {
+
+router.post('/create', (req, res, next) => {
+
+  console.log("herr", req.body.nom)
+
   bcrypt.hash(req.body.password, 10, (err, hash) => {
     if (err) {
       return res.status(500).send({
         msg: err
       });};
-   
-db.query(
-  `INSERT INTO utilisateur (idUser,nom,prenom,adresse,dateNaiss,lieuNaiss,wilaya,situation,numTelph,sexe,email,password,activate,token,poste) VALUES (  
-    '16', ${db.escape(req.body.nom)}, ${db.escape(req.body.prenom)},' N° 141 TEFFAH, Tiaret, Algerie',
-     ${db.escape(req.body.dateNaiss)}, ${db.escape(req.body.lieuNaiss)} , ${db.escape(req.body.wilaya)}, 'célibataire'
- , ${db.escape(req.body.numTelph)},${db.escape(req.body.sexe)} ,${db.escape(req.body.email)},
-${db.escape(hash)}, '1',${db.escape(req.body.poste)},NULL)`,
+      const nom=req.body.nom;
+
+
+  /*
+  `INSERT INTO utilisateur (idUser,nom,prenom,adresse,dateNaiss,lieuNaiss,wilaya,situation,numTelph,sexe,email,password,activate,poste) VALUES 
+                               ('14', ${db.escape(req.body.nom)},?,' N° 141 TEFFAH, Tiaret, Algerie', ?,?,?,'célibataire',?,?,?, ${db.escape(hash)},"1",?)`,
+  [ nom, req.body.prenom ,
+     req.body.dateNaiss ,req.body.lieuNaiss ,req.body.wilaya ,
+        req.body.numTelph, req.body.sexe ,req.body.email , req.body.poste ],
+        */
+
+
+        db.query(
+          `INSERT INTO utilisateur (idUser,nom,prenom,adresse,dateNaiss,lieuNaiss,wilaya,situation,numTelph,sexe,email,password,activate,poste) VALUES (  
+            '16', ${db.escape(req.body.nom)}, ${db.escape(req.body.prenom)},' N° 141 TEFFAH, Tiaret, Algerie',
+            '1971-01-01 ', ${db.escape(req.body.lieuNaiss)} , ${db.escape(req.body.wilaya)}, 'célibataire'
+         , ${db.escape(req.body.numTelph)},${db.escape(req.body.sexe)} ,${db.escape(req.body.email)},
+        ${db.escape(hash)}, '1',${db.escape(req.body.poste)})`,
   (err, result) => {
     if (err) {
       throw err;
@@ -101,7 +116,6 @@ ${db.escape(hash)}, '1',${db.escape(req.body.poste)},NULL)`,
 
 
 },)
-
 
 router.post('/login',(req, res, next) => {
   db.query(

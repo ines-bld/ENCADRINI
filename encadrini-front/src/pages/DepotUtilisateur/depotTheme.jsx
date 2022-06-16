@@ -1,14 +1,14 @@
 import React from "react";
 import "./depotTheme.css";
 import FormDepot from "../../components/déposerThéme/form-dépot";
+import UserSidebar from "../../components/Sidebar/EnseignantSidebar";
 import AdminNavbar from "../../components/Navbar/AdminNavbar";
-import AdminSidebar from "../../components/Sidebar/AdminSidebar";
 
 const Depot = () => {
   return (
     <>
       <div className="depot">
-        <AdminSidebar />
+        <UserSidebar />
         <div className="depotContainer">
           <AdminNavbar />
           <div className="file">
