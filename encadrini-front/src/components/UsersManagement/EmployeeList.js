@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import './Employeelist.scss';
 import React from 'react';
 
+
 const EmployeeList = () => {
 
     const {sortedEmployees} = useContext(EmployeeContext);
@@ -48,10 +49,29 @@ const EmployeeList = () => {
     const indexOfFirstEmployee = indexOfLastEmployee - employeesPerPage;
     const currentEmployees = sortedEmployees.slice(indexOfFirstEmployee, indexOfLastEmployee);
     const totalPagesNum = Math.ceil(sortedEmployees.length / employeesPerPage);
-
+    // search bar variable 
+     const [value, SetValue] = useState("");
+     const [dataSource, SetdataSource] = useState(currentEmployees);
+     const [tableFilter, SettableFilter] = useState([]);
+     const filterData = (e) => {
+        if(e.target.value !== ""){
+            SetValue(e.target.value);
+            const filterTable = dataSource.filter(o=>Object.keys(o).some(k=>String(o[k]).toLowerCase().includes(e.target.value.toLowerCase())));
+            SettableFilter([...filterTable])
+        }else{
+            SetValue(e.target.value);
+            SetdataSource([...dataSource])
+        }
+        }
+    // end of search bar variable
+     
 
     return (
     <div className='list-container'>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Recherche..." aria-label="Username" value={value} 
+          onChange={filterData} />
+        </div>
     <div className="table-title">
         <div className="row">
             <div className="col-sm-6">
@@ -81,12 +101,17 @@ const EmployeeList = () => {
             </TableRow>
         </TableHead>
         <TableBody>
-                {
-                  currentEmployees.map(employee => (
+                { value.length > 0 ? tableFilter.map(employee => (
                       <TableRow key={employee.id}>
                         <Employee employee={employee} />
                     </TableRow>
                   ))  
+                  :
+                  dataSource.map(employee => (
+                    <TableRow key={employee.id}>
+                      <Employee employee={employee} />
+                  </TableRow>
+                ))  
                 }
         </TableBody>
     </Table>
