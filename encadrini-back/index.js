@@ -10,7 +10,7 @@ const cors = require("cors");
 const routes = require('./routes/handler.js');
 const routesGestionDesComptes = require('./routes/handlerGestionDesComptes.js');
 const routesGestionDesThemes = require('./routes/handlerGestionDesThemes.js');
-
+const routesCreationDesUtilisateurs = require('./routes/handlerCreationDesUtilisateurs.js');
 
 const PORT= process.env.PORT || 5000;;  //backend routing port
 const app = express();
@@ -42,6 +42,7 @@ app.use(session({
 app.use('/', routes);
 app.use('/gestionDsComptes', routesGestionDesComptes );
 app.use('/gestionDsThemes', routesGestionDesThemes );
+app.use('/creationDesUtilisateurs',routesCreationDesUtilisateurs );
 
 
 app.listen(PORT, ()=>{
