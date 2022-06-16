@@ -95,7 +95,7 @@ const FormDepot = () => {
           name="title"
         />
         <br />
-        {/*<Select
+        <Select
           className="multiselect"
           placeholder="co-ecadrants"
           name="coencadreur"
@@ -103,7 +103,7 @@ const FormDepot = () => {
           components={animatedComponents}
           isMulti
         />
-          <br />*/}
+        <br />
         <TextField
           id="outlined-multiline-static"
           label="Description"
