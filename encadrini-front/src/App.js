@@ -63,8 +63,8 @@ function App() {
           </Route>
           <Route path="MesThemes" element={<MesThemesPage /> } />
           <Route path="depot" element={<Depot />} />
-          <Route path="enseignant" element={<EnseignantHome />} />
-          <Route path="etudiant" element={<EtudiantHome />} />
+          <Route path="enseignantDashboard" element={<EnseignantHome />} />
+          <Route path="etudiantDashboard" element={<EtudiantHome />} />
 
           <Route path="*" element={<ErrorPage />}/>
         </Route>
