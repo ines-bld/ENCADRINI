@@ -1,4 +1,4 @@
-import "./EnseignantSidebar.scss";
+import "./EnseignantSidebar.css";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';

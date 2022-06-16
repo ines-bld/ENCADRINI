@@ -1,8 +1,11 @@
 import {createContext, useEffect, useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import data from './Themes.json';
+import axios from "axios";
 
 export const ThemeContext = createContext()
+
+
 
 const ThemeContextProvider  = (props) => {
     const [Themes, setThemes] = useState(data)
@@ -26,8 +29,16 @@ const addTheme = (Titre, Promotion, statut) => {
     setThemes([...Themes , {id:uuidv4(), Titre, Promotion, statut}])
 }
 
-const deleteTheme = (id) => {
-    setThemes(Themes.filter(Theme => Theme.id !== id))
+const deleteTheme = async(id) => {
+    if(window.confirm("voulez vous vraiment supprimer cet utilisateur"))
+    {
+        const response = await axios.get(`http://localhost:5000/${id}`);
+        if(response.status === 200)
+        {
+           
+            //we add here the function used to bring the users from the backend
+        }
+    }
 }
 
 const updateTheme = (id, updatedTheme) => {

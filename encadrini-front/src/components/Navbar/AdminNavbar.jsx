@@ -1,13 +1,11 @@
-import "./AdminNavbar.scss";
+import "./AdminNavbar.css";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
-import React from 'react';
-
+import React from "react";
 
 const AdminNavbar = () => {
-
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -15,7 +13,7 @@ const AdminNavbar = () => {
           <input type="text" placeholder="Search..." />
           <SearchOutlinedIcon />
         </div>
-        <div className="items">          
+        <div className="items">
           <div className="item">
             <NotificationsNoneOutlinedIcon className="icon" />
             <div className="counter">1</div>

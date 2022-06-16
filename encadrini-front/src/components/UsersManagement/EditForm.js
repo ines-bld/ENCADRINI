@@ -7,20 +7,21 @@ import React from 'react';
 
 
 const EditForm = ({theEmployee}) =>{
-
+   
     const id = theEmployee.id;
-
-    const [Nom, setNom] = useState(theEmployee.Nom);
-    const [Prénom, setPrénom] = useState(theEmployee.Prénom);
+    const [nom, setNom] = useState(theEmployee.nom);
+    const [prenom, setPrénom] = useState(theEmployee.prenom);
     const [email, setEmail] = useState(theEmployee.email);
-    const [address, setAddress] = useState(theEmployee.address);
+    const [adresse, setAddress] = useState(theEmployee.adresse);
     const [phone, setPhone] = useState(theEmployee.phone);
     const [statut, setStatut] = useState(theEmployee.statut);
+
+    
 
 
     const {updateEmployee} = useContext(EmployeeContext);
 
-    const updatedEmployee = {id, Nom,Prénom, email, address, phone,statut}
+    const updatedEmployee = {id,nom, prenom, email, adresse, phone,statut}
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -37,7 +38,7 @@ const EditForm = ({theEmployee}) =>{
                     type="text"
                     placeholder="Nom *"
                     name="Nom"
-                    value={Nom}
+                    value={nom}
                     onChange={(e)=> setNom(e.target.value)}
                     required
                 />
@@ -48,7 +49,7 @@ const EditForm = ({theEmployee}) =>{
                     type="text"
                     placeholder="Nom *"
                     name="Prénom"
-                    value={Prénom}
+                    value={prenom}
                     onChange={(e)=> setPrénom(e.target.value)}
                     required
                 />
@@ -71,7 +72,7 @@ const EditForm = ({theEmployee}) =>{
                     placeholder="Address"
                     rows={3}
                     name="address"
-                    value={address}
+                    value={adresse}
                     onChange={(e)=> setAddress(e.target.value)}
                 />
             </Form.Group>
@@ -103,7 +104,7 @@ const EditForm = ({theEmployee}) =>{
                     type="text"
                     placeholder="Name *"
                     name="Nom"
-                    value={Nom}
+                    value={nom}
                     onChange={(e)=> setNom(e.target.value)}
                     required
                 />
@@ -125,7 +126,7 @@ const EditForm = ({theEmployee}) =>{
                     placeholder="Address"
                     rows={3}
                     name="address"
-                    value={address}
+                    value={adresse}
                     onChange={(e)=> setAddress(e.target.value)}
                 />
             </Form.Group>

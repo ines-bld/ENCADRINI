@@ -1,7 +1,6 @@
-import "./widget.scss";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import React from 'react';
-
+import "./widget.css";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import React from "react";
 
 const Widget = ({ type }) => {
   let data;
@@ -36,13 +35,11 @@ const Widget = ({ type }) => {
     <div className="widget">
       <div className="left">
         <span className="title">{data.title}</span>
-        <span className="counter">
-            {amount}
-        </span>
+        <span className="counter">{amount}</span>
         <span className="link">{data.link}</span>
       </div>
       <div className="right">
-      <ArrowForwardIosIcon className="icon" />
+        <ArrowForwardIosIcon className="icon" />
       </div>
     </div>
   );

@@ -50,9 +50,27 @@ const MesThemes = () => {
     const indexOfFirstTheme = indexOfLastTheme - ThemesPerPage;
     const currentThemes = sortedThemes.slice(indexOfFirstTheme, indexOfLastTheme);
     const totalPagesNum = Math.ceil(sortedThemes.length / ThemesPerPage);
+
+    const [value, SetValue] = useState("");
+     const [dataSource, SetdataSource] = useState(currentThemes);
+     const [tableFilter, SettableFilter] = useState([]);
+     const filterData = (e) => {
+        if(e.target.value !== ""){
+            SetValue(e.target.value);
+            const filterTable = dataSource.filter(o=>Object.keys(o).some(k=>String(o[k]).toLowerCase().includes(e.target.value.toLowerCase())));
+            SettableFilter([...filterTable])
+        }else{
+            SetValue(e.target.value);
+            SetdataSource([...dataSource])
+        }
+        }
   return (
       <>
     <div className='list-container'>
+    <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Recherche..." aria-label="Username" value={value} 
+          onChange={filterData} />
+        </div>
     <div  className="table-title">
         <div className="row">
             <div className="col-sm-6">
@@ -80,10 +98,16 @@ const MesThemes = () => {
         </TableHead>
         <TableBody>
                 {
-                  currentThemes.map(theme => (
+                  value.length > 0 ? tableFilter.map(theme => (
                     <TableRow key={theme.id}>
                     <Theme theme={theme} />
                     </TableRow>
+                  ))
+                     :
+                     dataSource.map(theme => (
+                       <TableRow key={theme.id}>
+                         <Theme theme={theme} />
+                     </TableRow>
                 ))  
                 }
         </TableBody>

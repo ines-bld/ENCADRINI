@@ -43,10 +43,10 @@ const Employee = ({employee}) => {
     } 
     return (
         <>
-            <td>{employee.Nom}</td>
-            <td>{employee.Prénom}</td>
+            <td>{employee.nom}</td>
+            <td>{employee.prenom}</td>
             <td>{employee.email}</td>
-            <td>{employee.address}</td>
+            <td>{employee.adresse}</td>
             <td  className={`CellWithStatus ${employee.statut}`}>{employee.statut}</td>
             <td>
             <OverlayTrigger
@@ -55,7 +55,7 @@ const Employee = ({employee}) => {
                             Consulter
                         </Tooltip>
                     }>
-                   <Link to={`/gestionDsComptes/${employee.id}`}>
+                   <Link to={`/gestionDsComptes/viewuser/${employee.id}`}>
                     <button  className="btn view-button" data-toggle="modal">Consult</button></Link>
                 </OverlayTrigger>
                 <OverlayTrigger

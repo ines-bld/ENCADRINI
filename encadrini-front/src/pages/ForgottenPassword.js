@@ -28,7 +28,7 @@ export const ForgottenPassword = () => {
       body: JSON.stringify({email: email}),
     };
     if (send === true){
-    fetch("http://localhost:3000/forgottenPassword", requestOptions)
+    fetch("http://localhost:5000/forgottenPassword", requestOptions)
       .then((response) => response.json())
       .catch((err) => console.log(err));}
       
@@ -47,9 +47,9 @@ export const ForgottenPassword = () => {
         <Row>
           <Col lg={4} md={6} sm={12} className="text-center mt-1 p-1">
             <Formik
-              initialValues={{
-                email: "",
-              }}
+              // initialValues={{
+              //   email: "",
+              // }}
               validationSchema={validate}
               onSubmit={(values) => {
                 console.log(values);

@@ -37,8 +37,8 @@ const ViewMyTheme = () => {
     <div className="elementContainer Regular">1CS</div>
     <div className='title'>Résumé</div>
     <div className="elementContainer Light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
-    <div className='title'>outils</div>
-    <div className='Regular'>Non Valide</div>
+    <div className='title'>Statut</div>
+    <div className='elementContainer Regularr'>Non Valide</div>
     </div>
       </>
     )

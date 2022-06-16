@@ -32,3 +32,11 @@ font-size: 25px;
     margin: 20px; 
      
 }
+.buttonFormTheme{
+    background: #3A0CA3;
+    border-radius: 20px;
+    color: white;
+    width: 150px;
+    height: 40px;
+    margin: 20px;
+}

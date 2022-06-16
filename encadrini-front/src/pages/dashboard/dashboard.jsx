@@ -1,9 +1,8 @@
 import AdminSidebar from "../../components/Sidebar/AdminSidebar";
 import AdminNavbar from "../../components/Navbar/AdminNavbar";
-import "./dashboard.scss";
+import "./dashboard.css";
 import Widget from "../../components/widgets/widget";
-import React from 'react';
-
+import React from "react";
 
 const Home = () => {
   return (
