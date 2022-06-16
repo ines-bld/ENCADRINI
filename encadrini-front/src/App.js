@@ -7,7 +7,7 @@ import { ForgottenPassword } from './pages/ForgottenPassword';
 import { EnterCode } from './pages/EnterCode';
 import Form_utilisateur from './pages/create users/form_utilisateur';
 import { utilisateurInputs, entrepriseInputs } from "./components/formInputs";
-//import Login from './components/Login/Login.js';
+import Login from './components/Login/Login.js';
 import  Hello  from './pages/Hello';
 import List from './pages/list/List';
 import SingleUser from './pages/SingleUser/SingleUser';
@@ -21,7 +21,6 @@ import MesThemesPage from './pages/Mesthemes/MesThemesPage';
 import CreationDesComptes from './pages/create users/creation_des_comptes';
 import ViewMyThemePage from './pages/ViewMyThemePage/ViewMyThemePage.js';
 import { ToastContainer } from 'react-toastify';
-import Form from "../src/components/Login/Form.js"
 
 
 function App() {
@@ -53,7 +52,7 @@ function App() {
           </Route>
           <Route path="Profile" element={<Profile /> }/>  
           <Route path="signin" element={<Hello /> } /> 
-          <Route path="login" element={<Form/> } />
+          <Route path="login" element={<Login/> } />
           <Route path="themedeposes">
           <Route index element={<PromoTheme /> }/>
           <Route path="promo">

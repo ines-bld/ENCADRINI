@@ -6,7 +6,6 @@ import {Heading} from '../HeroSection/HeroElements';
 import "./login.css";
 import{Link} from "react-router-dom";
 import Axios from "axios";
-import UseForm from "./UseForm.js";
 import React, { useState } from 'react';
 
 
@@ -67,6 +66,7 @@ return (
           <Form.Group isRequired className="mb-3 mt-4" controlId="formBasicEmail">
            <Form.Label>Adresse email</Form.Label>
            <Form.Control   type="email" placeholder="Enter email" 
+           onChange={checkEmail}
            />
            <p className="text-danger p-2">{error}</p>
           </Form.Group>
