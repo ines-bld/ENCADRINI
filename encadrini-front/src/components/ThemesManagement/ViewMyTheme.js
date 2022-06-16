@@ -11,7 +11,7 @@ const ViewMyTheme = () => {
   useEffect(() => {
     const getTheme = async () => {
       setLoading(true);
-      const response = await fetch(`http://localhost:3000
+      const response = await fetch(`http://localhost:5000
       /mesthemes/${themeId}`)
       setTheme(await response.json());
       setLoading(false);
