@@ -2,7 +2,7 @@ export default function validateInfo(values){
     let errors = {};
     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{1,})$/i;
 
-    if (!values.username.trim() && ) {
+    if (!values.username.trim() ) {
       errors.username = 'Username Obligatoire';
     }
     
