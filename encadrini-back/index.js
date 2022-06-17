@@ -6,6 +6,18 @@ const logger = require('morgan');
 const session = require('express-session');
 const cors = require("cors");
 
+var livereload = require("livereload");
+var connectLiveReload = require("connect-livereload");
+
+
+const liveReloadServer = livereload.createServer();
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => {
+    liveReloadServer.refresh("/");
+  }, 100);
+});
+
+
 // const resetroutes = require('./routes/forgotPassword.js'); //idk
 const routes = require('./routes/handler.js');
 const routesGestionDesComptes = require('./routes/handlerGestionDesComptes.js');
@@ -14,6 +26,9 @@ const routesCreationDesUtilisateurs = require('./routes/handlerCreationDesUtilis
 
 const PORT= process.env.PORT || 5000;;  //backend routing port
 const app = express();
+
+app.use(connectLiveReload());
+
 
 app.use(cors());
 app.use(bodyParser.json());

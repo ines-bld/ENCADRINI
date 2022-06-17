@@ -26,7 +26,7 @@ const Employee = ({ employee }) => {
     handleClose();
   }, [employee]);
 
-  console.log(employee.activate);
+
 
   function sortPosteid (e) {
     let result;
@@ -105,7 +105,7 @@ const Employee = ({ employee }) => {
           overlay={<Tooltip id={`tooltip-top`}>Supprimer</Tooltip>}
         >
           <button
-            onClick={() => deleteEmployee(sortPosteid(employee)) }
+            onClick={() => { deleteEmployee(sortPosteid(employee)); window.location.reload(false);} }
             className="btn text-danger btn-act"
             data-toggle="modal"
           >
@@ -113,7 +113,7 @@ const Employee = ({ employee }) => {
           </button>
         </OverlayTrigger>
         <div class="form-check form-switch">
-        <input class="form-check-input"  value="on" type="checkbox" id="flexSwitchCheckChecked" onClick={() => activation(employee) } />
+        <input class="form-check-input"  value="on" type="checkbox" id="flexSwitchCheckChecked" onClick={() =>{ activation(employee) ; window.location.reload(false);}} />
         </div>
       </td>
 
