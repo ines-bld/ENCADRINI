@@ -8,6 +8,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import SubjectIcon from '@mui/icons-material/Subject';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import AddIcon from '@mui/icons-material/Add';
+import LogoutIcon from '@mui/icons-material/Logout';
 import logo from "../../images/LogoWhite.svg";
 import logoIcon from "../../images/LogoIcon.svg";
 import React from 'react'
@@ -20,12 +21,18 @@ import {
   FaShoppingBag,
   FaThList
 }from "react-icons/fa";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
 
 const EnseignantSidebar = ({children}) => {
+
+  const navigate = useNavigate();
+  function logOut() {
+    localStorage.clear();
+    navigate("/login");
+  }
   //isopen est une variablepour savoir si sidebar est ouverte ou pas initialisée à false (fermée)
   const[isOpen ,setIsOpen] = useState(false);
     const toggle = () => setIsOpen (!isOpen);
@@ -50,9 +57,9 @@ const EnseignantSidebar = ({children}) => {
             path:"/enseignant",
             name:"Thèmes valides",
             icon:<FactCheckIcon/>
-        },
-        
+        },      
     ]
+
   return (
     <div className="main-container-enseignant">
       <div style={{width: isOpen ? "200px" : "50px"}} className="sidebar-enseignant">
@@ -70,6 +77,10 @@ const EnseignantSidebar = ({children}) => {
           </NavLink>
         ))
       }
+      <NavLink to='/login' className="link" activeclassName="active" onClick={logOut}>
+            <div className="icon"><LogoutIcon/></div>
+            <div style={{display: isOpen ? "block" : "none"}} className="link_text">Se deconnecter</div>
+          </NavLink>
     </div>
    <main>{children}</main>
     </div>

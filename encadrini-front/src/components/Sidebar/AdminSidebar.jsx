@@ -7,10 +7,16 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ArticleIcon from "@mui/icons-material/Article";
 import logo from "../../images/Logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 
 const AdminSidebar = () => {
+  let user = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate();
+  function logOut() {
+    localStorage.clear();
+    navigate("/login");
+  }
   return (
     <div className="sidebar">
       <div className="top">
@@ -63,7 +69,7 @@ const AdminSidebar = () => {
               <span>Profil</span>
             </Link>
           </li>
-          <li>
+          <li onClick={logOut}>
             <ExitToAppIcon className="icon" />
             <span>Se déconnecter</span>
           </li>
