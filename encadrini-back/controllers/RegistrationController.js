@@ -72,19 +72,34 @@ router.post('/acc', userMiddleware.validateRegister, (req, res, next) => {
 });
 
   */
-
-router.post('/create', (req, res, next) => {
-
-  console.log("herr", req.body.nom)
-
-  bcrypt.hash(req.body.password, 10, (err, hash) => {
-    if (err) {
-      return res.status(500).send({
-        msg: err
-      });};
-      const nom=req.body.nom;
-
-
+ router.post('/create', userMiddleware.validateRegister, (req, res, next) => {
+        bcrypt.hash(req.body.password, 10, (err, hash) => {
+          if (err) {
+            return res.status(500).send({
+              msg: err
+            });};
+      db.query(
+        `INSERT INTO utilisateur  (idUser, nom,prenom,adresse ,dateNaiss,lieuNaiss,wilaya,situation,numTelph,sexe,email, password,poste) VALUES (  
+          ${db.escape(req.body.idUser)}, ${db.escape(req.body.nom)}, ${db.escape(req.body.prenom)}, ${db.escape(req.body.adresse)},
+           ${db.escape(req.body.dateNaiss)}, ${db.escape(req.body.lieuNaiss)}, ${db.escape(req.body.wilaya)}, 
+           'célibataire'
+        , ${db.escape(req.body.numTelph)},${db.escape(req.body.sexe)},${db.escape(req.body.email)},
+      ${db.escape(hash)},${db.escape(req.body.poste)})`,
+        (err, result) => {
+          if (err) {
+            throw err;
+            return res.status(400).send({
+              msg: err
+            });
+          }
+          return res.status(201).send({
+            msg: 'Registered!'
+          });
+        }
+      );
+      });
+    })
+      
   /*
   `INSERT INTO utilisateur (idUser,nom,prenom,adresse,dateNaiss,lieuNaiss,wilaya,situation,numTelph,sexe,email,password,activate,poste) VALUES 
                                ('14', ${db.escape(req.body.nom)},?,' N° 141 TEFFAH, Tiaret, Algerie', ?,?,?,'célibataire',?,?,?, ${db.escape(hash)},"1",?)`,
@@ -93,7 +108,7 @@ router.post('/create', (req, res, next) => {
         req.body.numTelph, req.body.sexe ,req.body.email , req.body.poste ],
         */
 
-
+/*
         db.query(
           `INSERT INTO utilisateur (idUser,nom,prenom,adresse,dateNaiss,lieuNaiss,wilaya,situation,numTelph,sexe,email,password,activate,poste) VALUES (  
             '16', ${db.escape(req.body.nom)}, ${db.escape(req.body.prenom)},' N° 141 TEFFAH, Tiaret, Algerie',
@@ -114,10 +129,10 @@ router.post('/create', (req, res, next) => {
 );
 });
 
-
-},)
-
+*/
 router.post('/login',(req, res, next) => {
+  console.log("hiii",req.body.email)
+
   db.query(
       `SELECT * FROM utilisateur WHERE email =${db.escape(req.body.email)};`,
     (err, result) => {

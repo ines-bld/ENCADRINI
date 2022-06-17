@@ -1,5 +1,5 @@
 import { Button,Form, Container,Row,Col} from "react-bootstrap";
-import loginIllustration from '../../images/login.svg'; 
+import loginIllustration from '../../images/6343823_Artboard 1.svg'; 
 import encadrini_logo from '../../images/Logo.svg';
 import "bootstrap/dist/css/bootstrap.css"; 
 import {Heading} from '../HeroSection/HeroElements'; 
@@ -7,78 +7,93 @@ import "./login.css";
 import{Link, useNavigate} from "react-router-dom";
 
 import Axios from "axios";
-import React, { useState, useEffect } from 'react';
-
-
-
+import React, { useState ,useEffect} from 'react';
 const Login = () => {
-
 Axios.defaults.withCredentials = true;
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 const [poste,setPoste] = useState("");
 let navigate = useNavigate();
-const auth = () => {
-    Axios.post("http://localhost:5000/login", {
+
+
+
+const useAuth = ()  => {
+
+    Axios.post("http://localhost:3000/login",{
       email: email,
-      passwrd: password,
+      password: password,
       poste: poste,
+
     }).then((response) => {
-      localStorage.setItem('user',JSON.stringify(response.data.user)) ;
-      setPoste(response.data.poste);
+
+    //  localStorage.setItem('user',response.config.data) ;
+     setPoste(response.config.data.poste);
     });
-}
+
+    
+
+
+
           
 useEffect(() => {
 
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user =  localStorage.getItem('user') ;
+console.log(user);
   
-  console.log(user);
-  if(user){
   if (user.poste==="Prof"){
     navigate('/Profile')
   }else if(user.poste==="Etudiant"){
     navigate('/MesThemes')
   }
-  }else{
+else{
   navigate('/login');
   }
-  },[poste]);
+  },[poste])}
+
+  
 return ( 
       <>
-      <Container fluid className="mt-2 px-3">
+      <Container className="mt-5">
           <Row>
               <Col lg={4} md={6} sm={12}>
-         <Form action="/login" method="post" className="loginForm">
-           <img src={encadrini_logo} />
-           <h2>Se connecter</h2>
-          <Form.Group controlId="formBasicEmail">
+         <Form action="/login" method="POST">
+           <img className=" aligh-left logo" src={encadrini_logo} />
+           <Heading><b>Se connecter</b></Heading>
+          <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
            <Form.Label>Adresse email</Form.Label>
            <Form.Control type="email" placeholder="Enter email" 
               onChange={(e) => {
                 setEmail(e.target.value);}}
            />
           </Form.Group>
-          
-         <Form.Group controlId="formBasicPassword">
+
+         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Mot de passe"
              onChange={(e) => {
               setPassword(e.target.value);}}
           />
            </Form.Group>
-          <Form.Group controlId="formBasicCheckbox">
+          <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Se rappeler de moi" />
-           </Form.Group>
+           </Form.Group >
+
+             <center>
               
-          <button className="loginButton" onClick={auth}  type="submit">
-             Se connecter 
-             </button>                  
+          <button className="loginButton" onClick={useAuth}  type="button">
+
+             Se connecter
+             </button>
+
+          
+ </center>
+           <div className="text-center mt-3">
             <a href="#" className="reset">Mot de passe oublié?</a>
+            </div>
              </Form>
              </Col>
         <Col lg={8} md={6} sm={12}>
-            <img height={'500px'} width={'800px'} src={loginIllustration} />
+            <img className="w-100" src={loginIllustration} />
          </Col>
         </Row>
         </Container>   
@@ -87,4 +102,4 @@ return (
     );
 }
  
-export default Login
+export default Login;
