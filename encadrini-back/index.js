@@ -31,6 +31,14 @@ app.use(connectLiveReload());
 
 
 app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    headers:["Access-Control-Allow-Origin: *"],
+    credentials: true
+
+  }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(express.json());

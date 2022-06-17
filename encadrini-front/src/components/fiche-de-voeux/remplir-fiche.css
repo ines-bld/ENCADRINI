@@ -1,0 +1,36 @@
+.text {
+    margin-left: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #3A0CA3;
+    font-size: 30px;
+}
+
+.fiche {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.btnfiche {
+    padding: 5px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #7B2CBF;
+    border-radius: 20px;
+}
+
+.btnfiche:hover {
+    opacity: 0.6;
+}
+
+.select {
+    min-width: 50ch;
+    max-width: 50ch;
+    align-items: center;
+    margin-top: 20px;
+
+}

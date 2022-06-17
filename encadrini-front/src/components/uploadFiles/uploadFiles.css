@@ -1,0 +1,22 @@
+:root {
+
+    --box-bg: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --txt-color: #2f2d2f;
+    --txt-second-color: #ccc;
+    --border-color: #3A0CA3;
+    --box-shadow: rgba(176, 177, 179, 0.2) 0px 8px 24px;
+}
+
+.box {
+    background-color: var(--box-bg);
+    padding: 50px;
+    border-radius: 20px;
+}
+
+.header {
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #3A0CA3;
+}

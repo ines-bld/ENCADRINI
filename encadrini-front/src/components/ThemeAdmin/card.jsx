@@ -6,11 +6,9 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const Card = () => {
-
   const { promoId } = useParams();
 
   const [themes, setThemes] = useState([]);
-
 
   useEffect(() => {
     axios
@@ -18,6 +16,19 @@ const Card = () => {
       .then((res) => {
         console.log(res.data);
         setThemes(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const [titre, setTitre] = useState("hada test ta3 titre");
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos/1")
+      .then((res) => {
+        console.log(res);
+        setTitre(res.data.title);
       })
       .catch((err) => {
         console.log(err);
@@ -34,7 +45,7 @@ const Card = () => {
               <h4>{theme.titre}</h4>
             </div>
             <Link to={`/gestionDsthemes/${promoId}/viewTheme/${theme.idTheme}`}>
-              <button >consulter</button>
+              <button>consulter</button>
             </Link>
           </li>
         ))}
@@ -44,4 +55,3 @@ const Card = () => {
 };
 
 export default Card;
-
