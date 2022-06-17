@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
-import { TextField } from "./../components/TextField";
+import { TextField } from "./../../components/TextField";
 import * as Yup from "yup";
-import rocketImg from "./../images/setpsw.png";
+import rocketImg from "./../../images/setpsw.png";
 import { Col, Container, Row } from "react-bootstrap";
-import { StyledFormButton, StyledTitle } from "./../components/Styles";
+import { StyledFormButton, StyledTitle } from "./../../components/Styles";
 import "bootstrap/dist/css/bootstrap.css";
 
 export const ResetPassword = () => {

@@ -1,18 +1,18 @@
 import React from 'react'
 import ThemeContextProvider from '../../components/ThemesManagement/ThemesContext'
 import MesThemes from '../../components/ThemesManagement/MesThemes'
-import AdminNavbar from '../../components/Navbar/AdminNavbar'
-import AdminSidebar from '../../components/Sidebar/AdminSidebar'
+import UserSidebar from "../../components/Sidebar/EnseignantSidebar";
 import './MesThemesPage.scss'
+import AdminNavbar from '../../components/Navbar/AdminNavbar';
 
 const MesThemesPage = () => {
   return (
     
     <ThemeContextProvider>
      <div className='list'>
-        <AdminSidebar/>
+     <UserSidebar />
         <div className="listContainer">
-        <AdminNavbar/>
+          <AdminNavbar />
         <MesThemes/>
     </div>
     </div>

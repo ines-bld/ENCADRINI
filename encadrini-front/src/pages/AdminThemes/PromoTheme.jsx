@@ -12,7 +12,6 @@ const PromoTheme = () => {
     { id: 5, promo: "3CS", def: "Troisieme annee classe superieure" },
   ];
 
-  
   return (
     <>
       <div className="ipromo">

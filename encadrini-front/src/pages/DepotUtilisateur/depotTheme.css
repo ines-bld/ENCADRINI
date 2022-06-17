@@ -1,0 +1,15 @@
+.depot {
+    width: 100%;
+    display: flex;
+}
+
+.depotContainer {
+flex: 6;
+}
+
+.file{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
