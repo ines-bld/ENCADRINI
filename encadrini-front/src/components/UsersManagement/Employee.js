@@ -54,7 +54,7 @@ const Employee = ({ employee }) => {
 
   function activation(e) {
     axios
-      .get(`http://localhost:5000/gestionDsComptes/desactivate/${sortPosteid (e)}`)
+      .get(`http://localhost:5000/gestionDsComptes/desactivate/${sortPosteid(e)}`)
       .then((res) => {
         console.log(res);
         console.log(res.data);

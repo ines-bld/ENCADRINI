@@ -51,11 +51,11 @@ function App() {
           <Route path="Profile" element={<Profile /> }/>  
           <Route path="signin" element={<Hello /> } /> 
           <Route path="login" element={<Login /> } />
-          <Route path="themedeposes">
+          <Route path="gestionDsthemes">
           <Route index element={<PromoTheme /> }/>
-          <Route path="promo">
+          <Route path=":promoId">
             <Route index element={<ThemeDepose />}/>
-            <Route path=":themeId" element={<ThemeInfo />}/>
+            <Route path="viewTheme/:themeId" element={<ThemeInfo />}/>
           </Route>
           </Route>
           <Route path="MesThemes" element={<MesThemesPage /> } />
