@@ -2,7 +2,7 @@ import React from "react";
 import "./ThemeDepose.css";
 import AdminNavbar from "../../components/Navbar/AdminNavbar";
 import AdminSidebar from "../../components/Sidebar/AdminSidebar";
-import Table from "../../components/ThemeAdmin/TableAdmin";
+import Card from "../../components/ThemeAdmin/card";
 
 const ThemeDepose = () => {
   return (
@@ -11,7 +11,7 @@ const ThemeDepose = () => {
         <AdminSidebar />
         <div className="themeContainer">
           <AdminNavbar />
-          <Table />
+          <Card />
         </div>
       </div>
     </>

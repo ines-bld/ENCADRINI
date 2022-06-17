@@ -1,25 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./card.css";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 
 const Card = () => {
-  const data = [
-    { id: 1, titre: "premier theme", responsable: "bensaber" },
-    { id: 2, titre: "deuxieme theme", responsable: "benslimane" },
-    { id: 3, titre: "troisieme theme", responsable: "malki" },
-  ];
+
+  const { promoId } = useParams();
+
+  const [themes, setThemes] = useState([]);
+
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/gestionDsthemes/${promoId}`)
+      .then((res) => {
+        console.log(res.data);
+        setThemes(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <>
+      <h1>Thèmes déposés</h1>
       <div className="themes">
-        {data.map((theme) => (
+        {themes.map((theme) => (
           <li>
             <div className="text">
               <h4>{theme.titre}</h4>
-              <p>{theme.responsable}</p>
             </div>
-            <Link to={`/themedeposes/promo/${theme.id}`}>
-              <button>consulter</button>
+            <Link to={`/gestionDsthemes/${promoId}/viewTheme/${theme.idTheme}`}>
+              <button >consulter</button>
             </Link>
           </li>
         ))}
@@ -29,3 +44,4 @@ const Card = () => {
 };
 
 export default Card;
+

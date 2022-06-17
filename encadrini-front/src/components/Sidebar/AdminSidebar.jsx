@@ -45,7 +45,7 @@ const AdminSidebar = () => {
             </li>
           </Link>
           <p className="title">GESTION DES DEPOTS</p>
-          <Link to="/themeDeposes" style={{ textDecoration: "none" }}>
+          <Link to="/gestionDsthemes" style={{ textDecoration: "none" }}>
             <li>
               <ArticleIcon className="icon" />
               <span>Voir les themes deposes</span>
