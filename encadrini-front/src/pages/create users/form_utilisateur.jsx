@@ -48,7 +48,8 @@ const Form_enseignant = () => {
         poste: poste,
       })
       .then((response) => {
-        localStorage.setItem("user", response.config.data);
+        console.log(response.config.data);
+        localStorage.setItem("user", JSON.stringify(response.config.data));
       });
   };
   return (
