@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../../components/Sidebar/AdminSidebar";
 import Navbar from "../../components/Navbar/AdminNavbar";
 import UploadExcel from "../../components/uploadExcel/uploadExcel";
+import { Form, Button } from "react-bootstrap";
 
-const form_entreprise = () => {
+const Form_entreprise = () => {
+  const [validated, setValidated] = useState(false);
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+  };
+
   return (
     <div className="new">
       <Sidebar />
@@ -14,37 +26,55 @@ const form_entreprise = () => {
         </div>
         <div className="bottom">
           <div className="right">
-            <form action="/create" method="POST">
-              <div className="formInput">
-                <label>Nom</label>
-                <input required type="text" placeholder="emerald's" />
-              </div>
-              <div className="formInput">
-                <label>Adresse</label>
-                <input
+            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+              <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
+                <Form.Label>IDENTREPRISE</Form.Label>
+                <Form.Control
+                  className="input"
+                  type="email"
+                  placeholder="Id d'entreprise"
                   required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>NOM</Form.Label>
+                <Form.Control type="text" placeholder="emerald's" required />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>ADRESSE</Form.Label>
+                <Form.Control
                   type="text"
                   placeholder="sidi bel abbes algerie"
                 />
-              </div>
-              <div className="formInput">
-                <label>telephone</label>
-                <input required type="text" placeholder="046983472" />
-              </div>
-              <div className="formInput">
-                <label>Email</label>
-                <input
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>TELEPHONE</Form.Label>
+                <Form.Control type="texte" placeholder="046983472" />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="formBasicPassword"
+                required
+              >
+                <Form.Label>EMAIL</Form.Label>
+                <Form.Control type="email" placeholder="emeralds22@gmail.com" />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>PASSWORD</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Mot de passe"
                   required
-                  type="mail"
-                  placeholder="emeralds22@gmail.com"
                 />
-              </div>
-              <div className="formInput">
-                <label>Description</label>
-                <input required type="text" placeholder="bla bla bla" />
-              </div>
-              <button type="button">Confirm</button>
-            </form>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>DESCRIPTION</Form.Label>
+                <Form.Control type="text" placeholder="bla bla bla" />
+              </Form.Group>
+              <Button type="submit" className="createButton">
+                Confirmer
+              </Button>
+            </Form>
           </div>
         </div>
       </div>
@@ -52,4 +82,4 @@ const form_entreprise = () => {
   );
 };
 
-export default form_entreprise;
+export default Form_entreprise;

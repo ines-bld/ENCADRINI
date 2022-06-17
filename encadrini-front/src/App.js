@@ -7,7 +7,7 @@ import { ForgottenPassword } from './pages/ForgetPassword/ForgottenPassword';
 import { EnterCode } from './pages/ForgetPassword/EnterCode';
 import Form_utilisateur from './pages/create users/form_utilisateur';
 import Form_entreprise from './pages/create users/form_entreprise';
-import Login from './components/Login/Login.js';
+import Login from './components/Login/Login.jsx';
 import  Hello  from './pages/Hello';
 import List from './pages/list/List';
 import SingleUser from './pages/SingleUser/SingleUser';
