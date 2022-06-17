@@ -76,7 +76,7 @@ exports.viewdetail = (req, res) => {
         //when done with the connection release it
 
         if (!err) {
-           //var newrows = [];
+           var newrows = [];
             connection.query(
               "select * from utilisateur where idUser= ? ; select * from promotion where idPromo = ?",[rows[0].idProf,rows[0].idPromo ],
               (err, resultat) => {
@@ -86,13 +86,14 @@ exports.viewdetail = (req, res) => {
                            "idTheme": rows[0].idTheme,
                            "titre": rows[0].titre,
                            "resume": rows[0].resume,
+                           "state": rows[0].valide,
                            "responsableNom": resultat[0][0].nom,
                            "responsablePrenom": resultat[0][0].prenom,
                            "promotion": resultat[1][0].annee
                         }
-                  //newrows.push(datatheme)
+                  newrows.push(datatheme)
                   connection.release();
-                  res.json(datatheme);
+                  res.json(newrows);
                 } else {
                   console.log(err);}}
             );          
@@ -147,7 +148,35 @@ exports.validate = (req, res) => {
     //User the connection
     connection.query(
       "update theme set valide = ? where idPromo= ? and idTheme = ? ; insert into projet (idProjet) values (?)",
-      [1,req.params.promo, req.params.id,req.params.id],
+      ["valide",req.params.promo, req.params.id,req.params.id],
+      (err, rows) => {
+        //when done with the connection release it
+        if (!err) {            
+                  connection.release();
+                  //res.redirect(`/gestionDsthemes/${[req.params.promo]}/viewTheme/${[req.params.id]}`);   
+                  res.end();     
+          //res.end();
+        } else {
+          console.log(err);
+          connection.release();
+        }
+      }
+    );
+  });
+};
+
+
+//valider le thème 
+exports.refuse = (req, res) => {
+  pool.getConnection((err, connection) => {
+    if (err) throw err; //not connected
+    console.log("refuse:::Connected as ID " + connection.threadId);
+    console.log(req.params.id);
+
+    //User the connection
+    connection.query(
+      "update theme set valide = ? where idPromo= ? and idTheme = ? ",
+      ["refuse",req.params.promo, req.params.id],
       (err, rows) => {
         //when done with the connection release it
         if (!err) {            
