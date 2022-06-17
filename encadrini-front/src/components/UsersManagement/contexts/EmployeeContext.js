@@ -32,9 +32,17 @@ const EmployeeContextProvider = (props) => {
     ]);
   };
 
-  const deleteEmployee = (id) => {
-    setEmployees(employees.filter((employee) => employee.id !== id));
-  };
+  const deleteEmployee = async(id) => { 
+    if(window.confirm("voulez vous vraiment supprimer cet utilisateur")) 
+    { 
+        const response = await axios.get(`http://localhost:5000/gestionDsComptes/${id}`); 
+        if(response.status === 200) 
+        { 
+            console.log("utilisateur supprimé") 
+            //we add here the function used to bring the users from the backend 
+        } 
+    } 
+}
 
   const updateEmployee = (id, updatedEmployee) => {
     setEmployees(

@@ -1,85 +1,137 @@
-import {useContext, useState, useEffect} from 'react';
-import {EmployeeContext} from './contexts/EmployeeContext';
-import { Modal, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import EditForm from './EditForm';
-import './Employeelist.scss';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { Link } from 'react-router-dom';
-import React from 'react';
+import { useContext, useState, useEffect } from "react";
+import { EmployeeContext } from "./contexts/EmployeeContext";
+import { Modal, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+import EditForm from "./EditForm";
+import "./Employeelist.scss";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
+import React from "react";
+import axios from "axios";
+
+const Employee = ({ employee }) => {
+  const { deleteEmployee } = useContext(EmployeeContext);
+
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
+  useEffect(() => {
+    handleClose();
+  }, [employee]);
+
+  console.log(employee.activate);
+
+  function sortPosteid (e) {
+    let result;
+    if (e.poste === "Entreprise") {
+      result = e.idCompany;
+    } else {
+      result = e.idUser;
+    }
+    return result;
+  }
+  
+
+  
+  function getStatut (e) {
+    let result;
+    if (e.activate) {
+      result = "active";
+    } else {
+      result = "inactive";
+    }
+    return result;
+  }
 
 
 
-const Employee = ({employee}) => {
+  function activation(e) {
+    axios
+      .get(`http://localhost:5000/gestionDsComptes/desactivate/${sortPosteid(e)}`)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+   function setStatut(e) {
+    let result;
+    if (e.activate) {
+      result = "checked";
+    } else {
+      result = "";
+    }
+    return result;
+   }
 
-    const {deleteEmployee} = useContext(EmployeeContext)
+  return (
+    <>
+      <td>{employee.nom}</td>
+      <td>{employee.prenom}</td>
+      <td>{employee.email}</td>
+      <td>{employee.adresse}</td>
+      <td className={`CellWithStatus ${getStatut(employee)}`}>{getStatut(employee)}</td>
+      <td>
+        <OverlayTrigger
+          overlay={<Tooltip id={`tooltip-top`}>Consulter</Tooltip>}
+        >
+          <Link to={`/gestionDsComptes/viewuser/${sortPosteid(employee)}`}>
+            <button className="btn view-button" data-toggle="modal" >
+              Consult
+            </button>
+          </Link>
+        </OverlayTrigger>
+        <OverlayTrigger
+          overlay={<Tooltip id={`tooltip-top`}>Modifier</Tooltip>}
+        >
+          <button
+            onClick={handleShow}
+            className="btn text-warning btn-act"
+            data-toggle="modal"
+          >
+            Modif
+          </button>
+        </OverlayTrigger>
+        <OverlayTrigger
+          overlay={<Tooltip id={`tooltip-top`}>Supprimer</Tooltip>}
+        >
+          <button
+            onClick={() => deleteEmployee(sortPosteid(employee)) }
+            className="btn text-danger btn-act"
+            data-toggle="modal"
+          >
+            Supp
+          </button>
+        </OverlayTrigger>
+        <div class="form-check form-switch">
+        <input class="form-check-input"  value="on" type="checkbox" id="flexSwitchCheckChecked" onClick={() => activation(employee) } />
+        </div>
+      </td>
 
-    const [show, setShow] = useState(false);
-    
-    const handleShow = () => setShow(true);
-    const handleClose = () => setShow(false);
-
-    useEffect(() => {
-        handleClose()
-    }, [employee])
-    console.log(employee.statut)
-    return (
-        <>
-            <td>{employee.nom}</td>
-            <td>{employee.prenom}</td>
-            <td>{employee.email}</td>
-            <td>{employee.adresse}</td>
-            <td  className={`CellWithStatus ${employee.statut}`}>{employee.statut}</td>
-            <td>
-            <OverlayTrigger
-                    overlay={
-                        <Tooltip id={`tooltip-top`}>
-                            Consulter
-                        </Tooltip>
-                    }>
-                   <Link to={`/gestionDsComptes/viewuser/${employee.id}`}>
-                    <button  className="btn view-button" data-toggle="modal">Consult</button></Link>
-                </OverlayTrigger>
-                <OverlayTrigger
-                    overlay={
-                        <Tooltip id={`tooltip-top`}>
-                            Modifier
-                        </Tooltip>
-                    }>
-                    <button onClick={handleShow}  className="btn text-warning btn-act" data-toggle="modal">Modif</button>
-                </OverlayTrigger>
-                <OverlayTrigger
-                    overlay={
-                        <Tooltip id={`tooltip-top`}>
-                            Supprimer
-                        </Tooltip>
-                    }>
-                    <button onClick={() => deleteEmployee(employee.id)}  className="btn text-danger btn-act" data-toggle="modal">Supp</button>
-                </OverlayTrigger>
-            </td>
-
-            <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-            <Modal.Title>
-                Edit Employee
-            </Modal.Title>
+          <Modal.Title>Edit Employee</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <EditForm theEmployee={employee} />
+          <EditForm theEmployee={employee} />
         </Modal.Body>
         <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                    Fermer 
-                </Button>
+          <Button variant="secondary" onClick={handleClose}>
+            Fermer
+          </Button>
         </Modal.Footer>
-    </Modal>
-        </>
-    )
-}
+      </Modal>
+    </>
+  );
+};
 
 export default Employee;

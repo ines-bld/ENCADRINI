@@ -52,31 +52,36 @@ exports.viewdetail = (req, res) => {
     console.log("viewuser:::Connected as ID " + connection.threadId);
     console.log(req.params.id);
     //User the connection
-    connection.query("select * from utilisateur where idUser = ?",[req.params.id],(err, rows) => {
+    connection.query(
+      "select * from utilisateur where idUser = ?",
+      [req.params.id],
+      (err, rows) => {
         if (!rows.length) {
-          connection.query("select * from entreprise where idCompany = ?",[req.params.id],(err, resultat) => {
-               connection.release();
-               if (!err) {
-                 res.json(resultat);
-                 //res.end();
-               } else {
-                 console.log(err);
-               }
+          connection.query(
+            "select * from entreprise where idCompany = ?",
+            [req.params.id],
+            (err, resultat) => {
+              connection.release();
+              if (!err) {
+                res.json(resultat);
+                //res.end();
+              } else {
+                console.log(err);
+              }
               console.log("the data from entreprise \n ", resultat);
             }
           );
-        }else{
-         //when done with the connection release it
-        connection.release();
-        if (!err) {
-          res.json(rows);
-          //res.end();
         } else {
-          console.log(err);
+          //when done with the connection release it
+          connection.release();
+          if (!err) {
+            res.json(rows);
+            //res.end();
+          } else {
+            console.log(err);
+          }
+          console.log("the data from utilisateur \n ", rows);
         }
-        console.log("the data from utilisateur \n ", rows);
-        }
-        
       }
     );
   });
@@ -92,31 +97,36 @@ exports.edit = (req, res) => {
     console.log(req.params.id);
 
     //User the connection
-    connection.query("select * from utilisateur where idUser = ?",[req.params.id],(err, rows) => {
+    connection.query(
+      "select * from utilisateur where idUser = ?",
+      [req.params.id],
+      (err, rows) => {
         if (!rows.length) {
-          connection.query("select * from entreprise where idCompany = ?",[req.params.id],(err, resultat) => {
-               connection.release();
-               if (!err) {
-                 res.json(resultat);
-                 //res.end();
-               } else {
-                 console.log(err);
-               }
+          connection.query(
+            "select * from entreprise where idCompany = ?",
+            [req.params.id],
+            (err, resultat) => {
+              connection.release();
+              if (!err) {
+                res.json(resultat);
+                //res.end();
+              } else {
+                console.log(err);
+              }
               console.log("the data from entreprise \n ", resultat);
             }
           );
-        }else{
-         //when done with the connection release it
-        connection.release();
-        if (!err) {
-          res.json(rows);
-          //res.end();
         } else {
-          console.log(err);
+          //when done with the connection release it
+          connection.release();
+          if (!err) {
+            res.json(rows);
+            //res.end();
+          } else {
+            console.log(err);
+          }
+          console.log("the data from utilisateur \n ", rows);
         }
-        console.log("the data from utilisateur \n ", rows);
-        }
-        
       }
     );
   });
@@ -133,7 +143,9 @@ exports.update = (req, res) => {
 
     //User the connection
     connection.query(
-      "update utilisateur set email = ? , phone = ?  where idUser = ? ",[ email, phone, req.params.id],(err, rows) => {
+      "update utilisateur set email = ? , phone = ?  where idUser = ? ",
+      [email, phone, req.params.id],
+      (err, rows) => {
         //when done with the connection release it
         connection.release();
         if (!err) {
@@ -142,7 +154,10 @@ exports.update = (req, res) => {
             console.log("Connected as ID " + connection.threadId);
 
             //User the connection
-            connection.query("select * from utilisateur where idUser = ? ",[req.params.id],(err, rows) => {
+            connection.query(
+              "select * from utilisateur where idUser = ? ",
+              [req.params.id],
+              (err, rows) => {
                 //when done with the connection release it
                 connection.release();
 
@@ -159,8 +174,6 @@ exports.update = (req, res) => {
               }
             );
           });
-
-          // res.render('edituser',{ rows });
         } else {
           console.log(err);
         }
@@ -177,116 +190,185 @@ exports.delete = (req, res) => {
     console.log("deleteuser:::Connected as ID " + connection.threadId);
     console.log(req.params.id);
 
-
     //User the connection
-    connection.query("select * from utilisateur where idUser = ?",[req.params.id],(err, rows) => {
+    connection.query("select * from utilisateur where idUser = ?",[req.params.id],
+      (err, rows) => {
         if (!rows.length) {
-          connection.query("DELETE from entreprise where idCompany = ?",[req.params.id],(err, resultat) => {
-               connection.release();
-               if (!err) {
-                let removedUser = encodeURIComponent("User has been removed ");
-                res.redirect("/gestionDsComptes/?removed=" + removedUser);
-                 //res.end();
-               } else {
-                 console.log(err);
-               }
-              console.log("the data from entreprise \n ", resultat);
+          connection.query("DELETE from entreprise where idCompany = ?",[req.params.id],
+            (err, resultat) => {
+              if (!resultat.length) {
+                res.status(500).send({ error: "This user doesn't even exist !" });
+              } else {
+                connection.release();
+                if (!err) {
+                  let removedUser = encodeURIComponent("User has been removed ");
+                  res.redirect("/gestionDsComptes/?removed=" + removedUser);
+                  //res.end();
+                } else {
+                  console.log(err);
+                }
+                console.log("the data from entreprise \n ", resultat);
+              }            
             }
           );
-        }else{
-         //when done with the connection release it
-        if (!err) {
-           connection.query("DELETE from utilisateur where idUser = ? ",[req.params.id],(err, rows) => {
-        //when done with the connection release it
-        connection.release();
+        } else {
+          //when done with the connection release it
+          if (!err) {
+            switch (rows[0].poste) {
+              case "Etudiant":
+                console.log("Inside etudiant");
 
-        if (!err) {
-          let removedUser = encodeURIComponent("User has been removed ");
-          res.redirect("/gestionDsComptes/?removed=" + removedUser);
-        } else {
-          console.log(err);
+                connection.query(
+                  "DELETE from etudiant where idEtudiant = ? ;DELETE from utilisateur where idUser = ? ",
+                  [req.params.id, req.params.id],
+                  (err, rowss) => {
+                    //when done with the connection release it
+                    connection.release();
+                    if (!err) {
+                      let removedUser = encodeURIComponent(
+                        "User has been removed "
+                      );
+                      res.redirect("/gestionDsComptes/?removed=" + removedUser);
+                    } else {
+                      console.log(err);
+                    }
+                    console.log("the data from etudiant \n ", rowss);
+                  }
+                );
+                break;
+              case "Enseignant":
+                console.log("Inside enseignant");
+
+                connection.query(
+                  "DELETE from enseignant where idProf = ? ;DELETE from utilisateur where idUser = ? ",
+                  [req.params.id, req.params.id],
+                  (err, rowss) => {
+                    //when done with the connection release it
+                    connection.release();
+
+                    if (!err) {
+                      let removedUser = encodeURIComponent(
+                        "User has been removed "
+                      );
+                      res.redirect("/gestionDsComptes/?removed=" + removedUser);
+                    } else {
+                      console.log(err);
+                    }
+                    console.log("the data from enseignant \n ", rowss);
+                  }
+                );
+
+                connection.release();
+                break;
+              default:
+                res.status(500).send({ error: "something blew up" });
+            }
+          } else {
+            console.log(err);
+          }
         }
-        console.log("the data from utilisateur \n ", rows);
-      }
-    );
-        } else {
-          console.log(err);}
-        }        
       }
     );
   });
-
 };
 
 //delete user
 exports.desactivate = (req, res) => {
-
   pool.getConnection((err, connection) => {
     if (err) throw err; //not connected
     console.log("desactivateuser:::Connected as ID " + connection.threadId);
 
-
     //User the connection
-    connection.query("select * from utilisateur where idUser = ?",[req.params.id],(err, rows) => {
+    connection.query(
+      "select * from utilisateur where idUser = ?",
+      [req.params.id],
+      (err, rows) => {
         if (!rows.length) {
-          connection.query("select * from entreprise where idCompany = ?",[req.params.id],(err, resultat) => {
-               if (!err) {
-                 connection.query("update entreprise set activate = ? where idCompany = ? ",[!resultat[0].activate, req.params.id],(err, rows) => {
-             //when done with the connection release it
-             connection.release();
-             if (!err) {
-              res.redirect(`/gestionDsComptes/viewuser/${[req.params.id]}`);
-             } else {
-                 console.log(err);
-             }
-                 console.log("the data from utilisateur \n ", rows);
-            }
-            );
-               } else {
-                 console.log(err);
-               }
+          connection.query(
+            "select * from entreprise where idCompany = ?",
+            [req.params.id],
+            (err, resultat) => {
+              if (!err) {
+                connection.query(
+                  "update entreprise set activate = ? where idCompany = ? ",
+                  [!resultat[0].activate, req.params.id],
+                  (err, rows) => {
+                    //when done with the connection release it
+                    connection.release();
+                    if (!err) {
+                      res.redirect(
+                        `/gestionDsComptes/viewuser/${[req.params.id]}`
+                      );
+                    } else {
+                      console.log(err);
+                    }
+                    console.log("the data from utilisateur \n ", rows);
+                  }
+                );
+              } else {
+                console.log(err);
+              }
               console.log("the data from entreprise \n ", resultat);
             }
           );
-        }else{
-         //when done with the connection release it
-        if (!err) {
-           connection.query("update utilisateur set activate = ? where idUser = ? ",[!rows[0].activate, req.params.id],(err, rows) => {
-        //when done with the connection release it
-        connection.release();
-        if (!err) {
-          res.redirect(`/gestionDsComptes/viewuser/${[req.params.id]}`);
         } else {
-          console.log(err);
+          //when done with the connection release it
+          if (!err) {
+            connection.query(
+              "update utilisateur set activate = ? where idUser = ? ",
+              [!rows[0].activate, req.params.id],
+              (err, rows) => {
+                //when done with the connection release it
+                connection.release();
+                if (!err) {
+                  res.redirect(`/gestionDsComptes/viewuser/${[req.params.id]}`);
+                } else {
+                  console.log(err);
+                }
+                console.log("the data from utilisateur \n ", rows);
+              }
+            );
+          } else {
+            console.log(err);
+          }
         }
-        console.log("the data from utilisateur \n ", rows);
-      }
-    );
-        } else {
-          console.log(err);}
-        }        
       }
     );
   });
-
 };
 
-//find users by search
-// exports.find=(req, res)=>{
-//   pool.getConnection((err,connection)=>{
-//       if(err) throw err ; //not connected
-//       console.log('Connected as ID ' + connection.threadId);
-//       let searchTerm = req.body.search ;  //search is the name of the input
-//       //User the connection
-//       connection.query('select * from utilisateur where nom LIKE ? OR prenom LIKE ? ', ['%' + searchTerm + '%' , '%' + searchTerm + '%'] ,(err , rows) => {
-//         //when done with the connection release it
-//         connection.release();
-//         if(!err){
-//           res.json(rows);
-//         }else {
-//             console.log(err);
-//         }
-//         console.log('the data from utilisateur \n ', rows);
-//       });
-//   });
-// }
+// find users by search
+exports.find = (req, res) => {
+  pool.getConnection((err, connection) => {
+    if (err) throw err; //not connected
+    console.log("viewuser:::Connected as ID " + connection.threadId);
+    let searchTerm = req.body.search; //search is the name of the input
+
+    //User the connection
+    connection.query(
+      "select * from utilisateur where nom LIKE ? OR prenom LIKE ? OR poste LIKE ?  ; select * from entreprise where nom LIKE ? OR prenom LIKE ? OR poste LIKE ?  ",
+      [
+        "%" + searchTerm + "%",
+        "%" + searchTerm + "%",
+        "%" + searchTerm + "%",
+        "%" + searchTerm + "%",
+        "%" + searchTerm + "%",
+        "%" + searchTerm + "%"
+      ],
+      (err, rows) => {
+        //when done with the connection release it
+        connection.release();
+        const resultat = rows[0].concat(rows[1]);
+
+        if (!err) {
+          //let removedUser = req.query.removed;
+          res.json(resultat);
+          //res.render('home',{ rows , removedUser });
+        } else {
+          console.log(err);
+        }
+        console.log("the data from utilisateur \n ", resultat);
+      }
+    );
+  });
+};
