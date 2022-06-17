@@ -33,26 +33,6 @@ exports.view = (req, res) => {
         
         if (!err) {
 
-          // var newrows = [];
-          // rows.forEach((theme) => {
-          //   connection.query(
-          //     "select * from utilisateur where idUser= ? ",[theme.idProf],(err, resultat) => {
-          //       if (!err) {
-          //         var datatheme =
-          //               {
-          //                  "idTheme": theme.idTheme,
-          //                  "titre": theme.titre,
-          //                  "responsableNom": resultat[0].nom,
-          //                  "responsablePrenom": resultat[0].prenom
-          //               }
-          //         newrows.push(datatheme)
-          //         console.log('herreee',newrows)  
-          //       } else {
-          //         console.log(err);}}
-          //   );           
-          // }); 
-
-
           connection.release();     
           res.json(rows);
         } else {connection.release();console.log(err); }
