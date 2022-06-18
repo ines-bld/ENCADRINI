@@ -18,7 +18,6 @@ pool.getConnection((err, connection) => {
 });
 
 exports.view = (req, res) => {
-
   pool.getConnection((err, connection) => {
     if (err) throw err; //not connected
     console.log("Connected as ID " + connection.threadId);
@@ -56,28 +55,44 @@ exports.viewdetail = (req, res) => {
         //when done with the connection release it
 
         if (!err) {
-           var newrows = [];
-            connection.query(
-              "select * from utilisateur where idUser= ? ; select * from promotion where idPromo = ?",[rows[0].idProf,rows[0].idPromo ],
-              (err, resultat) => {
-                if (!err) {
+          var newrows = [];
+          connection.query(
+            "select * from utilisateur where idUser= ? ; select * from promotion where idPromo = ?; select * from entreprise where idCompany= ?  ",[rows[0].idProf,rows[0].idPromo,rows[0].idCompany],
+            (err, resultat) => {
+              console.log(resultat[2].idCompany);
+              if (!err) {
+                if (!resultat[2].length) {
                   var datatheme =
-                        {
-                           "idTheme": rows[0].idTheme,
-                           "titre": rows[0].titre,
-                           "resume": rows[0].resume,
-                           "state": rows[0].valide,
-                           "responsableNom": resultat[0][0].nom,
-                           "responsablePrenom": resultat[0][0].prenom,
-                           "promotion": resultat[1][0].annee
-                        }
-                  newrows.push(datatheme)
-                  connection.release();
-                  res.json(newrows);
-                } else {
-                  console.log(err);}}
-            );          
-          //res.end();
+                      {
+                         "idTheme": rows[0].idTheme,
+                         "titre": rows[0].titre,
+                         "resume": rows[0].resume,
+                         "state": rows[0].valide,
+                         "responsableNom": resultat[0][0].nom,
+                         "responsablePrenom": resultat[0][0].prenom,
+                         "promotion": rows[0].idPromo,
+                         "cycle": resultat[1][0].idCycle
+                      }
+                      newrows.push(datatheme)
+                }else {
+                  var datatheme =
+                      {
+                         "idTheme": rows[0].idTheme,
+                         "titre": rows[0].titre,
+                         "resume": rows[0].resume,
+                         "state": rows[0].valide,
+                         "promotion": rows[0].idPromo,
+                         "cycle": resultat[1][0].idCycle,
+                         "company": resultat[2][0].idCompany 
+                      }
+                      newrows.push(datatheme)
+                }
+                connection.release();
+                res.json(newrows);
+              } else {
+                console.log(err);}}
+          );          
+        //res.end();
         } else {
           console.log(err);
           connection.release();

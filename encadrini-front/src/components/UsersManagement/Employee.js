@@ -63,6 +63,7 @@ const Employee = ({ employee }) => {
         console.log(error);
       });
   }
+
    function setStatut(e) {
     let result;
     if (e.activate) {
@@ -125,7 +126,7 @@ const Employee = ({ employee }) => {
           <EditForm theEmployee={employee} />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={() =>{ handleClose(); window.location.reload(false);}}>
             Fermer
           </Button>
         </Modal.Footer>

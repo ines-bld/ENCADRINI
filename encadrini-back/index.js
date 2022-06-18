@@ -23,6 +23,7 @@ const routes = require('./routes/handler.js');
 const routesGestionDesComptes = require('./routes/handlerGestionDesComptes.js');
 const routesGestionDesThemes = require('./routes/handlerGestionDesThemes.js');
 const routesCreationDesUtilisateurs = require('./routes/handlerCreationDesUtilisateurs.js');
+const routesGestionDesEquipes = require('./routes/handlerGestionDesEquipes.js');
 
 const PORT= process.env.PORT || 5000;;  //backend routing port
 const app = express();
@@ -39,6 +40,7 @@ app.use(
     credentials: true
 
   }));
+  
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(express.json());
@@ -58,6 +60,7 @@ app.use(session({
 app.use('/', routes);
 app.use('/gestionDsComptes', routesGestionDesComptes );
 app.use('/gestionDsThemes', routesGestionDesThemes );
+app.use('/gestionDsEquipes', routesGestionDesEquipes);
 app.use('/creationDesUtilisateurs',routesCreationDesUtilisateurs );
 
 
