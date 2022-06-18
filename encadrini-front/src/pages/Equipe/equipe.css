@@ -1,0 +1,6 @@
+.equipe {
+    display: flex;
+  }
+.equipeContainer {
+    flex: 6;
+}

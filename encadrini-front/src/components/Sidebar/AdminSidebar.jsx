@@ -6,6 +6,8 @@ import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ArticleIcon from "@mui/icons-material/Article";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import FactCheckIcon from "@mui/icons-material/FactCheck";
 import logo from "../../images/Logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
@@ -57,18 +59,31 @@ const AdminSidebar = () => {
               <span>Voir les themes deposes</span>
             </li>
           </Link>
+          <Link to="/adminThemeValide" style={{ textDecoration: "none" }}>
+            <li>
+              <FactCheckIcon className="icon" />
+              <span>Voir les themes valides</span>
+            </li>
+          </Link>
+          <p className="title">GESTION DES EQUIPES</p>
+          <Link to="/saisirEquipe" style={{ textDecoration: "none" }}>
+            <li>
+              <GroupAddIcon className="icon" />
+              <span>Saisir les equipes</span>
+            </li>
+          </Link>
           <p className="title">SERVICE</p>
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Réglages</span>
           </li>
           <p className="title">UTILISATEUR</p>
-          <li>
-            <AccountCircleOutlinedIcon className="icon" />
-            <Link to="/Profile" style={{ textDecoration: "none" }}>
+          <Link to="/adminProfile" style={{ textDecoration: "none" }}>
+            <li>
+              <AccountCircleOutlinedIcon className="icon" />
               <span>Profil</span>
-            </Link>
-          </li>
+            </li>
+          </Link>
           <li onClick={logOut}>
             <ExitToAppIcon className="icon" />
             <span>Se déconnecter</span>

@@ -71,7 +71,6 @@ const Form_enseignant = () => {
         <div className="bottom">
           <div className="right">
             <Form
-              action="/create"
               methode="get"
               noValidate
               validated={validated}
