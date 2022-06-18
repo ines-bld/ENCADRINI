@@ -22,6 +22,10 @@ import CreationDesComptes from './pages/create users/creation_des_comptes';
 import Depot from './pages/DepotUtilisateur/depotTheme';
 import EnseignantHome from './pages/Enseignant/EnseignantHome';
 import EtudiantHome from './pages/Etudiant/EtudiantHome';
+import Equipe from './pages/Equipe/equipe';
+import AdminThemeValide from './pages/UserThemes/AdminThemeValide';
+import UserThemeValide from './pages/UserThemes/UserThemeValide';
+import UserProfile from './components/profiles/userProfile';
 
 
 function App() {
@@ -65,7 +69,12 @@ function App() {
           <Route path="depot" element={<Depot />} />
           <Route path="enseignantDashboard" element={<EnseignantHome />} />
           <Route path="etudiantDashboard" element={<EtudiantHome />} />
-
+          <Route path="saisirEquipe" element={<Equipe />} />
+          <Route path="adminThemeValide" element={<AdminThemeValide />} />
+          <Route path="userThemeValide" element={<UserThemeValide />} />
+          <Route path="adminProfile" element={<Profile />} />
+          <Route path="userProfile" element={<UserProfile />} />
+          
           <Route path="*" element={<ErrorPage />}/>
         </Route>
       </Routes>
