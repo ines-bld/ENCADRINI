@@ -143,7 +143,7 @@ exports.update = (req, res) => {
 
     //User the connection
     connection.query(
-      "update utilisateur set email = ? , phone = ?  where idUser = ? ",
+      "update utilisateur set email = ? , numTelph = ?  where idUser = ? ",
       [email, phone, req.params.id],
       (err, rows) => {
         //when done with the connection release it
@@ -166,7 +166,7 @@ exports.update = (req, res) => {
                   //   rows,
                   //   alert: ` ${nom} has been updated succesefully `,
                   // });
-                  res.send(` ${nom} has been updated succesefully `);
+                  res.send(` ${req.params.id} has been updated succesefully `);
                 } else {
                   console.log(err);
                 }

@@ -26,7 +26,7 @@ const Employee = ({ employee }) => {
     handleClose();
   }, [employee]);
 
-  console.log(employee.activate);
+
 
   function sortPosteid (e) {
     let result;
@@ -63,6 +63,7 @@ const Employee = ({ employee }) => {
         console.log(error);
       });
   }
+
    function setStatut(e) {
     let result;
     if (e.activate) {
@@ -105,7 +106,7 @@ const Employee = ({ employee }) => {
           overlay={<Tooltip id={`tooltip-top`}>Supprimer</Tooltip>}
         >
           <button
-            onClick={() => deleteEmployee(sortPosteid(employee)) }
+            onClick={() => { deleteEmployee(sortPosteid(employee)); window.location.reload(false);} }
             className="btn text-danger btn-act"
             data-toggle="modal"
           >
@@ -113,7 +114,7 @@ const Employee = ({ employee }) => {
           </button>
         </OverlayTrigger>
         <div class="form-check form-switch">
-        <input class="form-check-input"  value="on" type="checkbox" id="flexSwitchCheckChecked" onClick={() => activation(employee) } />
+        <input class="form-check-input"  value="on" type="checkbox" id="flexSwitchCheckChecked" onClick={() =>{ activation(employee) ; window.location.reload(false);}} />
         </div>
       </td>
 
@@ -125,7 +126,7 @@ const Employee = ({ employee }) => {
           <EditForm theEmployee={employee} />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={() =>{ handleClose(); window.location.reload(false);}}>
             Fermer
           </Button>
         </Modal.Footer>

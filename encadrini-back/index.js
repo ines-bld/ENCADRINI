@@ -6,15 +6,32 @@ const logger = require('morgan');
 const session = require('express-session');
 const cors = require("cors");
 
+var livereload = require("livereload");
+var connectLiveReload = require("connect-livereload");
+
+
+const liveReloadServer = livereload.createServer();
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => {
+    liveReloadServer.refresh("/");
+  }, 100);
+});
+
+
 // const resetroutes = require('./routes/forgotPassword.js'); //idk
 const routes = require('./routes/handler.js');
 const routesGestionDesComptes = require('./routes/handlerGestionDesComptes.js');
 const routesGestionDesThemes = require('./routes/handlerGestionDesThemes.js');
 const routesCreationDesUtilisateurs = require('./routes/handlerCreationDesUtilisateurs.js');
+const routesGestionDesEquipes = require('./routes/handlerGestionDesEquipes.js');
 
 const PORT= process.env.PORT || 5000;;  //backend routing port
 const app = express();
 
+app.use(connectLiveReload());
+
+
+app.use(cors());
 app.use(
   cors({
     origin: ["http://localhost:3000"],
@@ -23,6 +40,7 @@ app.use(
     credentials: true
 
   }));
+  
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(express.json());
@@ -42,6 +60,7 @@ app.use(session({
 app.use('/', routes);
 app.use('/gestionDsComptes', routesGestionDesComptes );
 app.use('/gestionDsThemes', routesGestionDesThemes );
+app.use('/gestionDsEquipes', routesGestionDesEquipes);
 app.use('/creationDesUtilisateurs',routesCreationDesUtilisateurs );
 
 
