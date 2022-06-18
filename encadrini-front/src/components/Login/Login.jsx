@@ -56,14 +56,14 @@ const Login = () => {
         <Row>
           <Col lg={4} md={6} sm={12}>
             <Form
-              action="/login"
-              method="get"
               className="loginForm"
               noValidate
               validated={validated}
               onSubmit={handleSubmit}
             >
-              <img src={encadrini_logo} className="logo" />
+              <Link to="/" style={{ textDecoration: "none" }} className="logo">
+                <img src={encadrini_logo} />
+              </Link>
               <h2>Se connecter</h2>
               <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
                 <Form.Label>Adresse email</Form.Label>
@@ -99,11 +99,11 @@ const Login = () => {
                 <Form.Check type="checkbox" label="Se rappeler de moi" />
               </Form.Group>
 
-              <button className="loginButton" onClick={useAuth} type="submit">
+              <button className="loginButton" onClick={useAuth} type="button">
                 Se connecter
               </button>
 
-              <a href="#" className="reset">
+              <a href="/forgottenPassword" className="reset">
                 Mot de passe oublié?
               </a>
             </Form>
