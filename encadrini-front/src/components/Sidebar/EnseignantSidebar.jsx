@@ -32,7 +32,7 @@ const EnseignantSidebar = ({ children }) => {
   //menuItem pour définir les différentes parties du sidebar
   const menuItem = [
     {
-      path: "/enseignant",
+      path: "/enseignantDashboard",
       name: "Dashboard",
       icon: <DashboardIcon />,
     },

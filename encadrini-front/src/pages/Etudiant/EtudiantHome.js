@@ -1,7 +1,7 @@
 import React from 'react';
 import AdminNavbar from '../../components/Navbar/AdminNavbar';
 import EtudiantSidebar from '../../components/Sidebar/EtudiantSidebar';
-import RemplirFiche from '../../components/fiche-de-voeux/remplir-fiche'
+import HomeUser from '../dashboard/dashboardUser';
 
 const EtudiantHome = () => {
   return (
@@ -10,7 +10,7 @@ const EtudiantHome = () => {
       <EtudiantSidebar />
       <div className='newContainer'>
         <AdminNavbar />  
-        <RemplirFiche />    
+        <HomeUser />
       </div>
     </div>
     </>

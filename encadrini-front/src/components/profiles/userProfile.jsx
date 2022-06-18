@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import EnseignantSidebar from "../../components/Sidebar/EnseignantSidebar";
 import AdminNavbar from "../../components/Navbar/AdminNavbar";
@@ -6,6 +6,14 @@ import PERSON from "../../images/PERSON.jpg";
 
 const UserProfile = () => {
   const [toggleState, setToggleState] = useState(1);
+  const [info, setInfo] = useState([]);
+
+  useEffect(() => {
+    const info = JSON.parse(localStorage.getItem("user"));
+    if (info) {
+      setInfo(info);
+    }
+  }, []);
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -24,9 +32,9 @@ const UserProfile = () => {
               </div>
               <div className="col-md-6">
                 <div className="profile-head">
-                  <h5>Meriem Baha</h5>
-                  <h6>m.baha@esi-sba.dz</h6>
-                  <h6>Administrateur de l'application</h6>
+                  <h5>{info.nom}</h5>
+                  <h6>{info.email}</h6>
+                  <h6>{info.poste}</h6>
                 </div>
                 <div className="container">
                   <div className="bloc-tabs">
@@ -51,34 +59,44 @@ const UserProfile = () => {
                   <div className="detailItem">
                     <span className="ItemKey">Date de naissance</span>
                     <span className="ItemValue vertical-align">
-                      21 novembre 2001
+                      {info.dateNaiss}
                     </span>
                   </div>
                   <div className="detailItem">
                     <span className="ItemKey">lieu de naissance</span>
-                    <span className="ItemValue vertical-align">jijel</span>
+                    <span className="ItemValue vertical-align">
+                      {info.lieuNaiss}
+                    </span>
                   </div>
                   <div className="detailItem">
                     <span className="ItemKey">wilaya</span>
-                    <span className="ItemValue vertical-align">jijel</span>
+                    <span className="ItemValue vertical-align">
+                      {info.wilaya}
+                    </span>
                   </div>
                   <div className="detailItem">
                     <span className="ItemKey">Adresse</span>
-                    <span className="ItemValue vertical-align">ben Achour</span>
+                    <span className="ItemValue vertical-align">
+                      {info.adresse}
+                    </span>
                   </div>
                   <div className="detailItem">
                     <span className="ItemKey">situation</span>
                     <span className="ItemValue vertical-align">
-                      Celibataire
+                      {info.situation}
                     </span>
                   </div>
                   <div className="detailItem">
                     <span className="ItemKey">Numero de telephone</span>
-                    <span className="ItemValue vertical-align">0699690726</span>
+                    <span className="ItemValue vertical-align">
+                      {info.numTelph}
+                    </span>
                   </div>
                   <div className="detailItem">
                     <span className="ItemKey">Sexe</span>
-                    <span className="ItemValue vertical-align">Female</span>
+                    <span className="ItemValue vertical-align">
+                      {info.sexe}
+                    </span>
                   </div>
                 </div>
               </div>

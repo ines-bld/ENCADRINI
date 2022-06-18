@@ -26,6 +26,9 @@ import Equipe from './pages/Equipe/equipe';
 import AdminThemeValide from './pages/UserThemes/AdminThemeValide';
 import UserThemeValide from './pages/UserThemes/UserThemeValide';
 import UserProfile from './components/profiles/userProfile';
+import HomeUser from './pages/dashboard/dashboardUser';
+import PromoEquipe from './pages/Equipe/promoEquipe';
+import RemplirFiche from './components/fiche-de-voeux/remplir-fiche';
 
 
 function App() {
@@ -67,14 +70,18 @@ function App() {
           </Route>
           <Route path="MesThemes" element={<MesThemesPage /> } />
           <Route path="depot" element={<Depot />} />
-          <Route path="enseignantDashboard" element={<EnseignantHome />} />
+          <Route path="enseignantDashboard" element={<HomeUser />} />
           <Route path="etudiantDashboard" element={<EtudiantHome />} />
-          <Route path="saisirEquipe" element={<Equipe />} />
+          <Route path="saisirEquipe">
+          <Route index element={<PromoEquipe /> }/>
+          <Route path=":promoId" element={<Equipe />} />
+          </Route>
+          <Route path="fichedevoeux" element={<RemplirFiche />} />
           <Route path="adminThemeValide" element={<AdminThemeValide />} />
           <Route path="userThemeValide" element={<UserThemeValide />} />
           <Route path="adminProfile" element={<Profile />} />
           <Route path="userProfile" element={<UserProfile />} />
-          
+
           <Route path="*" element={<ErrorPage />}/>
         </Route>
       </Routes>
