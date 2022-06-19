@@ -38,7 +38,7 @@ const EtudiantSidebar = ({ children }) => {
       icon: <AddIcon />,
     },
     {
-      path: "/MesThemes",
+      path: "/MesThemes/:iduser",
       name: "Mes thèmes",
       icon: <SubjectIcon />,
     },

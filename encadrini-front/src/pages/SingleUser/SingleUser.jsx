@@ -130,7 +130,7 @@ function SingleUser() {
               </div>
               <div className="detailItem">
                 <span className="ItemKey">Numéro de téléphone</span>
-                <span className="ItemValue vertical-align">{user.poste}</span>
+                <span className="ItemValue vertical-align">{user.numTelph}</span>
               </div>
             </div>
           </div>

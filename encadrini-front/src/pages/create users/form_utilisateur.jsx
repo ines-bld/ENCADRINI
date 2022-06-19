@@ -6,21 +6,28 @@ import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
+import { Link, useParams } from "react-router-dom";
+
 
 const Form_enseignant = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [nom, setNom] = useState("");
-  const [prenom, setPrenom] = useState("");
-  const [dateNaiss, setDatenaiss] = useState("");
-  const [lieuNaiss, setLieunaiss] = useState("");
-  const [adresse, setAdresse] = useState("");
-  const [wilaya, setWilaya] = useState("");
-  const [poste, setPoste] = useState("");
-  const [sexe, setSexe] = useState("");
-  const [idUser, setIduser] = useState("");
-  const [situation, setSituation] = useState("");
-  const [numTelph, setNumTelph] = useState("");
+  const { role } = useParams();
+
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [nom, setNom] = useState(null);
+  const [prenom, setPrenom] = useState(null);
+  const [dateNaiss, setDatenaiss] = useState(null);
+  const [lieuNaiss, setLieunaiss] = useState(null);
+  const [adresse, setAdresse] = useState(null);
+  const [wilaya, setWilaya] = useState(null);
+  const [sexe, setSexe] = useState(null);
+  const [idUser, setIduser] = useState(null);
+  const [situation, setSituation] = useState("c");
+  const [numTelph, setNumTelph] = useState(null);
+  const [promo, setPromo] = useState(null);
+  const [moy, setMoy] = useState(null);
+  const [grade, setGrade] = useState(null);
+
 
   //  let navigate = useNavigate();
 
@@ -35,31 +42,119 @@ const Form_enseignant = () => {
     setValidated(true);
   };
 
-  const create = () => {
-    axios.defaults.withCredentials = true;
-    axios
-      .post("http://localhost:3000/create", {
-        idUser: idUser,
-        nom: nom,
-        prenom: prenom,
-        adresse: adresse,
-        dateNaiss: dateNaiss,
-        lieuNaiss: lieuNaiss,
-        wilaya: wilaya,
-        numTelph: numTelph,
-        situation: situation,
-        sexe: sexe,
-        email: email,
+  const Champs = () => {
+    if (role === "etudiant") {
+      return (
+        <>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>PROMOTION</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="3cs"
+              onChange={(e) => {
+                setPromo(e.target.value);
+              }}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>MOYENNE</Form.Label>
+            <Form.Control
+              placeholder="15"
+              onChange={(e) => {
+                setMoy(e.target.value);
+              }}
+            />
+          </Form.Group>
+        </>
+      )
+    }
+    else {
+      if (role === "enseignant") {
+        return (
+          <>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>GRADE</Form.Label>
+              <Form.Control
+                placeholder="MAA, MAB , PR , MCA ,MCB"
+                onChange={(e) => {
+                  setGrade(e.target.value);
+                }}
+              />
+            </Form.Group>
+          </>
+        )
+      }
+    }
+  }
 
-        password: password,
+  const create = async (e) => {
+    console.log("inside axios", role)
+    e.preventDefault();
+    await axios.post(`http://localhost:5000/creationDesUtilisateurs/single`, {
+      idUser: idUser,
+      nom: nom,
+      prenom: prenom,
+      adresse: adresse,
+      dateNaiss: dateNaiss,
+      lieuNaiss: lieuNaiss,
+      wilaya: wilaya,
+      numTelph: numTelph,
+      situation: setSituat(situation),
+      sexe: setSex(sexe),
+      email: email,
+      password: password,
+      promo: setPromoo(promo),
+      moy: moy,
+      grade : grade
+    })
+      ;
+  }
 
-        poste: poste,
-      })
-      .then((response) => {
-        console.log(response.config.data);
-        localStorage.setItem("user", JSON.stringify(response.config.data));
-      });
-  };
+  function setPromoo(e) {
+    let result;
+    switch (e) {
+      case "1CP":
+      case "1cp":
+        result = "1";
+        break;
+      case "2CP":
+      case "2cp":
+        result = "2";
+        break;
+      case "1CS":
+      case "1cs":
+        result = "3";
+        break;
+      case "2CS":
+      case "2cs":
+        result = "4";
+        break;
+      case "3CS":
+      case "3cs":
+        result = "5";
+        break;
+      default:
+        result = null;
+    }
+    return result;
+  }
+
+  function setSex(e) {
+    let result;
+    if (e === 'Homme' || e === 'homme') {
+      result = "M";
+    } else {
+      if (e === 'Femme' || e === 'femme') {
+        result = "F";
+      }else{result = null}
+    }
+    return result;
+  }
+
+  function setSituat(e) {
+    return e.substring(0, 1).toLowerCase();
+  }
+
   return (
     <div className="new">
       <Sidebar />
@@ -150,10 +245,10 @@ const Form_enseignant = () => {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>WILAYA</Form.Label>
+                    <Form.Label>N° WILAYA</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Tiaret"
+                      placeholder="14"
                       onChange={(e) => {
                         setWilaya(e.target.value);
                       }}
@@ -165,7 +260,7 @@ const Form_enseignant = () => {
                     <Form.Label>SITUATION</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Celibataire"
+                      placeholder="Célibataire"
                       onChange={(e) => {
                         setSituation(e.target.value);
                       }}
@@ -185,7 +280,7 @@ const Form_enseignant = () => {
                     <Form.Label>SEXE</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Femme"
+                      placeholder="Femme | Homme"
                       onChange={(e) => {
                         setSexe(e.target.value);
                       }}
@@ -206,7 +301,7 @@ const Form_enseignant = () => {
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>PASSWORD</Form.Label>
                     <Form.Control
-                      type="password"
+                      type="text"
                       placeholder="Mot de passe"
                       required
                       onChange={(e) => {
@@ -215,21 +310,9 @@ const Form_enseignant = () => {
                     />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>POSTE</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Etudiante"
-                      required
-                      onChange={(e) => {
-                        setPoste(e.target.value);
-                      }}
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Se rappeler de moi" />
-                  </Form.Group>
+
+                  {<Champs />}
+
                 </Col>
               </Row>
               <Button type="submit" className="createButton" onClick={create}>

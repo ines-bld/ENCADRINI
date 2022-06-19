@@ -42,7 +42,7 @@ const EnseignantSidebar = ({ children }) => {
       icon: <AddIcon />,
     },
     {
-      path: "/MesThemes",
+      path: "/MesThemes/:iduser",
       name: "Mes thèmes",
       icon: <SubjectIcon />,
     },
