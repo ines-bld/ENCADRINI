@@ -68,7 +68,7 @@ function App() {
             <Route path="viewTheme/:themeId" element={<ThemeInfo />}/>
           </Route>
           </Route>
-          <Route path="MesThemes/:iduser" element={<MesThemesPage /> } />
+          <Route path="MesThemes" element={<MesThemesPage /> } />
           <Route path="depot" element={<Depot />} />
           <Route path="enseignantDashboard" element={<HomeUser />} />
           <Route path="etudiantDashboard" element={<EtudiantHome />} />

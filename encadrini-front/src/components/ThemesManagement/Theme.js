@@ -23,55 +23,12 @@ const Theme = ({theme}) => {
     useEffect(() => {
         handleClose()
     }, [theme])
-    console.log(theme.valide)
-
-    function getPromo(e) {
-        let result;
-       switch (e.idPromo) {
-        case 1:
-        result = "1CP";
-        break;
-        case 2:     
-            result = "2CP";
-          break;
-        case 3:
-            result = "1CS";
-        break;
-        case 4:
-            result = "2CS";
-        break;
-        case 5:
-            result = "3CS";
-        break;
-      default:
-        result = "";
-    }
-        return result;
-      }
-    
-      function getStatut(e) {
-        let result;
-        switch (e.valide) {
-          case 'refuse':
-            result = "Refusé";
-            break;
-          case 'attente':
-            result = "En attente";
-            break;
-          case 'valide':
-            result = "Validé";
-            break;
-          default:
-            console.log(`Sorry, we are out of ${e.valide}.`);
-        }
-        return result;
-      }
-
+    console.log(theme.statut)
     return (
         <>
-            <td>{theme.titre}</td>
-            <td>{getPromo(theme)}</td>
-            <td  className={`CellWithStatus ${theme.valide}`}>{getStatut(theme)}</td>
+            <td>{theme.Titre}</td>
+            <td>{theme.Promotion}</td>
+            <td  className={`CellWithStatus ${theme.statut}`}>{theme.statut}</td>
             <td>
             <OverlayTrigger
                     overlay={
@@ -96,7 +53,7 @@ const Theme = ({theme}) => {
                             Supprimer
                         </Tooltip>
                     }>
-                    <button onClick={() => {deleteTheme(theme.idTheme); window.location.reload(false);}}  className="btn text-danger btn-act" data-toggle="modal">Supp</button>
+                    <button onClick={() => deleteTheme(theme.id)}  className="btn text-danger btn-act" data-toggle="modal">Supp</button>
                 </OverlayTrigger>
             </td>
 
@@ -110,7 +67,7 @@ const Theme = ({theme}) => {
             <EditTheme theme={theme} />
         </Modal.Body>
         <Modal.Footer>
-                <Button variant="secondary"  onClick={() =>{ handleClose(); window.location.reload(false);}}>
+                <Button variant="secondary" onClick={handleClose}>
                     Fermer
                 </Button>
         </Modal.Footer>

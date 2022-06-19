@@ -7,11 +7,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const ThemeInfo = () => {
-
   const { themeId } = useParams();
   const { promoId } = useParams();
 
-  const [theme, setTheme] = useState({ "idTheme": "", "titre": "", "resume": "", "state": "", "responsableNom": "", "responsablePrenom": "", "promotion": "" });
+  const [theme, setTheme] = useState({ "idTheme": "" , "titre": "", "resume": "", "state": "", "responsableNom": "", "responsablePrenom": "", "promotion": "" });
 
   const getData = async () => {
     const { data } = await axios.get(`http://localhost:5000/gestionDsthemes/${promoId}/viewTheme/${themeId}`);
@@ -25,40 +24,34 @@ const ThemeInfo = () => {
   }, []);
 
 
+  const Valider = () => { 
+    if(theme.state === "attente"){
+       return( 
+      <> 
+        <button onClick={validation}>valider</button>
+        <button onClick={refus}>refuser</button>
+      </> 
+    ) 
+    }  
+  }
+  
   const validation = async () => {
     const { data } = await axios.get(`http://localhost:5000/gestionDsthemes/${promoId}/viewTheme/${themeId}/validate`);
     console.log(data[0]);
   };
-
+  
   const refus = async () => {
     const { data } = await axios.get(`http://localhost:5000/gestionDsthemes/${promoId}/viewTheme/${themeId}/refuser`);
     console.log(data[0]);
   };
 
-  const Valider = () => {
-    if (theme.state === "attente") {
-      return (
-        <>
-          <button onClick={() => {
-            validation();
-            window.location.reload(false);
-          }}>valider</button>
-          <button onClick={() => {
-            refus();
-            window.location.reload(false);
-          }}>refuser</button>
-        </>
-      )
-    }
-  }
-
-  function getStatut(e) {
+  function getStatut (e) {
     let result;
     switch (e.state) {
       case 'refuse':
         result = "Thème Refusé";
         break;
-      case 'attente':
+        case 'attente':
         result = "Thème en cours de traitement ...";
         break;
       case 'valide':
@@ -94,8 +87,8 @@ const ThemeInfo = () => {
               ad minim veniam, quis nostrudexercitation ullamco laboris nisi ut.
               {theme.resume}
             </p>
-
-            {<Valider />}
+            
+            {<Valider/>}
 
           </div>
         </div>
