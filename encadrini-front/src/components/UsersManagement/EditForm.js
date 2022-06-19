@@ -24,7 +24,7 @@ const EditForm = ({theEmployee}) =>{
     const history = useNavigate();
 
     const [email, setEmail] = useState(theEmployee.email);
-    const [phone, setPhone] = useState(theEmployee.phone);
+    const [phone, setPhone] = useState(theEmployee.numTelph);
 
    const id = sortPosteid(theEmployee)
 
@@ -39,15 +39,15 @@ const EditForm = ({theEmployee}) =>{
         history.push("/gestionDscomptes"); 
      } 
   
-    useEffect(() => { 
-        getEmployeeById(); 
-    }, []); 
+    // useEffect(() => { 
+    //     getEmployeeById(); 
+    // }, []); 
   
-    const getEmployeeById = async () => { 
-        const response = await axios.get(`http://localhost:5000/gestionDscomptes/viewuser/${sortPosteid(theEmployee)}`); 
-        setEmail(response.data.email); 
-        setPhone(response.data.numTelph); 
-    }
+    // const getEmployeeById = async () => { 
+    //     const response = await axios.get(`http://localhost:5000/gestionDscomptes/viewuser/${sortPosteid(theEmployee)}`); 
+    //     setEmail(response.data.email); 
+    //     setPhone(response.data.numTelph); 
+    // }
 
      return (
 

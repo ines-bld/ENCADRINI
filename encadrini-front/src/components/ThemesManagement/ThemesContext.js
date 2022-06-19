@@ -7,7 +7,7 @@ export const ThemeContext = createContext()
 const ThemeContextProvider  = (props) => {
     const [Themes, setThemes] = useState([])
 
-                 const [iduser, setiduser] = useState(8004)
+             const [iduser, setiduser] = useState(8004)
 
 console.log(ThemeContext)
 

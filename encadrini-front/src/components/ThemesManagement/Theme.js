@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import {ThemeContext}  from './ThemesContext';
 import './MesThemes.scss';
 const Theme = ({theme}) => {
+    
 
     const {deleteTheme} = useContext(ThemeContext);
     const [show, setShow] = useState(false);
@@ -79,7 +80,7 @@ const Theme = ({theme}) => {
                             Consulter
                         </Tooltip>
                     }>
-                   <Link to={`/dashboard`}>
+                   <Link to={`/mesthemes/8004/${theme.idTheme}`}>   {/* bedliii 8004 b iduser */}
                     <button  className="btn view-button" data-toggle="modal">Consult</button></Link>
                 </OverlayTrigger>
                 <OverlayTrigger

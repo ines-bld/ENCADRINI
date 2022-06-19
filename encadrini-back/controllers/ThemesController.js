@@ -134,7 +134,7 @@ exports.viewDetailTheme = (req, res) => {
                            "state": rows[0].valide,
                            "promotion": rows[0].idPromo,
                            "cycle": resultat[1][0].idCycle,
-                           "company": resultat[2][0].idCompany 
+                           "company": resultat[2][0].nom 
                         }
                         newrows.push(datatheme)
                   }

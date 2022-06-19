@@ -82,8 +82,7 @@ router.post('/acc', userMiddleware.validateRegister, (req, res, next) => {
         `INSERT INTO utilisateur  (idUser, nom,prenom,adresse ,dateNaiss,lieuNaiss,wilaya,situation,numTelph,sexe,email, password,poste) VALUES (  
           ${db.escape(req.body.idUser)}, ${db.escape(req.body.nom)}, ${db.escape(req.body.prenom)}, ${db.escape(req.body.adresse)},
            ${db.escape(req.body.dateNaiss)}, ${db.escape(req.body.lieuNaiss)}, ${db.escape(req.body.wilaya)}, 
-           'célibataire'
-        , ${db.escape(req.body.numTelph)},${db.escape(req.body.sexe)},${db.escape(req.body.email)},
+           'c',${db.escape(req.body.numTelph)},${db.escape(req.body.sexe)},${db.escape(req.body.email)},
       ${db.escape(hash)},${db.escape(req.body.poste)})`,
         (err, result) => {
           if (err) {
@@ -99,6 +98,7 @@ router.post('/acc', userMiddleware.validateRegister, (req, res, next) => {
       );
       });
     })
+
       
   /*
   `INSERT INTO utilisateur (idUser,nom,prenom,adresse,dateNaiss,lieuNaiss,wilaya,situation,numTelph,sexe,email,password,activate,poste) VALUES 
@@ -134,8 +134,7 @@ router.post('/login',(req, res, next) => {
   console.log("hiii",req.body.email)
 
   db.query(
-      `SELECT * FROM utilisateur WHERE email =${db.escape(req.body.email)};`,
-    (err, result) => {
+      `SELECT * FROM utilisateur WHERE email =${db.escape(req.body.email)};`,(err, result) => {
       // user does not exists
       if (err) {
         throw err;

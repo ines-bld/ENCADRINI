@@ -26,6 +26,7 @@ import Equipe from './pages/Equipe/equipe';
 import AdminThemeValide from './pages/UserThemes/AdminThemeValide';
 import UserThemeValide from './pages/UserThemes/UserThemeValide';
 import UserProfile from './components/profiles/userProfile';
+import ViewMyTheme from './pages/ViewMyThemePage/ViewMyTheme';
 
 
 function App() {
@@ -40,10 +41,10 @@ function App() {
           <Route path="enterCode" element={<EnterCode />} />
           <Route path="creationDesUtilisateurs">
           <Route index element={<CreationDesComptes />}/>
-          <Route path="etudiant"
+          <Route path=":role"
                 element={<Form_utilisateur />}
               />
-          <Route path="enseignant"
+          <Route path=":role"
                 element={<Form_utilisateur />}
               />
            <Route
@@ -65,6 +66,12 @@ function App() {
             <Route path="viewTheme/:themeId" element={<ThemeInfo />}/>
           </Route>
           </Route>
+
+          <Route path="MesThemes/:iduser">
+            <Route index element={<MesThemesPage />}/>
+            <Route path=":themeId" element={<ViewMyTheme />}/>
+          </Route>
+
           <Route path="MesThemes/:iduser" element={<MesThemesPage /> } />
           <Route path="depot" element={<Depot />} />
           <Route path="enseignantDashboard" element={<EnseignantHome />} />
