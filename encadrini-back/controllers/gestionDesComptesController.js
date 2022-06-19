@@ -136,6 +136,7 @@ exports.edit = (req, res) => {
 exports.update = (req, res) => {
   // res.render('edituser');
   const { email, phone } = req.body;
+  console.log(req.body);
 
   pool.getConnection((err, connection) => {
     if (err) throw err; //not connected
@@ -185,6 +186,7 @@ exports.update = (req, res) => {
 
 //delete user
 exports.delete = (req, res) => {
+  
   pool.getConnection((err, connection) => {
     if (err) throw err; //not connected
     console.log("deleteuser:::Connected as ID " + connection.threadId);

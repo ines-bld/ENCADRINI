@@ -4,6 +4,16 @@ const router = express.Router();
 const handlerController = require('../controllers/handlerController')
 const fogetPasswordController = require('../controllers/forgetPasswordController')
 const userController=require('../controllers/RegistrationController')
+const themeController=require('../controllers/ThemesController')
+const hopeController=require('../controllers/hopeController')
+
+//another attempt to make login tkhdem
+router.post('/authentification', hopeController.authentification)
+//router.post('/creation', hopeController.creation)
+
+
+
+
 
 // router.get('/forgottenPassword', fogetPasswordController.viewforget)
 router.post('/forgottenPassword', fogetPasswordController.resetsend)

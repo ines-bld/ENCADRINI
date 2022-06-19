@@ -45,13 +45,78 @@ const pool = mysql.createPool({
     }
 });
 const upload = multer({ storage: storage });
+  
 
+//get type d'utilisateur à créer
   router.get('/:role', (req, res) => {
     setRole(req.params.role)
     console.log('helllooooo',role)
     //res.redirect(`/creationDesUtilisateurs/${role}/uploadfile`);
-   res.sendFile( process.cwd() + "/index.html");  //__dirname +
+  // res.sendFile( process.cwd() + "/index.html");  //__dirname +
 });
+
+router.post('/single', (req, res) => {
+  console.log("hiii",req.body)
+  console.log("hiii",req.body)
+  const wilayas = ['wilaya','Adrar','Chlef','Laghouat','Oum El Bouaghi','Batna','Béjaïa','Biskra','Béchar','Blida','Bouria','Tamanrasset','Tébessa','Tlemcen','Tiaret','Tizi Ouzou','Alger','Djelfa','Jijel','Sétif','Saïda','Skikda','Sidi Bel Abbes','Annaba','Guelma','Constantine','Médéa','Mostaganem','MSila','Mascara','Ouargla','Oran','El Bayadh','Illizi','Bordj Bou Arreridj','Boumerdés','El Tarf','Tindouf','Tissemslit','El Oued','Khenchela','Souk Ahras','Tipaza','Mila','Defla','Naâma','Aïn Témouchent','Ghardaïa','Relizane','Timimoun','Bordj Badji Mokhtar','Ouled Djellal','Béni Abbés','Salah','Guezzam','Touggourt','Djanet','MGhair','Meniaa'];
+  const { idUser , nom , prenom ,  adresse ,  dateNaiss , lieuNaiss , wilaya , numTelph , situation , sexe , email , password , promo , moy , grade , descrip} = req.body;
+  console.log("hiii",prenom , idUser , dateNaiss)
+
+
+  pool.getConnection( (error,connection) => {
+    if (error) {
+        console.error(error);
+    } else {
+     switch (role) {
+         case 'etudiant':
+            console.log('Inside etudiant');
+               var user = [idUser , nom , prenom ,  adresse ,  dateNaiss , lieuNaiss , wilayas[wilaya] , situation , numTelph , sexe , email , password]
+               var etudiant = [idUser ,moy ,promo ]; //ajoute idUser au début du tableau
+               user.push('etudiant');
+
+               console.log("user", user );
+               console.log("etudiant" , etudiant)
+
+               let query = 'INSERT INTO utilisateur (idUser,nom,prenom,adresse,dateNaiss,lieuNaiss,wilaya,situation,numTelph,sexe,email,password,poste) VALUES (?) ; INSERT INTO etudiant (idEtudiant,moy,idPromo) VALUES (?) ';
+               connection.query(query, [user , etudiant], (error, response) => {
+                connection.release();
+               console.log(error || response); 
+               console.log('finished');              
+            });          
+        
+           break;
+         case 'entreprise':
+            console.log('Inside entreprise');
+            var user = [idUser , nom ,adresse , numTelph , descrip , email , password , 'entreprise']
+            console.log("user", user );
+
+            let queryy = 'INSERT INTO entreprise (idCompany,nom,adresse,numTelph,descrip,email,password , poste) VALUES (?) ';
+            connection.query(queryy, [user], (error, response) => {
+            connection.release();
+            console.log(error || response);
+            console.log('finished');
+            });
+
+         break;
+         case 'enseignant':
+            console.log('Inside enseignant');
+               var user = [idUser , nom , prenom ,  adresse ,  dateNaiss , lieuNaiss , wilayas[wilaya] , situation , numTelph , sexe , email , password]
+               var prof = [idUser , grade ]; //ajoute idUser au début du tableau
+               user.push('Prof');
+               let queryyy = 'INSERT INTO utilisateur (idUser,nom,prenom,adresse,dateNaiss,lieuNaiss,wilaya,situation,numTelph,sexe,email,password,poste) VALUES (?) ; INSERT INTO enseignant (idProf,grade) VALUES (?) ';
+               connection.query(queryyy, [user , prof], (error, response) => {            
+               console.log(error || response);
+               connection.release();                     
+               console.log('finished');  
+           });  
+           break;
+         }
+    }
+});
+console.log(res);
+res.end();
+});
+
 
 // router.get('/:role/uploadfile', (req, res) => {
 //    res.sendFile( process.cwd() + "/index.html");  //__dirname +

@@ -35,6 +35,7 @@ import ResultatAdmin from './components/fiche-de-voeux/resultatAdmin/resultatAdm
 import Affectation from './components/fiche-de-voeux/resultatAdmin/affectation';
 import TeamsPage from './pages/TeamsList/TeamsList';
 import AfficherTeam from './pages/TeamsList/AfficherTeam'
+import ViewMyTheme from './pages/ViewMyThemePage/ViewMyTheme';
 
 
 function App() {
@@ -49,10 +50,10 @@ function App() {
           <Route path="enterCode" element={<EnterCode />} />
           <Route path="creationDesUtilisateurs">
           <Route index element={<CreationDesComptes />}/>
-          <Route path="etudiant"
+          <Route path=":role"
                 element={<Form_utilisateur />}
               />
-          <Route path="enseignant"
+          <Route path=":role"
                 element={<Form_utilisateur />}
               />
            <Route
@@ -74,7 +75,13 @@ function App() {
             <Route path="viewTheme/:themeId" element={<ThemeInfo />}/>
           </Route>
           </Route>
-          <Route path="MesThemes" element={<MesThemesPage /> } />
+
+          <Route path="MesThemes/:iduser">
+            <Route index element={<MesThemesPage />}/>
+            <Route path=":themeId" element={<ViewMyTheme />}/>
+          </Route>
+
+          <Route path="MesThemes/:iduser" element={<MesThemesPage /> } />
           <Route path="depot" element={<Depot />} />
           <Route path="enseignantDashboard" element={<EnseignantHome />} />
           <Route path="etudiantDashboard" element={<EtudiantHome />} />

@@ -43,6 +43,11 @@ const EtudiantSidebar = ({ children }) => {
       icon: <FormatListNumberedIcon />,
     },
     {
+      path: "/MesThemes/:iduser",
+      name: "Mes thèmes",
+      icon: <SubjectIcon />,
+    },
+    {
       path: "/etudiantProfile",
       name: "Profile",
       icon: <AccountCircleOutlinedIcon />,

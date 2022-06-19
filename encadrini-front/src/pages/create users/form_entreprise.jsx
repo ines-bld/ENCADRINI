@@ -3,8 +3,29 @@ import Sidebar from "../../components/Sidebar/AdminSidebar";
 import Navbar from "../../components/Navbar/AdminNavbar";
 import UploadExcel from "../../components/uploadExcel/uploadExcel";
 import { Form, Button } from "react-bootstrap";
+import axios from "axios";
+import { Link, useParams } from "react-router-dom";
 
 const Form_entreprise = () => {
+  const { role } = useParams();
+
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [nom, setNom] = useState(null);
+  const [prenom, setPrenom] = useState(null);
+  const [dateNaiss, setDatenaiss] = useState(null);
+  const [lieuNaiss, setLieunaiss] = useState(null);
+  const [adresse, setAdresse] = useState(null);
+  const [wilaya, setWilaya] = useState(null);
+  const [sexe, setSexe] = useState(null);
+  const [idUser, setIduser] = useState(null);
+  const [situation, setSituation] = useState("c");
+  const [numTelph, setNumTelph] = useState(null);
+  const [promo, setPromo] = useState(null);
+  const [moy, setMoy] = useState(null);
+  const [grade, setGrade] = useState(null);
+  const [descrip, setDescrip] = useState(null);
+
   const [validated, setValidated] = useState(false);
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -15,6 +36,31 @@ const Form_entreprise = () => {
 
     setValidated(true);
   };
+
+
+  const create = async (e) => {
+    console.log("inside axios", role)
+    e.preventDefault();
+    await axios.post(`http://localhost:5000/creationDesUtilisateurs/single`, {
+      idUser: idUser,
+      nom: nom,
+      prenom: prenom,
+      adresse: adresse,
+      dateNaiss: dateNaiss,
+      lieuNaiss: lieuNaiss,
+      wilaya: wilaya,
+      numTelph: numTelph,
+      situation: situation,
+      sexe: sexe,
+      email: email,
+      password: password,
+      promo: promo,
+      moy: moy,
+      grade: grade,
+      descrip : descrip
+    })
+      ;
+  }
 
   return (
     <div className="new">
@@ -34,22 +80,32 @@ const Form_entreprise = () => {
                   type="email"
                   placeholder="Id d'entreprise"
                   required
+                  onChange={(e) => {
+                    setIduser(e.target.value);
+                  }}
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>NOM</Form.Label>
-                <Form.Control type="text" placeholder="emerald's" required />
+                <Form.Control type="text" placeholder="emerald's" required  onChange={(e) => {
+                        setNom(e.target.value);
+                      }} />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>ADRESSE</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="sidi bel abbes algerie"
+                  onChange={(e) => {
+                    setAdresse(e.target.value);
+                  }}
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>TELEPHONE</Form.Label>
-                <Form.Control type="texte" placeholder="046983472" />
+                <Form.Control type="texte" placeholder="046983472"  onChange={(e) => {
+                        setNumTelph(e.target.value);
+                      }} />
               </Form.Group>
               <Form.Group
                 className="mb-3"
@@ -57,7 +113,9 @@ const Form_entreprise = () => {
                 required
               >
                 <Form.Label>EMAIL</Form.Label>
-                <Form.Control type="email" placeholder="emeralds22@gmail.com" />
+                <Form.Control type="email" placeholder="emeralds22@gmail.com" onChange={(e) => {
+                  setEmail(e.target.value);
+                }} />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>PASSWORD</Form.Label>
@@ -65,13 +123,18 @@ const Form_entreprise = () => {
                   type="password"
                   placeholder="Mot de passe"
                   required
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>DESCRIPTION</Form.Label>
-                <Form.Control type="text" placeholder="bla bla bla" />
+                <Form.Control type="text" placeholder="bla bla bla"   onChange={(e) => {
+                    setDescrip(e.target.value);
+                  }}/>
               </Form.Group>
-              <Button type="submit" className="createButton">
+              <Button type="submit" className="createButton" onClick={create}>
                 Confirmer
               </Button>
             </Form>
