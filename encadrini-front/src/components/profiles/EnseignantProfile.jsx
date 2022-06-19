@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import EnseignantSidebar from "../../components/Sidebar/EnseignantSidebar";
-import AdminNavbar from "../../components/Navbar/AdminNavbar";
+import EnseignantSidebar from "../Sidebar/EnseignantSidebar";
+import AdminNavbar from "../Navbar/AdminNavbar";
 import PERSON from "../../images/PERSON.jpg";
+import PicChange from "../PicChanger/PicChange";
 
-const UserProfile = () => {
+const EnseignantProfile = () => {
   const [toggleState, setToggleState] = useState(1);
   const [info, setInfo] = useState([]);
 
@@ -28,7 +29,7 @@ const UserProfile = () => {
           <div>
             <div className="row">
               <div className="col-md-3">
-                <img className="profilepic" src={PERSON} alt="person" />
+                <PicChange />
               </div>
               <div className="col-md-6">
                 <div className="profile-head">
@@ -111,4 +112,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default EnseignantProfile;

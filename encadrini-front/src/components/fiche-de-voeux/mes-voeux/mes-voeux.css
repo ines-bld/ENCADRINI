@@ -1,0 +1,39 @@
+.text2 {
+    margin-left: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #3A0CA3;
+    font-size: 30px;
+}
+
+.themeCard {
+    display: flex;
+    align-items: center;
+    width: 880px;
+    height: 103px;
+    box-shadow: 9px 10px 20px rgba(0, 0, 0, 0.17);
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.themeCard p {
+    color: #240046;
+    font-weight: 500;
+    font-size: 26px;
+    padding-left: 30px;
+}
+
+.themeCircle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(90deg, #4CC9F0 0%, #7B2CBF 100%);
+    margin: 10px;
+}
+
+.themeCircle h3 {
+    color: white;
+}

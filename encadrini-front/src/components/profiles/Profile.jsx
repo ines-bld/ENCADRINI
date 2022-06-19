@@ -5,6 +5,7 @@ import AdminSidebar from "../../components/Sidebar/AdminSidebar";
 import AdminNavbar from "../../components/Navbar/AdminNavbar";
 import PERSON from "../../images/PERSON.jpg";
 import "./StyleProfile.scss";
+import PicChange from "../../components/PicChanger/PicChange";
 
 function Profile() {
   const [info, setInfo] = useState([]);
@@ -44,7 +45,7 @@ function Profile() {
         <div>
           <div className="row">
             <div className="col-md-3">
-              <img className="profilepic" src={PERSON} alt="person" />
+              <PicChange />
             </div>
             <div className="col-md-6">
               <div className="profile-head">

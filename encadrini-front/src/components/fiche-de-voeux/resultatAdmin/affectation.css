@@ -1,0 +1,42 @@
+.titreAff {
+    margin-left: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #3A0CA3;
+    font-size: 30px;
+}
+
+.equipeCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 800px;
+    height: 80px;
+    box-shadow: 9px 10px 20px rgba(0, 0, 0, 0.17);
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.equipeCard p {
+    color: #240046;
+    font-weight: 500;
+    font-size: 26px;
+    padding-left: 30px;
+}
+
+.affecterbtn {
+    padding: 5px 15px;
+    font-size: 18px;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #7B2CBF;
+    border-radius: 20px;
+}
+
+.affecterbtn:hover {
+    opacity: 0.6;
+}

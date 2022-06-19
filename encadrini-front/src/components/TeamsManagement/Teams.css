@@ -1,0 +1,46 @@
+.TableCell{
+color: white;
+}
+.button-new-team{
+    height: 65px;
+    margin-left: 200px;
+    background-color: #7B2CBF;
+}
+.titre-liste-des-equipes{
+    color: #7B2CBF;
+}
+.eye-icon{
+    width: 60px;
+}
+
+.dropdownBtn{
+    width: 200px;
+    color: black;
+}
+.title-equipe{
+    color: #3a0ca3;
+    margin: 10px 10px;
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+.elementContainer{ 
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47); 
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47); 
+    padding: 10px; 
+    margin: 20px;  
+ 
+} 
+.Light{ 
+    font-weight: 200;  
+} 
+.Regular{ 
+    font-weight: 400; 
+} 
+.ToolsContainer{ 
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47); 
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47); 
+    padding: 10px; 
+    margin: 20px;  
+ 
+}

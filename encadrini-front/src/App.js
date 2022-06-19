@@ -24,11 +24,17 @@ import EnseignantHome from './pages/Enseignant/EnseignantHome';
 import EtudiantHome from './pages/Etudiant/EtudiantHome';
 import Equipe from './pages/Equipe/equipe';
 import AdminThemeValide from './pages/UserThemes/AdminThemeValide';
-import UserThemeValide from './pages/UserThemes/UserThemeValide';
-import UserProfile from './components/profiles/userProfile';
-import HomeUser from './pages/dashboard/dashboardUser';
+import EnseignantThemeValide from './pages/UserThemes/EnseignantThemeValide';
 import PromoEquipe from './pages/Equipe/promoEquipe';
-import RemplirFiche from './components/fiche-de-voeux/remplir-fiche';
+import RemplirFiche from './components/fiche-de-voeux/remplir/remplir-fiche';
+import EtudiantThemeValide from './pages/UserThemes/EtudiantThemeValide';
+import EnseignantProfile from './components/profiles/EnseignantProfile';
+import EtudiantProfile from './components/profiles/EtudiantProfile';
+import Voeux from './components/fiche-de-voeux/mes-voeux/mes-voeux';
+import ResultatAdmin from './components/fiche-de-voeux/resultatAdmin/resultatAdmin';
+import Affectation from './components/fiche-de-voeux/resultatAdmin/affectation';
+import TeamsPage from './pages/TeamsList/TeamsList';
+import AfficherTeam from './pages/TeamsList/AfficherTeam'
 
 
 function App() {
@@ -70,7 +76,7 @@ function App() {
           </Route>
           <Route path="MesThemes" element={<MesThemesPage /> } />
           <Route path="depot" element={<Depot />} />
-          <Route path="enseignantDashboard" element={<HomeUser />} />
+          <Route path="enseignantDashboard" element={<EnseignantHome />} />
           <Route path="etudiantDashboard" element={<EtudiantHome />} />
           <Route path="saisirEquipe">
           <Route index element={<PromoEquipe /> }/>
@@ -78,10 +84,18 @@ function App() {
           </Route>
           <Route path="fichedevoeux" element={<RemplirFiche />} />
           <Route path="adminThemeValide" element={<AdminThemeValide />} />
-          <Route path="userThemeValide" element={<UserThemeValide />} />
+          <Route path="enseignantThemeValide" element={<EnseignantThemeValide />} />
+          <Route path="etudiantThemeValide" element={<EtudiantThemeValide />} />
           <Route path="adminProfile" element={<Profile />} />
-          <Route path="userProfile" element={<UserProfile />} />
-
+          <Route path="etudiantProfile" element={<EtudiantProfile />} />
+          <Route path="enseignantProfile" element={<EnseignantProfile />} />
+          <Route path="affichervoeux" element={<Voeux />} />
+          <Route path="resultatvoeux" element={<ResultatAdmin />} />
+          <Route path="affectation" element={<Affectation />} />
+          <Route path="teams">
+          <Route index element={<TeamsPage/>}/>
+          <Route path=":teamId" element={<AfficherTeam/>} />
+          </Route>
           <Route path="*" element={<ErrorPage />}/>
         </Route>
       </Routes>

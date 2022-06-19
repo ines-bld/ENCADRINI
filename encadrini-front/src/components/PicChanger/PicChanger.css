@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+
+ 
+  .img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  #input[type="file"] {
+      display: none;
+  }
+  

@@ -47,12 +47,12 @@ const EnseignantSidebar = ({ children }) => {
       icon: <SubjectIcon />,
     },
     {
-      path: "/userThemeValide",
+      path: "/enseignantThemeValide",
       name: "Thèmes valides",
       icon: <FactCheckIcon />,
     },
     {
-      path: "/userProfile",
+      path: "/enseignantProfile",
       name: "Profile",
       icon: <AccountCircleOutlinedIcon />,
     },

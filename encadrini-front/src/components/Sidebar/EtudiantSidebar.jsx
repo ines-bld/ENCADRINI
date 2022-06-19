@@ -4,6 +4,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import AddIcon from "@mui/icons-material/Add";
 import LogoutIcon from "@mui/icons-material/Logout";
+import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import logo from "../../images/LogoWhite.svg";
 import React from "react";
 import { FaBars } from "react-icons/fa";
@@ -27,7 +28,7 @@ const EtudiantSidebar = ({ children }) => {
       icon: <DashboardIcon />,
     },
     {
-      path: "/userThemeValide",
+      path: "/etudiantThemeValide",
       name: "Thèmes valides",
       icon: <FactCheckIcon />,
     },
@@ -37,7 +38,12 @@ const EtudiantSidebar = ({ children }) => {
       icon: <AddIcon />,
     },
     {
-      path: "/userProfile",
+      path: "/affichervoeux",
+      name: "Mes voeux",
+      icon: <FormatListNumberedIcon />,
+    },
+    {
+      path: "/etudiantProfile",
       name: "Profile",
       icon: <AccountCircleOutlinedIcon />,
     },
