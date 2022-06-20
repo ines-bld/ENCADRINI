@@ -126,7 +126,7 @@ res.end();
     
     const filePath = (process.cwd() + "/uploads/" + req.file.filename );  //__dirname + "/uploads/" + req.file.filename
     console.log( filePath)
-   readXlsxFile(filePath).then((rows) => {
+    readXlsxFile(filePath).then((rows) => {
        // `rows` is an array of rows
        // each row being an array of cells.     
       // console.log('here' , rows);
