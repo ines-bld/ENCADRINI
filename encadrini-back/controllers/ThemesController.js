@@ -44,7 +44,7 @@ exports.viewMesThemes = (req, res) => {
 exports.viewThemesValides = (req, res) => {
     console.log(req.params.iduser,req.params.role)
 
-    if(req.params.role === "etudiant"){
+    if(req.params.role === "Etudiant"){
 
       pool.getConnection((err, connection) => {
         if (err) throw err; //not connected
