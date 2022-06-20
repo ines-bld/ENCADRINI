@@ -49,7 +49,6 @@ DROP TABLE IF EXISTS `coencadrant`;
 CREATE TABLE `coencadrant` (
   `idTheme` int NOT NULL,
   `idProf` int NOT NULL,
-  PRIMARY KEY (`idTheme`,`idProf`),
   UNIQUE KEY `idTheme` (`idTheme`),
   UNIQUE KEY `idProf` (`idProf`),
   CONSTRAINT `coencadrant_ibfk_1` FOREIGN KEY (`idTheme`) REFERENCES `theme` (`idTheme`),
@@ -63,6 +62,7 @@ CREATE TABLE `coencadrant` (
 
 LOCK TABLES `coencadrant` WRITE;
 /*!40000 ALTER TABLE `coencadrant` DISABLE KEYS */;
+INSERT INTO `coencadrant` VALUES (5,8001),(6,8002);
 /*!40000 ALTER TABLE `coencadrant` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -454,6 +454,7 @@ CREATE TABLE `outil` (
 
 LOCK TABLES `outil` WRITE;
 /*!40000 ALTER TABLE `outil` DISABLE KEYS */;
+INSERT INTO `outil` VALUES (1,'Nodejs',NULL),(2,'react',NULL),(3,'MySQL',NULL),(4,'vuejs',NULL),(5,'laravel',NULL);
 /*!40000 ALTER TABLE `outil` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -482,7 +483,7 @@ CREATE TABLE `projet` (
 
 LOCK TABLES `projet` WRITE;
 /*!40000 ALTER TABLE `projet` DISABLE KEYS */;
-INSERT INTO `projet` VALUES (2,NULL,NULL);
+INSERT INTO `projet` VALUES (2,NULL,NULL),(5,NULL,NULL),(6,NULL,NULL),(7,NULL,NULL),(9,NULL,NULL);
 /*!40000 ALTER TABLE `projet` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -619,6 +620,7 @@ CREATE TABLE `theme` (
   `idProf` int DEFAULT NULL,
   `idCompany` int DEFAULT NULL,
   `idPromo` int DEFAULT NULL,
+  `nomf` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idTheme`),
   UNIQUE KEY `idTheme` (`idTheme`),
   KEY `idProf` (`idProf`),
@@ -636,7 +638,7 @@ CREATE TABLE `theme` (
 
 LOCK TABLES `theme` WRITE;
 /*!40000 ALTER TABLE `theme` DISABLE KEYS */;
-INSERT INTO `theme` VALUES (2,'Smart parking','hufkhzeuh','valide',8004,566,2),(3,'MadrasaTic',NULL,'refuse',8003,NULL,3),(4,'Smart todolist','kkkkkkkk','attente',8004,NULL,3),(666,'asmaa','hdgjuhj','valide',8004,NULL,5);
+INSERT INTO `theme` VALUES (1,'Gestion des pfes','jyfusdyfujsehufhu','attente',8001,NULL,NULL,NULL),(2,'Smart parking','hufkhzeuh','valide',8004,566,2,NULL),(3,'MadrasaTic',NULL,'refuse',8003,NULL,3,NULL),(4,'Smart todolist','kkkkkkkk','attente',8004,NULL,3,NULL),(5,'E-Recruitment','web app to manage recrutement','attente',8001,NULL,3,'Expression des besoins-e-Recruitment.pdf'),(6,'E-ibtihel',NULL,'attente',8001,NULL,3,'Expression des besoins-e-Recruitment.pdf'),(7,'E-Recruitment','web app to manage recrutement','attente',8001,NULL,3,'Expression des besoins-e-Recruitment.pdf'),(9,'E-Recruitment','web app to manage recrutement','attente',8001,NULL,3,'Expression des besoins-e-Recruitment.pdf'),(666,'asmaa','hdgjuhj','valide',8004,NULL,5,NULL);
 /*!40000 ALTER TABLE `theme` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -693,7 +695,6 @@ DROP TABLE IF EXISTS `utiliser`;
 CREATE TABLE `utiliser` (
   `idTheme` int NOT NULL,
   `idOutil` int NOT NULL,
-  PRIMARY KEY (`idTheme`,`idOutil`),
   UNIQUE KEY `idTheme` (`idTheme`),
   UNIQUE KEY `idOutil` (`idOutil`),
   CONSTRAINT `utiliser_ibfk_1` FOREIGN KEY (`idTheme`) REFERENCES `theme` (`idTheme`),
@@ -707,6 +708,7 @@ CREATE TABLE `utiliser` (
 
 LOCK TABLES `utiliser` WRITE;
 /*!40000 ALTER TABLE `utiliser` DISABLE KEYS */;
+INSERT INTO `utiliser` VALUES (6,1),(5,5);
 /*!40000 ALTER TABLE `utiliser` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -719,4 +721,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-19 17:40:56
+-- Dump completed on 2022-06-20  4:07:35
