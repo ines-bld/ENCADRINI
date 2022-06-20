@@ -48,7 +48,7 @@ const DropFileInput = props => {
                     <img src={uploadImg} alt="" />
 
                 </div>
-                <input type="file" value="" onChange={onFileDrop} />
+                <input type="file" name="file" onChange={onFileDrop} />
             </div>
             {
                 fileList.length > 0 ? (

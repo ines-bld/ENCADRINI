@@ -6,12 +6,18 @@ const fogetPasswordController = require('../controllers/forgetPasswordController
 const userController=require('../controllers/RegistrationController')
 const themeController=require('../controllers/ThemesController')
 const hopeController=require('../controllers/hopeController')
+const depotController =require('../controllers/theme')
+const encadController=require('../controllers/encadrant')
 
 //another attempt to make login tkhdem
 router.post('/authentification', hopeController.authentification)
 //router.post('/creation', hopeController.creation)
 
 
+//dépot
+router.get('/get_encadrant',encadController)
+router.get('/get_outils',encadController)
+router.post('/add-theme/:iduser',depotController)
 
 
 
