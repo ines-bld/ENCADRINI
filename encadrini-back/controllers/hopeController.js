@@ -18,7 +18,7 @@ pool.getConnection((err, connection) => {
 });
 
 exports.authentification = (req, res) => {
-
+  console.log("hello");
     pool.getConnection((err, connection) => {
         if (err) throw err; //not connected
         console.log("Connected as ID " + connection.threadId);

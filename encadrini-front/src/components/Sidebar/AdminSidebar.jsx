@@ -9,6 +9,7 @@ import ArticleIcon from "@mui/icons-material/Article";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import ViewListIcon from "@mui/icons-material/ViewList";
+import GroupsIcon from "@mui/icons-material/Groups";
 import logo from "../../images/Logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
@@ -81,7 +82,7 @@ const AdminSidebar = () => {
           </Link>
           <Link to="/resultatvoeux" style={{ textDecoration: "none" }}>
             <li>
-              <ViewListIcon className="icon" />
+              <GroupsIcon className="icon" />
               <span>Resultat fiche de voeux</span>
             </li>
           </Link>

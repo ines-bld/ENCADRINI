@@ -6,10 +6,26 @@ export const ThemeContext = createContext()
 
 const ThemeContextProvider  = (props) => {
     const [Themes, setThemes] = useState([])
+    const [data, setData] = useState([]);
+    let role;
+    let iduser;
 
-             const [iduser, setiduser] = useState(8004)
-
-console.log(ThemeContext)
+    useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("user"));
+    if (data) {
+        setData(data);
+        console.log(data);
+        role = data.poste;
+        if (role === "Entreprise") {
+          iduser = data.idCompany;
+        } else {
+          iduser = data.idUser;
+        }
+    }
+    }, []);
+   
+    console.log("iduser ta3i: ", iduser);
+{/*console.log(ThemeContext)*/}
 
 useEffect(() => {
     axios

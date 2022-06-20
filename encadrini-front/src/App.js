@@ -32,10 +32,10 @@ import EnseignantProfile from './components/profiles/EnseignantProfile';
 import EtudiantProfile from './components/profiles/EtudiantProfile';
 import Voeux from './components/fiche-de-voeux/mes-voeux/mes-voeux';
 import ResultatAdmin from './components/fiche-de-voeux/resultatAdmin/resultatAdmin';
-import Affectation from './components/fiche-de-voeux/resultatAdmin/affectation';
 import TeamsPage from './pages/TeamsList/TeamsList';
 import AfficherTeam from './pages/TeamsList/AfficherTeam'
 import ViewMyTheme from './pages/ViewMyThemePage/ViewMyTheme';
+import AffectationG from './pages/Equipe/affectationG';
 
 
 function App() {
@@ -75,13 +75,10 @@ function App() {
             <Route path="viewTheme/:themeId" element={<ThemeInfo />}/>
           </Route>
           </Route>
-
           <Route path="MesThemes/:iduser">
             <Route index element={<MesThemesPage />}/>
             <Route path=":themeId" element={<ViewMyTheme />}/>
           </Route>
-
-          <Route path="MesThemes/:iduser" element={<MesThemesPage /> } />
           <Route path="depot" element={<Depot />} />
           <Route path="enseignantDashboard" element={<EnseignantHome />} />
           <Route path="etudiantDashboard" element={<EtudiantHome />} />
@@ -98,7 +95,7 @@ function App() {
           <Route path="enseignantProfile" element={<EnseignantProfile />} />
           <Route path="affichervoeux" element={<Voeux />} />
           <Route path="resultatvoeux" element={<ResultatAdmin />} />
-          <Route path="affectation" element={<Affectation />} />
+          <Route path="affectation" element={<AffectationG />} />
           <Route path="teams">
           <Route index element={<TeamsPage/>}/>
           <Route path=":teamId" element={<AfficherTeam/>} />

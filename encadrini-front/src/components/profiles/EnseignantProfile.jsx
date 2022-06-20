@@ -20,6 +20,65 @@ const EnseignantProfile = () => {
     setToggleState(index);
     console.log("meriem");
   };
+
+  function getDate(e) {
+    let result;
+    var mydate = new Date(e.dateNaiss);
+    result = mydate.toDateString();
+    return result;
+  }
+
+  function getSex(e) {
+    let result;
+    if (e.sexe === "M") {
+      result = "Homme";
+    } else {
+      if (e.sexe === "F") {
+        result = "Femme";
+      }
+    }
+    return result;
+  }
+
+  function getSituation(e) {
+    let result;
+    switch (e.situation) {
+      case "c":
+        result = "Célibataire";
+        break;
+      case "m":
+        if (e.sexe === "M") {
+          result = "Marié";
+        } else {
+          if (e.sexe === "F") {
+            result = "Mariée";
+          }
+        }
+        break;
+      case "d":
+        if (e.sexe === "M") {
+          result = "Divorcé";
+        } else {
+          if (e.sexe === "F") {
+            result = "Divorcée";
+          }
+        }
+        break;
+      case "v":
+        if (e.sexe === "M") {
+          result = "Veuf";
+        } else {
+          if (e.sexe === "F") {
+            result = "Veuve";
+          }
+        }
+        break;
+      default:
+        result = "";
+    }
+    return result;
+  }
+
   return (
     <>
       <div className="SingleUser">
@@ -60,7 +119,7 @@ const EnseignantProfile = () => {
                   <div className="detailItem">
                     <span className="ItemKey">Date de naissance</span>
                     <span className="ItemValue vertical-align">
-                      {info.dateNaiss}
+                      {getDate(info)}
                     </span>
                   </div>
                   <div className="detailItem">
@@ -84,7 +143,7 @@ const EnseignantProfile = () => {
                   <div className="detailItem">
                     <span className="ItemKey">situation</span>
                     <span className="ItemValue vertical-align">
-                      {info.situation}
+                      {getSituation(info)}
                     </span>
                   </div>
                   <div className="detailItem">
@@ -96,7 +155,7 @@ const EnseignantProfile = () => {
                   <div className="detailItem">
                     <span className="ItemKey">Sexe</span>
                     <span className="ItemValue vertical-align">
-                      {info.sexe}
+                      {getSex(info)}
                     </span>
                   </div>
                 </div>

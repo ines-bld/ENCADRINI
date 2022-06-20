@@ -4,6 +4,7 @@ import "./remplir-fiche.css";
 import Select from "react-select";
 import AdminNavbar from "../../../components/Navbar/AdminNavbar";
 import EtudiantSidebar from "../../../components/Sidebar/EtudiantSidebar";
+import { Link } from "react-router-dom";
 
 const themes = [
   {
@@ -75,9 +76,11 @@ const RemplirFiche = () => {
                 options={themes}
               />
               <br />
-              <button type="submit" className="btnfiche">
-                Confirmer
-              </button>
+              <Link to="/affichervoeux">
+                <button type="submit" className="btnfiche">
+                  Confirmer
+                </button>
+              </Link>
             </Box>
           </div>
         </div>

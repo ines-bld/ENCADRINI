@@ -1,0 +1,50 @@
+.titreAffG {
+    margin-left: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #3A0CA3;
+    font-size: 30px;
+}
+
+.themeCardG {
+    /*display: flex;
+    justify-content: space-between;*/
+    align-items: center;
+    width: 880px;
+    height: 200px;
+    box-shadow: 9px 10px 20px rgba(0, 0, 0, 0.17);
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.themeCardG p {
+    color: #240046;
+    font-weight: 100;
+    font-size: 18px;
+    padding-left: 30px;
+}
+
+
+.multiselectG {
+    padding-left: 50px;
+    align-items: center;
+    min-width: 50ch;
+    max-width: 50ch;
+    /*margin-top: 20px;*/
+
+}
+
+.affecterGbtn {
+    padding: 5px 15px;
+    font-size: 18px;
+
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #7B2CBF;
+    border-radius: 20px;
+}
+
+.affecterGbtn:hover {
+    opacity: 0.6;
+}

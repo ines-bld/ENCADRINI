@@ -32,7 +32,7 @@ const EditForm = ({theEmployee}) =>{
 
     const updateEmployee = async (e) => { 
         e.preventDefault(); 
-        await axios.post(http://localhost:5000/gestionDscomptes/edituser/${sortPosteid(theEmployee)},{ 
+        await axios.post(`http://localhost:5000/gestionDscomptes/edituser/${sortPosteid(theEmployee)}`,{ 
             email: email, 
             phone: phone 
         }); 

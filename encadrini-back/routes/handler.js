@@ -20,8 +20,6 @@ router.post('/forgottenPassword', fogetPasswordController.resetsend)
 router.post('/login', userController)
 router.post('/create', userController)
 
-
-
 // router.get('/enterCode', fogetPasswordController.viewwait)
 
 router.get('/resetPassword', fogetPasswordController.resetview)
@@ -30,4 +28,12 @@ router.post('/resetPassword', fogetPasswordController.resetupdate)
 
 router.get('/signin', handlerController.view)
 
-module.exports =router;  
+
+//affichage de mes thèmes et les thèmes valides
+router.get('/mesthemes/:iduser', themeController.viewMesThemes)
+router.get('/:role/themesValides/:iduser', themeController.viewThemesValides)
+router.get('/api/ih/:idtheme', themeController.viewDetailTheme)
+router.get('/api/ih/dmesthemes/:idtheme', themeController.deleteTheme)
+router.post('/api/ih/mmesthemes/:idtheme', themeController.updateTheme)
+
+module.exports =router;

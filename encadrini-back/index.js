@@ -15,14 +15,14 @@ const routesCreationDesUtilisateurs = require('./routes/handlerCreationDesUtilis
 const PORT= process.env.PORT || 5000;;  //backend routing port
 const app = express();
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000"],
-    methods: ["GET", "POST"],
-    headers:["Access-Control-Allow-Origin: *"],
-    credentials: true
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true,            //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+}))
 
-  }));
+ 
+
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(express.json());

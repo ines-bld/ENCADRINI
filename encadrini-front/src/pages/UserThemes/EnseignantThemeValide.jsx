@@ -3,15 +3,26 @@ import AdminNavbar from "../../components/Navbar/AdminNavbar";
 import UserSidebar from "../../components/Sidebar/EnseignantSidebar";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import { useEffect ,useState } from "react";
+import { useEffect, useState } from "react";
 
 const UserThemeValide = () => {
-
- 
   const [themes, setThemes] = useState([]);
-  const [iduser, setiduser] = useState("8004");
-  const [role, setrole] = useState("prof");
+  const [data, setData] = useState([]);
+  let role;
+  let iduser;
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("user"));
+    if (data) {
+      setData(data);
+      console.log(data);
+      role = data.poste;
+      if (role === "Entreprise") {
+        iduser = data.idCompany;
+      } else {
+        iduser = data.idUser;
+      }
+    }
+  }, []);
 
   useEffect(() => {
     axios
@@ -28,42 +39,42 @@ const UserThemeValide = () => {
   function getStatut(e) {
     let result;
     switch (e.valide) {
-      case 'refuse':
+      case "refuse":
         result = "Refusé";
         break;
-      case 'attente':
+      case "attente":
         result = "En attente";
         break;
-      case 'valide':
+      case "valide":
         result = "Validé";
         break;
       default:
         console.log(`Sorry, we are out of ${e.valide}.`);
     }
     return result;
-  } 
+  }
 
   function getPromo(e) {
     let result;
-   switch (e.idPromo) {
-    case 1:
-    result = "1CP";
-    break;
-    case 2:     
+    switch (e.idPromo) {
+      case 1:
+        result = "1CP";
+        break;
+      case 2:
         result = "2CP";
-      break;
-    case 3:
+        break;
+      case 3:
         result = "1CS";
-    break;
-    case 4:
+        break;
+      case 4:
         result = "2CS";
-    break;
-    case 5:
+        break;
+      case 5:
         result = "3CS";
-    break;
-  default:
-    result = "";
-}
+        break;
+      default:
+        result = "";
+    }
     return result;
   }
 
@@ -82,7 +93,8 @@ const UserThemeValide = () => {
                   <h6>{getStatut(theme)}</h6>
                   <h6>{getPromo(theme)}</h6>
                 </div>
-                <Link to={`/mesthemes/${iduser}/${theme.idTheme}`}>   {/* bedliii 8004 b iduser */}
+                <Link to={`/mesthemes/${iduser}/${theme.idTheme}`}>
+                  {/* bedliii 8004 b iduser */}
                   <button>consulter</button>
                 </Link>
               </li>
