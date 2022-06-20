@@ -13,7 +13,6 @@ const Equipe = () => {
       event.preventDefault();
       event.stopPropagation();
     }
-
     setValidated(true);
   };
 
@@ -28,49 +27,68 @@ const Equipe = () => {
         <div className="bottom">
           <div className="right">
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
-              <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
-                <Form.Label>IDENTREPRISE</Form.Label>
+              <Form.Group className="mb-3 mt-4">
+                <Form.Label>NUMERO EQUIPE</Form.Label>
                 <Form.Control
                   className="input"
-                  type="email"
-                  placeholder="Id d'entreprise"
+                  type="text"
+                  placeholder="001"
                   required
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>NOM</Form.Label>
-                <Form.Control type="text" placeholder="emerald's" required />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>ADRESSE</Form.Label>
+              <Form.Group className="mb-3 mt-4">
+                <Form.Label>NOMBRE MEMBRES</Form.Label>
                 <Form.Control
+                  className="input"
                   type="text"
-                  placeholder="sidi bel abbes algerie"
+                  placeholder="6"
+                  required
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>TELEPHONE</Form.Label>
-                <Form.Control type="texte" placeholder="046983472" />
+              <Form.Group className="mb-3 mt-4">
+                <Form.Label>CHEF D'EQUIPE</Form.Label>
+                <Form.Control
+                  className="input"
+                  type="text"
+                  placeholder="Ines BELOUAD"
+                  required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>MEMBRE 2</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Ibtihel HATTABI"
+                  required
+                />
               </Form.Group>
               <Form.Group
                 className="mb-3"
                 controlId="formBasicPassword"
                 required
               >
-                <Form.Label>EMAIL</Form.Label>
-                <Form.Control type="email" placeholder="emeralds22@gmail.com" />
+                <Form.Label>MEMBRE 3</Form.Label>
+                <Form.Control type="text" placeholder="Rihab Medjda slimani" />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="formBasicPassword"
+                required
+              >
+                <Form.Label>MEMBRE 4</Form.Label>
+                <Form.Control type="texte" placeholder="Asma LAALA" />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="formBasicPassword"
+                required
+              >
+                <Form.Label>MEMBRE 5</Form.Label>
+                <Form.Control type="text" placeholder="Sabrina OUKRIF" />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>PASSWORD</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Mot de passe"
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>DESCRIPTION</Form.Label>
-                <Form.Control type="text" placeholder="bla bla bla" />
+                <Form.Label>MEMBRE 6</Form.Label>
+                <Form.Control type="text" placeholder="Meriem BAHA" />
               </Form.Group>
               <Button type="submit" className="createButton">
                 Confirmer

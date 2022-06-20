@@ -7,6 +7,8 @@ import axios from "axios";
 
 const DropFileInput = (props) => {
 
+ 
+
   const wrapperRef = useRef(null);
 
   const [fileList, setFileList] = useState([]);
@@ -34,17 +36,14 @@ const DropFileInput = (props) => {
   };
 
   //function uploadEx() {
-
-    function  uploadEx (file) {
+   const uploadEx= event => {
     axios.defaults.withCredentials=true;
+    console.log('inside');
+    const data = new FormData();
+    data.append("file" , fileList)
+    console.log(data);
 
-    const data = new FormData();    
-    console.log('data1',data);
-    console.log('data1',file);
-    console.log('data1',file[0]);
-    data.append("file" , file[0])
-    console.log('data2',data);
-
+    console.log('inside');
     axios
       .post(`http://localhost:5000/creationDesUtilisateurs/uploadfile`, data , {
         headers: {
@@ -97,7 +96,7 @@ const DropFileInput = (props) => {
               </span>
             </div>
           ))}
-          <button type="submit" onClick={() =>{ uploadEx(fileList); window.location.reload(false);}} >Créer</button>
+          <button type="submit" onClick={uploadEx} >Créer</button>
         </div>
       ) : null}
     </>

@@ -1,13 +1,13 @@
-import React, { Component, useEffect, useState } from 'react'
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
+import React, { Component, useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
 //import UploadFiles from '../uploadFiles/uploadFiles';
-import './form-dépot.css';
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
-import axios from 'axios';
-import DropFileInput from '../uploadFiles/DropFileInput';
+import "./form-dépot.css";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+import axios from "axios";
+import DropFileInput from "../uploadFiles/DropFileInput";
 
 const animatedComponents = makeAnimated();
 
@@ -15,38 +15,44 @@ const animatedComponents = makeAnimated();
 
 const currencies = [
   {
-    value: '1CPI',
-    label: '1CPI',
+    value: "1CPI",
+    label: "1CPI",
   },
   {
-    value: '2CPI',
-    label: '2CPI',
+    value: "2CPI",
+    label: "2CPI",
   },
   {
-    value: '1SC',
-    label: '1SC',
+    value: "1SC",
+    label: "1SC",
   },
   {
-    value: '2SC',
-    label: '2CS',
+    value: "2SC",
+    label: "2CS",
   },
   {
-    value: '3SC',
-    label: '3SC',
+    value: "3SC",
+    label: "3SC",
   },
 ];
 
-
 const FormDepot = () => {
-
   const [outil, setOutil] = useState();
   const [outils, setOutils] = useState();
   const [encadrant, setEncadrant] = useState();
   const [encadrants, setEncadrants] = useState();
   const [idTheme, setIdtheme] = useState();
   const [idPromo, setIdpromo] = useState();
-  //const [file,setFile]=    useState(); 
-
+  const [data, setData] = useState([]);
+  const [iduser, setIduser] = useState();
+  //const [file,setFile]=    useState();
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("user"));
+    if (data) {
+      setData(data);
+      setIduser(data.idUser);
+    }
+  }, []);
   //console.log(outil)
 
   function setPromo(e) {
@@ -78,14 +84,14 @@ const FormDepot = () => {
     return result;
   }
 
-  const apiget_encadrant = "http://localhost:5000/get_encadrant"
+  const apiget_encadrant = "http://localhost:5000/get_encadrant";
   useEffect(() => {
     const getEncadrants = async () => {
       const { data: res } = await axios.get(apiget_encadrant);
       console.log(res);
       const encadrantResponse = res.map((resp) => ({
-        "value": resp.idUser,
-        "label": resp.nom + " " + resp.prenom,
+        value: resp.idUser,
+        label: resp.nom + " " + resp.prenom,
       }));
 
       setEncadrants(encadrantResponse);
@@ -94,33 +100,32 @@ const FormDepot = () => {
   }, []);
 
   const selectEncadrant = (e) => {
-    setEncadrant(Array.isArray(e) ? e.map(x => x.value) : [])
-  }
+    setEncadrant(Array.isArray(e) ? e.map((x) => x.value) : []);
+  };
 
   /********************************************** */
 
-  const apiget_outils = "http://localhost:5000/get_outils"
+  const apiget_outils = "http://localhost:5000/get_outils";
   useEffect(() => {
     const getOutil = async () => {
       const { data: res } = await axios.get(apiget_outils);
       console.log(res);
       const outilResponse = res.map((resp) => ({
-        "value": resp.idOutil,
-        "label": resp.name
+        value: resp.idOutil,
+        label: resp.name,
       }));
       setOutils(outilResponse);
     };
-    getOutil()
-
+    getOutil();
   }, []);
 
   const selectOutil = (e) => {
-    setOutil(Array.isArray(e) ? e.map(x => x.value) : [])
-  }
+    setOutil(Array.isArray(e) ? e.map((x) => x.value) : []);
+  };
 
   const [name, setFilename] = useState();
   const [fileList, setFilelist] = useState();
-  const [currency, setCurrency] = React.useState('');
+  const [currency, setCurrency] = React.useState("");
 
   const handleChange = (event) => {
     setCurrency(event.target.value);
@@ -131,59 +136,59 @@ const FormDepot = () => {
     // const filename=files[0].name;
     setFilename(files[0].name);
     setFilelist(files[0]);
-  }
+  };
 
   const [titre, setTitre] = useState();
   const [resume, setResume] = useState();
-  const [iduser, setiduser] = useState(8001)
 
-  const depot = event => {
+  const depot = (event) => {
     console.log("inside axios");
-    const idProf = encadrant[0]
-    const idOutil = outil[0]
+    const idProf = encadrant[0];
+    console.log("hadi id prof ", idProf);
+    console.log("randooooooom");
+    const idOutil = outil[0];
     const data = new FormData();
     data.append("name", name);
     data.append("file", fileList);
 
-    console.log("idprof",idProf);
-    console.log("outil",outil);
-    console.log("name",name);
-    console.log("fileeeee",fileList);
+    console.log("idprof", idProf);
+    console.log("outil", outil);
+    console.log("name", name);
+    console.log("fileeeee", fileList);
 
-    axios.post(`http://localhost:5000/add-theme/${iduser}`,
-      {
-        idPromo: setPromo(idPromo),   
+    axios
+      .post(`http://localhost:5000/add-theme/${iduser}`, {
+        idPromo: setPromo(idPromo),
         idTheme: idTheme,
-        titre:   titre,
-        idProf : iduser,
-        idcoencadrant:  idProf,  
-        resume:  resume,
+        titre: titre,
+        idProf: iduser,
+        idcoencadrant: idProf,
+        resume: resume,
         idOutil: idOutil,
         fileList: fileList,
-        name:  name,
-      }).then((response) => {
-        console.log(response);
-      }).catch(error => {
-        console.log(error.response)
+        name: name,
       })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   };
 
   return (
-    <div >
+    <div>
       <Box
         component="form"
         sx={{
-          '& .MuiTextField-root': { m: 1, width: '50ch' },
+          "& .MuiTextField-root": { m: 1, width: "50ch" },
         }}
         className="Depot"
-      >     <h2 className="header">
-      Ajouter un fichier
-  </h2>
-        <DropFileInput
-          onFileChange={(files) => onFileChange(files)}
-        />
-
-         <TextField
+      >
+        {" "}
+        <h2 className="header">Ajouter un fichier</h2>
+        <DropFileInput onFileChange={(files) => onFileChange(files)} />
+        <TextField
           id="standard-basic"
           label="Promotion"
           variant="standard"
@@ -191,8 +196,8 @@ const FormDepot = () => {
           onChange={(e) => {
             setIdpromo(e.target.value);
           }}
-
-        /><br />
+        />
+        <br />
         <TextField
           id="standard-basic"
           label="ID Theme"
@@ -201,10 +206,9 @@ const FormDepot = () => {
           onChange={(e) => {
             setIdtheme(e.target.value);
           }}
-
-        /><br />
+        />
+        <br />
         <TextField
-
           id="standard-basic"
           label="Titre"
           variant="standard"
@@ -212,12 +216,17 @@ const FormDepot = () => {
           onChange={(e) => {
             setTitre(e.target.value);
           }}
-
-        /><br />
-
-        <Select className="multiselect" placeholder="co-ecadrants" name="coencadreur" options={encadrants} onChange={selectEncadrant}
-          isMulti /><br />
-
+        />
+        <br />
+        <Select
+          className="multiselect"
+          placeholder="co-ecadrants"
+          name="coencadreur"
+          options={encadrants}
+          onChange={selectEncadrant}
+          isMulti
+        />
+        <br />
         <TextField
           id="outlined-multiline-static"
           label="Description"
@@ -227,17 +236,31 @@ const FormDepot = () => {
           onChange={(e) => {
             setResume(e.target.value);
           }}
-        /><br />
-
-        <Select className="multiselect" placeholder="outils" name="coencadreur" options={outils} onChange={selectOutil}
-          isMulti /><br />
+        />
         <br />
-
-        <button type='button' className='btndepot' onClick={() =>{ depot() ; window.location.reload(false);}}>Déposer</button>
+        <Select
+          className="multiselect"
+          placeholder="outils"
+          name="coencadreur"
+          options={outils}
+          onChange={selectOutil}
+          isMulti
+        />
+        <br />
+        <br />
+        <button
+          type="button"
+          className="btndepot"
+          onClick={() => {
+            depot();
+            window.location.reload(false);
+          }}
+        >
+          Déposer
+        </button>
       </Box>
-    </div >
+    </div>
   );
-
-}
+};
 
 export default FormDepot;

@@ -6,19 +6,10 @@ import AddIcon from "@mui/icons-material/Add";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import logo from "../../images/LogoWhite.svg";
-import logoIcon from "../../images/LogoIcon.svg";
 import React from "react";
-import {
-  FaTh,
-  FaBars,
-  FaUserAlt,
-  FaRegChartBar,
-  FaCommentAlt,
-  FaShoppingBag,
-  FaThList,
-} from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const EnseignantSidebar = ({ children }) => {
   const navigate = useNavigate();
@@ -32,7 +23,7 @@ const EnseignantSidebar = ({ children }) => {
   //menuItem pour définir les différentes parties du sidebar
   const menuItem = [
     {
-      path: "/enseignant",
+      path: "/enseignantDashboard",
       name: "Dashboard",
       icon: <DashboardIcon />,
     },
@@ -42,17 +33,17 @@ const EnseignantSidebar = ({ children }) => {
       icon: <AddIcon />,
     },
     {
-      path: "/MesThemes/:iduser",
+      path: `/MesThemes/:iduser`,
       name: "Mes thèmes",
       icon: <SubjectIcon />,
     },
     {
-      path: "/userThemeValide",
+      path: "/enseignantThemeValide",
       name: "Thèmes valides",
       icon: <FactCheckIcon />,
     },
     {
-      path: "/userProfile",
+      path: "/enseignantProfile",
       name: "Profile",
       icon: <AccountCircleOutlinedIcon />,
     },

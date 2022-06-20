@@ -8,7 +8,6 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
-
 const Form_enseignant = () => {
   const { role } = useParams();
 
@@ -28,7 +27,6 @@ const Form_enseignant = () => {
   const [moy, setMoy] = useState(null);
   const [grade, setGrade] = useState(null);
 
-
   //  let navigate = useNavigate();
 
   const [validated, setValidated] = useState(false);
@@ -42,53 +40,8 @@ const Form_enseignant = () => {
     setValidated(true);
   };
 
-  const Champs = () => {
-    if (role === "etudiant") {
-      return (
-        <>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>PROMOTION</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="3cs"
-              onChange={(e) => {
-                setPromo(e.target.value);
-              }}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>MOYENNE</Form.Label>
-            <Form.Control
-              placeholder="15"
-              onChange={(e) => {
-                setMoy(e.target.value);
-              }}
-            />
-          </Form.Group>
-        </>
-      )
-    }
-    else {
-      if (role === "enseignant") {
-        return (
-          <>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>GRADE</Form.Label>
-              <Form.Control
-                placeholder="MAA, MAB , PR , MCA ,MCB"
-                onChange={(e) => {
-                  setGrade(e.target.value);
-                }}
-              />
-            </Form.Group>
-          </>
-        )
-      }
-    }
-  }
-
   const create = async (e) => {
-    console.log("inside axios", role)
+    console.log("inside axios", role);
     e.preventDefault();
     await axios.post(`http://localhost:5000/creationDesUtilisateurs/single`, {
       idUser: idUser,
@@ -105,10 +58,9 @@ const Form_enseignant = () => {
       password: password,
       promo: setPromoo(promo),
       moy: moy,
-      grade : grade
-    })
-      ;
-  }
+      grade: grade,
+    });
+  };
 
   function setPromoo(e) {
     let result;
@@ -141,12 +93,14 @@ const Form_enseignant = () => {
 
   function setSex(e) {
     let result;
-    if (e === 'Homme' || e === 'homme') {
+    if (e === "Homme" || e === "homme") {
       result = "M";
     } else {
-      if (e === 'Femme' || e === 'femme') {
+      if (e === "Femme" || e === "femme") {
         result = "F";
-      }else{result = null}
+      } else {
+        result = null;
+      }
     }
     return result;
   }
@@ -310,9 +264,44 @@ const Form_enseignant = () => {
                     />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </Form.Group>
-
-                  {<Champs />}
-
+                  <div>
+                    {role === "etudiant" ? (
+                      <>
+                        <Form.Group className="mb-3">
+                          <Form.Label>PROMOTION</Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder="3cs"
+                            onChange={(e) => {
+                              setPromo(e.target.value);
+                            }}
+                          />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                          <Form.Label>MOYENNE</Form.Label>
+                          <Form.Control
+                            placeholder="15"
+                            onChange={(e) => {
+                              console.log(e.target.value);
+                              setMoy(e.target.value);
+                            }}
+                          />
+                        </Form.Group>
+                      </>
+                    ) : role === "enseignant" ? (
+                      <>
+                        <Form.Group className="mb-3">
+                          <Form.Label>GRADE</Form.Label>
+                          <Form.Control
+                            placeholder="MAA, MAB , PR , MCA ,MCB"
+                            onChange={(e) => {
+                              setGrade(e.target.value);
+                            }}
+                          />
+                        </Form.Group>
+                      </>
+                    ) : null}
+                  </div>
                 </Col>
               </Row>
               <Button type="submit" className="createButton" onClick={create}>

@@ -1,0 +1,32 @@
+.titreA {
+    margin-left: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #3A0CA3;
+    font-size: 30px;
+}
+
+.circleD {
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+}
+
+.themesA {
+    list-style: none;
+    padding-top: 100px;
+}
+
+.themeA {
+    color: #4CC9F0;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.themeA a {
+    text-decoration: none;
+}
+
+.circleA {
+    width: 500px;
+}

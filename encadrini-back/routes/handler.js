@@ -42,4 +42,4 @@ router.get('/api/ih/:idtheme', themeController.viewDetailTheme)
 router.get('/api/ih/dmesthemes/:idtheme', themeController.deleteTheme)
 router.post('/api/ih/mmesthemes/:idtheme', themeController.updateTheme)
 
-module.exports =router;  
+module.exports =router;

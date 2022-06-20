@@ -8,6 +8,8 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import ArticleIcon from "@mui/icons-material/Article";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
+import ViewListIcon from "@mui/icons-material/ViewList";
+import GroupsIcon from "@mui/icons-material/Groups";
 import logo from "../../images/Logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
@@ -70,6 +72,18 @@ const AdminSidebar = () => {
             <li>
               <GroupAddIcon className="icon" />
               <span>Saisir les equipes</span>
+            </li>
+          </Link>
+          <Link to="/teams" style={{ textDecoration: "none" }}>
+            <li>
+              <ViewListIcon className="icon" />
+              <span>Liste des equipes</span>
+            </li>
+          </Link>
+          <Link to="/resultatvoeux" style={{ textDecoration: "none" }}>
+            <li>
+              <GroupsIcon className="icon" />
+              <span>Resultat fiche de voeux</span>
             </li>
           </Link>
           <p className="title">SERVICE</p>

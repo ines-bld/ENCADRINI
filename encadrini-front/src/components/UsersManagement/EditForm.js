@@ -44,7 +44,7 @@ const EditForm = ({theEmployee}) =>{
     // }, []); 
   
     // const getEmployeeById = async () => { 
-    //     const response = await axios.get(`http://localhost:5000/gestionDscomptes/viewuser/${sortPosteid(theEmployee)}`); 
+    //     const response = await axios.get(http://localhost:5000/gestionDscomptes/viewuser/${sortPosteid(theEmployee)}); 
     //     setEmail(response.data.email); 
     //     setPhone(response.data.numTelph); 
     // }

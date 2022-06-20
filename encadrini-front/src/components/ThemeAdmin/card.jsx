@@ -22,8 +22,18 @@ const Card = () => {
       });
   }, []);
 
-  const [titre, setTitre] = useState("");
-
+  const [titre, setTitre] = useState("hada test ta3 titre");
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos/1")
+      .then((res) => {
+        console.log(res);
+        setTitre(res.data.title);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <>

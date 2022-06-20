@@ -11,7 +11,7 @@ var db = mysql.createConnection({
   connectionLimit: 100,
   host: "localhost",
   user: "root",
-  password: "ibtihel06#",
+  password: "ines14",
   database: "ENCADRINI",
   port: 3306,
 });

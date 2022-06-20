@@ -1,16 +1,12 @@
 import "./EnseignantSidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import SubjectIcon from "@mui/icons-material/Subject";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import AddIcon from "@mui/icons-material/Add";
+import SubjectIcon from "@mui/icons-material/Subject";
 import LogoutIcon from "@mui/icons-material/Logout";
+import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import logo from "../../images/LogoWhite.svg";
-import logoIcon from "../../images/LogoIcon.svg";
 import React from "react";
 import { FaBars } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -28,24 +24,29 @@ const EtudiantSidebar = ({ children }) => {
   //menuItem pour définir les différentes parties du sidebar
   const menuItem = [
     {
-      path: "/etudiant",
+      path: "/etudiantDashboard",
       name: "Dashboard",
       icon: <DashboardIcon />,
     },
     {
-      path: "/depot",
-      name: "Déposer un thème",
+      path: "/etudiantThemeValide",
+      name: "Thèmes valides",
+      icon: <FactCheckIcon />,
+    },
+    {
+      path: "/fichedevoeux",
+      name: "Fiche de voeux",
       icon: <AddIcon />,
     },
     {
-      path: "/MesThemes/:iduser",
-      name: "Mes thèmes",
-      icon: <SubjectIcon />,
+      path: "/affichervoeux",
+      name: "Mes voeux",
+      icon: <FormatListNumberedIcon />,
     },
     {
-      path: "/enseignant",
-      name: "Thèmes valides",
-      icon: <FactCheckIcon />,
+      path: "/etudiantProfile",
+      name: "Profile",
+      icon: <AccountCircleOutlinedIcon />,
     },
   ];
   return (

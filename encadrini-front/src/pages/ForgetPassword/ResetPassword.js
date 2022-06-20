@@ -16,7 +16,6 @@ export const ResetPassword = () => {
   }, []);
 
   const [Items, setItems] = useState([]);
-  
   const fetchItems = async () => {
     const data = await fetch(`/resetPassword${window.location.search}`);
     const Items = await data.json();

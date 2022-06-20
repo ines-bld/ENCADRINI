@@ -122,14 +122,14 @@ res.end();
 //    res.sendFile( process.cwd() + "/index.html");  //__dirname +
 // });
 
-  router.post('/uploadfile', upload.single("file"), (req, res) => {
+  router.post('/uploadfile', upload.single("uploadfile"), (req, res) => {
     
     const filePath = (process.cwd() + "/uploads/" + req.file.filename );  //__dirname + "/uploads/" + req.file.filename
     console.log( filePath)
     readXlsxFile(filePath).then((rows) => {
        // `rows` is an array of rows
        // each row being an array of cells.     
-      // console.log('here' , rows);
+       console.log('here' , rows);
        // Remove Header ROW
        rows.shift();
        // Open the MySQL connection
@@ -141,7 +141,7 @@ res.end();
 
             switch (role) {
                 case 'etudiant':
-                  // console.log('Inside etudiant');
+                  console.log('Inside etudiant');
                   
                   rows.forEach((user)=> {
                       const wilaya = ['wilaya','Adrar','Chlef','Laghouat','Oum El Bouaghi','Batna','Béjaïa','Biskra','Béchar','Blida','Bouria','Tamanrasset','Tébessa','Tlemcen','Tiaret','Tizi Ouzou','Alger','Djelfa','Jijel','Sétif','Saïda','Skikda','Sidi Bel Abbes','Annaba','Guelma','Constantine','Médéa','Mostaganem','MSila','Mascara','Ouargla','Oran','El Bayadh','Illizi','Bordj Bou Arreridj','Boumerdés','El Tarf','Tindouf','Tissemslit','El Oued','Khenchela','Souk Ahras','Tipaza','Mila','Defla','Naâma','Aïn Témouchent','Ghardaïa','Relizane','Timimoun','Bordj Badji Mokhtar','Ouled Djellal','Béni Abbés','Salah','Guezzam','Touggourt','Djanet','MGhair','Meniaa'];
@@ -155,15 +155,15 @@ res.end();
                       connection.query(query, [user , etudiant], (error, response) => {
                       // connection.release();
                       console.log(error || response);
-                     
+                      console.log('finished');
+
                    });
                    });
-                   console.log('finished');
                    connection.release();
                   
                   break;
                 case 'entreprise':
-                  // console.log('Inside entreprise');
+                  console.log('Inside entreprise');
 
                    let query = 'INSERT INTO entreprise (idCompany,nom,adresse,numTelph,descrip,email,password) VALUES ? ; UPDATE entreprise set poste="entreprise" ';
                    connection.query(query, [rows], (error, response) => {
@@ -174,7 +174,7 @@ res.end();
 
                 break;
                 case 'enseignant':
-                  // console.log('Inside enseignant');
+                  console.log('Inside enseignant');
                   
                   rows.forEach((user)=> {
                       const wilaya = ['wilaya','Adrar','Chlef','Laghouat','Oum El Bouaghi','Batna','Béjaïa','Biskra','Béchar','Blida','Bouria','Tamanrasset','Tébessa','Tlemcen','Tiaret','Tizi Ouzou','Alger','Djelfa','Jijel','Sétif','Saïda','Skikda','Sidi Bel Abbes','Annaba','Guelma','Constantine','Médéa','Mostaganem','MSila','Mascara','Ouargla','Oran','El Bayadh','Illizi','Bordj Bou Arreridj','Boumerdés','El Tarf','Tindouf','Tissemslit','El Oued','Khenchela','Souk Ahras','Tipaza','Mila','Defla','Naâma','Aïn Témouchent','Ghardaïa','Relizane','Timimoun','Bordj Badji Mokhtar','Ouled Djellal','Béni Abbés','Salah','Guezzam','Touggourt','Djanet','MGhair','Meniaa'];
@@ -183,14 +183,14 @@ res.end();
                       prof.unshift(user[0]); //ajoute idUser au début du tableau
                       user.splice(6, 1,wilaya[user[6]]); //replace numwilaya par la wilaya coresspondate
                       user.push('prof');
-                      // console.log('usrr:',user,'prof',prof);
+                      console.log('usrr:',user,'prof',prof);
 
                       let query = 'INSERT INTO utilisateur (idUser,nom,prenom,adresse,dateNaiss,lieuNaiss,wilaya,situation,numTelph,sexe,email,password,poste) VALUES (?) ; INSERT INTO enseignant (idProf,grade) VALUES (?) ';
                       connection.query(query, [user , prof], (error, response) => {            
                       console.log(error || response);
-                                          
+                      console.log('finished');                      
                    });
-                   console.log('finished');  
+                   
                   });
                 connection.release();
                   break;
@@ -201,7 +201,7 @@ res.end();
        });
    })
    console.log(res);
-   res.end();
+   res.redirect(`/creationDesUtilisateurs/${role}`);
 });
 
 
