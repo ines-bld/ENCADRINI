@@ -122,7 +122,7 @@ res.end();
 //    res.sendFile( process.cwd() + "/index.html");  //__dirname +
 // });
 
-  router.post('/uploadfile', upload.single("uploadfile"), (req, res) => {
+  router.post('/uploadfile', upload.single("file"), (req, res) => {
     
     const filePath = (process.cwd() + "/uploads/" + req.file.filename );  //__dirname + "/uploads/" + req.file.filename
     console.log( filePath)
